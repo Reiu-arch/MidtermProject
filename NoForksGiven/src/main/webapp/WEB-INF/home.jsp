@@ -8,5 +8,8 @@
 </head>
 <body>
 
+<h1>WELCOME</h1>
+
+<h2>${SMOKETEST}</h2>
 </body>
 </html>
