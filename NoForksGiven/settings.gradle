@@ -1,0 +1,3 @@
+rootProject.name = 'NoForksGiven'
+
+includeFlat 'JPANoForksGiven'
