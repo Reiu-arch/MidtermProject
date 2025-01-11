@@ -72,9 +72,9 @@ class MealTest {
 	}
 	
 	@Test
-	void test_Meal_ManyToMany_User_mapping_through_MealReview() {
-		assertNotNull(meal.getUser().getId());
-		assertTrue(meal.getUsers().size()>0);
+	void test_Meal_OneToMany_User_mapping_through_MealReview() {
+		assertNotNull(meal.getMealReviews());
+		assertTrue(meal.getMealReviews().size()>0);
 	}
 	
 	
