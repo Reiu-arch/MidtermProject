@@ -1,8 +1,7 @@
 package com.skilldistillery.noforks.entities;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -14,11 +13,11 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-class CuisineTest {
+class PlanMealTest {
 	
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Cuisine cuisine;
+	private PlanMeal planMeal;
 	
 
 	@BeforeAll
@@ -36,20 +35,20 @@ class CuisineTest {
 	 @BeforeEach
 	 void setUp() throws Exception {
 		 em = emf.createEntityManager();
-		 cuisine = em.find(Cuisine.class, 1);
+		 planMeal = em.find(PlanMeal.class, 1);
 	 }
 
 
 	 @AfterEach
 	 void tearDown() throws Exception {
 		 em.close();
-		 cuisine = null;
+		 planMeal = null;
 	 }
 	
 	@Test
-	void test_Cuisine_entity_mapping() {
-		assertNotNull(cuisine);
-		assertEquals("Mexican", cuisine.getName());
+	void test_PlanMeal_entity_mapping() {
+		assertNotNull(planMeal);
+		assertNull(planMeal.getDayNumber());
 	}
 
 }
