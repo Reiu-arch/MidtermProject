@@ -2,6 +2,7 @@ package com.skilldistillery.noforks.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -49,6 +50,7 @@ class UserTest {
 	void test_User_entity_mapping() {
 		assertNotNull(user);
 		assertEquals("admin", user.getUsername());
+		assertTrue(user.getEnabled());
 	}
 
 }
