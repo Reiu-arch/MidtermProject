@@ -3,9 +3,20 @@
 	<persistence-unit name="JPANoForksGiven">
 	 <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     
+    
+    <class>com.skilldistillery.noforks.entities.Cuisine</class>
+	<class>com.skilldistillery.noforks.entities.Diet</class>
+	<class>com.skilldistillery.noforks.entities.Meal</class>
+	<class>com.skilldistillery.noforks.entities.MealComment</class>
+	<class>com.skilldistillery.noforks.entities.MealReview</class>
+	<class>com.skilldistillery.noforks.entities.MealType</class>
+	<class>com.skilldistillery.noforks.entities.Plan</class>
+	<class>com.skilldistillery.noforks.entities.PlanComment</class>
+	<class>com.skilldistillery.noforks.entities.PlanMeal</class>
+	<class>com.skilldistillery.noforks.entities.Recipe</class>
+	<class>com.skilldistillery.noforks.entities.RecipeComment</class>
+	<class>com.skilldistillery.noforks.entities.RecipeReview</class>
 	<class>com.skilldistillery.noforks.entities.User</class>
-	
-	
 	
     <properties>
       <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/noforksdb" />
