@@ -14,11 +14,11 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-class UserTest {
+class DietTest {
 	
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
+	private Diet diet;
 	
 
 	@BeforeAll
@@ -36,21 +36,20 @@ class UserTest {
 	 @BeforeEach
 	 void setUp() throws Exception {
 		 em = emf.createEntityManager();
-		 user = em.find(User.class, 1);
+		 diet = em.find(Diet.class, 1);
 	 }
 
 
 	 @AfterEach
 	 void tearDown() throws Exception {
 		 em.close();
-		 user = null;
+		 diet = null;
 	 }
 	
 	@Test
-	void test_User_entity_mapping() {
-		assertNotNull(user);
-		assertEquals("admin", user.getUsername());
-		assertTrue(user.getEnabled());
+	void test_Diet_entity_mapping() {
+		assertNotNull(diet);
+		assertEquals("Vegan", diet.getName());
 	}
 
 }
