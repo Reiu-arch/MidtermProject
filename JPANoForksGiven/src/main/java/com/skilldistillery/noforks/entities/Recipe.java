@@ -1,12 +1,16 @@
 package com.skilldistillery.noforks.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Recipe {
@@ -23,7 +27,7 @@ public class Recipe {
 	@Column(name="cook_time_minutes")
 	private Integer cookTimeMin;
 	private String instructions;
-	private int servings;
+	private Integer servings;
 	private String difficulty;
 	
 	@Column(name="user_id")
@@ -39,13 +43,16 @@ public class Recipe {
 	@Column(name="last_update")
 	private LocalDateTime lastUpdate;
 
-	
+	@ManyToMany
+	@JoinTable(
+			name="meal_has_recipe",
+			joinColumns=@JoinColumn(name="meal_id"),
+			inverseJoinColumns=@JoinColumn(name="recipe_id"))
+	private List<Meal> meals;
 	
 	public Recipe() {
 		super();
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -127,6 +134,14 @@ public class Recipe {
 	}
 
 
+
+	public List<Meal> getMeals() {
+		return meals;
+	}
+
+	public void setMeals(List<Meal> meals) {
+		this.meals = meals;
+	}
 
 	@Override
 	public String toString() {

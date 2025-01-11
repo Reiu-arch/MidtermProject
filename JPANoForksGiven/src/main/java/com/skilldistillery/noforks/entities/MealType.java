@@ -1,11 +1,13 @@
 package com.skilldistillery.noforks.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,6 +20,9 @@ public class MealType {
 	private String name;
 	private String description;
 	
+	
+	@OneToMany(mappedBy = "mealTypeId")
+	private List<Meal> meals;
 	
 	
 	public MealType() {
@@ -43,6 +48,12 @@ public class MealType {
 		
 		
 		
+	}
+	public List<Meal> getMeals() {
+		return meals;
+	}
+	public void setMeals(List<Meal> meals) {
+		this.meals = meals;
 	}
 	@Override
 	public int hashCode() {

@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,6 +27,10 @@ public class MealComment {
 	
 	@Column(name= "in_reply_to_id")
 	private Integer inReplyToId;
+	
+	@ManyToOne
+	@JoinColumn(name = "meal_id")
+	private Meal meal;
 	
 
 	public MealComment() {
@@ -55,13 +61,21 @@ public class MealComment {
 		this.createDate = createDate;
 	}
 
-
-	public int getInReplyToId() {
+	
+	public Integer getInReplyToId() {
 		return inReplyToId;
 	}
 
-	public void setInReplyToId(int inReplyToId) {
+	public void setInReplyToId(Integer inReplyToId) {
 		this.inReplyToId = inReplyToId;
+	}
+
+	public Meal getMeal() {
+		return meal;
+	}
+
+	public void setMeal(Meal meal) {
+		this.meal = meal;
 	}
 
 	@Override

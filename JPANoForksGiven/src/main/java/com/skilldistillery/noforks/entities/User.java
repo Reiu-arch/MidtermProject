@@ -1,6 +1,7 @@
 package com.skilldistillery.noforks.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -8,6 +9,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -31,7 +36,23 @@ public class User {
 	private String profileImage;
 	private String biography;
 	
+	@ManyToMany
+	@JoinTable(
+			name="meal_comment", 
+			joinColumns=@JoinColumn(name="meal_id"), 
+			inverseJoinColumns=@JoinColumn(name="user_id"))
+	private List<Meal> meals;
 	
+	@OneToMany(mappedBy = "user")
+	private List<Meal> userMeals;
+	
+	
+	@ManyToMany
+	@JoinTable(
+			name="favorite_meal", 
+			joinColumns=@JoinColumn(name="meal_id"), 
+			inverseJoinColumns=@JoinColumn(name="user_id"))
+	private List<Meal> favoriteMeals;
 	
 	public User() {
 		super();
@@ -100,8 +121,49 @@ public class User {
 		this.biography = biography;
 	}
 	
+	public List<Meal> getMeals() {
+		return meals;
+	}
+
+	public void setMeals(List<Meal> meals) {
+		this.meals = meals;
+	}
+
+
+	public List<Meal> getUserMeals() {
+		return userMeals;
+	}
+
+
+
+	public void setUserMeals(List<Meal> userMeals) {
+		this.userMeals = userMeals;
+	}
+
+
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	public List<Meal> getFavoriteMeals() {
+		return favoriteMeals;
+	}
+
+
+
+	public void setFavoriteMeals(List<Meal> favoriteMeals) {
+		this.favoriteMeals = favoriteMeals;
+	}
+
+
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

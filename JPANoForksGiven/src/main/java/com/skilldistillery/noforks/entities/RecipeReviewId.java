@@ -23,14 +23,6 @@ public class RecipeReviewId implements Serializable {
 	
 	
 
-	public RecipeReviewId(int userId, int recipeId) {
-		super();
-		this.userId = userId;
-		this.recipeId = recipeId;
-	}
-
-
-
 	public int getUserId() {
 		return userId;
 	}
@@ -47,9 +39,12 @@ public class RecipeReviewId implements Serializable {
 		this.recipeId = recipeId;
 	}
 
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+
 
 	@Override
 	public String toString() {
