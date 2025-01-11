@@ -16,6 +16,7 @@
 	<class>com.skilldistillery.noforks.entities.Recipe</class>
 	<class>com.skilldistillery.noforks.entities.RecipeComment</class>
 	<class>com.skilldistillery.noforks.entities.RecipeReview</class>
+	<class>com.skilldistillery.noforks.entities.RecipeReviewId</class>
 	<class>com.skilldistillery.noforks.entities.User</class>
 	
     <properties>
