@@ -35,7 +35,7 @@ public class RecipeComment {
 	private LocalDateTime lastUpdate;
 	
 	@ManyToOne
-	@Column(name = "in_reply_to_id")
+	@JoinColumn(name = "in_reply_to_id")
 	private RecipeComment parentComment;
 	
 	@OneToMany(mappedBy = "parentComment")

@@ -58,10 +58,10 @@ public class Recipe {
 	@ManyToMany(mappedBy="recipes")
 	private List<Cuisine> cuisines;
 	
-	@OneToMany(mappedBy ="meal")
+	@OneToMany(mappedBy ="recipe")
 	private List<RecipeComment> RecipeComments;
 	
-	@OneToMany(mappedBy = "meal")
+	@OneToMany(mappedBy = "recipe")
 	private List<RecipeReview> RecipeReviews;
 	
 	public Recipe() {
