@@ -46,8 +46,10 @@ class PlanCommentTest {
 	void test_PlanComment_entity_mapping() {
 		assertNotNull(pc);
 		assertEquals("V cant cook", pc.getComments());
-		assertEquals(1, pc.getPlanId());
-		
 	}
-
+	
+	@Test
+	void test_PlanComment_ManyToOne_Plan_mapping() {
+		assertEquals(1, pc.getPlan().getId());
+	}
 }

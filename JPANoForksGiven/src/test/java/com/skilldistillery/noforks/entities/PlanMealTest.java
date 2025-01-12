@@ -56,5 +56,10 @@ class PlanMealTest {
 	void test_PlanMeal_ManyToOne_Meal_mapping() {
 		assertEquals(1, planMeal.getMeal().getId());
 	}
+	
+	@Test
+	void test_PlanMeal_ManyToOne_Plan_mapping() {
+		assertEquals(1, planMeal.getPlan().getId());
+	}
 
 }

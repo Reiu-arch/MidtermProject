@@ -2,6 +2,7 @@ package com.skilldistillery.noforks.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -48,7 +49,21 @@ class PlanTest {
 		assertEquals(2025, plan.getCreateDate().getYear());
 	}
 
+	@Test
+	void test_Plan_OneToMany_PlanMeal_mapping() {
+		assertNotNull(plan.getPlanmeals());
+		assertTrue(plan.getPlanmeals().size()>0);
+	}
 	
+	@Test
+	void test_Plan_ManyToOne_User_mapping() {
+		assertEquals(1, plan.getUser().getId());
+	}
 	
+	@Test
+	void test_Plan_OneToMany_PlanComment_mapping() {
+		assertNotNull(plan.getPlancomments());
+		assertTrue(plan.getPlanmeals().size()>0);
+	}
 	
 }

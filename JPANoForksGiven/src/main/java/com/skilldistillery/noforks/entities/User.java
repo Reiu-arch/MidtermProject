@@ -43,6 +43,9 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<RecipeReview> recipeReviews;
 	
+	@OneToMany(mappedBy = "user")
+	private List<Plan> plans;
+	
 	@ManyToMany
 	@JoinTable(
 			name="meal_comment", 
@@ -86,6 +89,14 @@ public class User {
 		super();
 	}
 	
+	public List<Plan> getPlans() {
+		return plans;
+	}
+
+	public void setPlans(List<Plan> plans) {
+		this.plans = plans;
+	}
+
 	public int getId() {
 		return id;
 	}

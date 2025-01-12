@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -25,14 +27,18 @@ public class Plan {
 	private LocalDateTime lastUpdate;
 	private String notes;
 	
-	@Column(name="user_id")
-	private Integer userId;
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 	
 	@Column(name="image_url")
 	private String imageUrl;
 	
 	@OneToMany(mappedBy ="plan")
 	private List<PlanMeal> planmeals;
+	
+	@OneToMany(mappedBy ="plan")
+	private List<PlanComment> plancomments;
 
 	public Plan() {
 		super();
@@ -62,12 +68,16 @@ public class Plan {
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-	public Integer getUserId() {
-		return userId;
+	
+	
+	public User getUser() {
+		return user;
 	}
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+
+	public void setUser(User user) {
+		this.user = user;
 	}
+
 	public String getImageUrl() {
 		return imageUrl;
 	}
@@ -77,9 +87,27 @@ public class Plan {
 
 
 
+	public List<PlanMeal> getPlanmeals() {
+		return planmeals;
+	}
+
+	public void setPlanmeals(List<PlanMeal> planmeals) {
+		this.planmeals = planmeals;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(createDate, id, imageUrl, lastUpdate, notes, planmeals, user);
+	}
+
+	
+	
+	public List<PlanComment> getPlancomments() {
+		return plancomments;
+	}
+
+	public void setPlancomments(List<PlanComment> plancomments) {
+		this.plancomments = plancomments;
 	}
 
 	@Override
@@ -91,15 +119,18 @@ public class Plan {
 		if (getClass() != obj.getClass())
 			return false;
 		Plan other = (Plan) obj;
-		return id == other.id;
+		return Objects.equals(createDate, other.createDate) && id == other.id
+				&& Objects.equals(imageUrl, other.imageUrl) && Objects.equals(lastUpdate, other.lastUpdate)
+				&& Objects.equals(notes, other.notes) && Objects.equals(planmeals, other.planmeals)
+				&& Objects.equals(user, other.user);
 	}
-
-
 
 	@Override
 	public String toString() {
 		return "Plan [id=" + id + ", createDate=" + createDate + ", lastUpdate=" + lastUpdate + ", notes=" + notes
-				+ ", userId=" + userId + ", imageUrl=" + imageUrl + "]";
+				+ ", user=" + user + ", imageUrl=" + imageUrl + ", planmeals=" + planmeals + "]";
 	}
+
+	
 
 }

@@ -36,8 +36,9 @@ public class PlanComment {
 	@OneToMany(mappedBy = "parentComment")
 	private List<PlanComment> subComments;
 	
-	@Column(name="plan_id")
-	private int planId;
+	@ManyToOne
+	@JoinColumn(name = "plan_id")
+	private Plan plan;
 
 	public PlanComment() {
 		super();
@@ -67,12 +68,7 @@ public class PlanComment {
 		this.userId = userId;
 	}
 	
-	public int getPlanId() {
-		return planId;
-	}
-	public void setPlanId(int planId) {
-		this.planId = planId;
-	}
+	
 	public PlanComment getParentComment() {
 		return parentComment;
 	}
@@ -88,11 +84,21 @@ public class PlanComment {
 	
 	
 	
+	public Plan getPlan() {
+		return plan;
+	}
+	public void setPlan(Plan plan) {
+		this.plan = plan;
+	}
+	@Override
+	public String toString() {
+		return "PlanComment [id=" + id + ", comments=" + comments + ", createDate=" + createDate + ", userId=" + userId
+				+ ", parentComment=" + parentComment + ", subComments=" + subComments + ", plan=" + plan + "]";
+	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(comments, createDate, id, parentComment, plan, subComments, userId);
 	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -102,16 +108,13 @@ public class PlanComment {
 		if (getClass() != obj.getClass())
 			return false;
 		PlanComment other = (PlanComment) obj;
-		return id == other.id;
+		return Objects.equals(comments, other.comments) && Objects.equals(createDate, other.createDate)
+				&& id == other.id && Objects.equals(parentComment, other.parentComment)
+				&& Objects.equals(plan, other.plan) && Objects.equals(subComments, other.subComments)
+				&& userId == other.userId;
 	}
 	
 	
-	
-	@Override
-	public String toString() {
-		return "PlanComment [id=" + id + ", comments=" + comments + ", createDate=" + createDate + ", userId=" + userId
-				+ ", parentComment=" + parentComment + ", subComments=" + subComments + ", planId=" + planId + "]";
-	}
 	
 	
 }

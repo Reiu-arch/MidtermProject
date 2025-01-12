@@ -64,5 +64,11 @@ class UserTest {
 		assertNotNull(user.getMealReviews());
 		assertTrue(user.getMealReviews().size()>0);
 	}
+	
+	@Test
+	void test_User_OneToMany_Plan_mapping() {
+		assertNotNull(user.getPlans());
+		assertTrue(user.getPlans().size()>0);
+	}
 
 }
