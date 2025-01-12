@@ -58,20 +58,24 @@ class RecipeCommentTest {
 		assertEquals("Chicken Alfredo", recipeComment.getRecipe().getName());
 	}
 
-	//FIXME once Will adds the new comment, these asserts would be correct
+	
 	@Test
 	void test_RecipeComment_to_SubComments_ManyToOne_mapping() {
 		recipeComment = em.find(RecipeComment.class, 2);
 		assertNotNull(recipeComment);
 		assertNull(recipeComment.getParentComment());
+		
+	//FIXME in_reply_to_id column is currently still Null, once Will updates it, it should work!
 		assertEquals(1,recipeComment.getParentComment().getId());
 	}
 	
-	//FIXME once Will adds the new comment, these asserts would be correct
+	
 	@Test
 	void test_RecipeComment_SubComments_OneToMany_mapping() {
 		
 		assertNotNull(recipeComment.getSubComments());
+		
+	//FIXME in_reply_to_id column is currently still Null, once Will updates it, it should work!	
 		assertTrue(recipeComment.getSubComments().size()>0);
 	}
 }

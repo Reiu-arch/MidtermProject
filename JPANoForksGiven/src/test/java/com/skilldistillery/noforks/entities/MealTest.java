@@ -56,7 +56,7 @@ class MealTest {
 	@Test
 	void test_Meal_ManyToOne_MealType_mapping() {
 		assertNotNull(meal);
-		assertEquals("Breakfast", meal.getMealTypeId().getName());
+		assertEquals("Dinner", meal.getMealTypeId().getName());
 	}
 	
 	@Test

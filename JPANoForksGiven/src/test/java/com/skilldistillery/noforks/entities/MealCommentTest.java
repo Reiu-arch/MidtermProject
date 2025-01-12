@@ -54,20 +54,23 @@ class MealCommentTest {
 
 	}
 	
-	//FIXME once Will adds the new comment, these asserts would be correct
+	
 	@Test
 	void test_MealComment_to_SubComments_ManyToOne_mapping() {
 		mealComment = em.find(MealComment.class, 2);
 		assertNotNull(mealComment);
 		assertNull(mealComment.getParentComment());
-		assertEquals(1,mealComment.getParentComment().getId());
+		
+	//FIXME in_reply_to_id column is currently still Null, once Will updates it, it should work!
+		assertEquals(1,mealComment.getParentComment().getId()); 
 	}
 	
-	//FIXME once Will adds the new comment, these asserts would be correct
+
 	@Test
 	void test_MealComment_SubComments_OneToMany_mapping() {
-		
 		assertNotNull(mealComment.getSubComments());
+		
+	//FIXME in_reply_to_id column is currently still Null, once Will updates it, it should work!
 		assertTrue(mealComment.getSubComments().size()>0);
 	}
 

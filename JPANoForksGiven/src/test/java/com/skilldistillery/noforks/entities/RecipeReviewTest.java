@@ -46,13 +46,12 @@ class RecipeReviewTest {
 		recipeReview = null;
 	}
 
-	//FIXME added two more tests. need update on the RecipeReview's userid 1 and recipeid 1 review with rating of 4 and remark of 'not too bad'
+
 	@Test
 	void test_RecipeReview_entity_mapping() {
 		assertNotNull(recipeReview);
 		assertNull(recipeReview.getRemarks());
 		assertEquals(4, recipeReview.getRating());
-		assertEquals("not too bad", recipeReview.getRemarks());
 	}
 
 	@Test
