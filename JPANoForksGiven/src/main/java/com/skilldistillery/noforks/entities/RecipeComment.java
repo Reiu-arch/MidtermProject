@@ -1,6 +1,7 @@
 package com.skilldistillery.noforks.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -8,6 +9,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,11 +27,19 @@ public class RecipeComment {
 	@Column(name = "create_date")
 	private LocalDateTime createDate;
 	
+	@ManyToOne
+	@JoinColumn(name="recipe_id")
+	private Recipe recipe;
+	
 	@Column(name = "last_update")
 	private LocalDateTime lastUpdate;
 	
+	@ManyToOne
 	@Column(name = "in_reply_to_id")
-	private Integer inReplyToId;
+	private RecipeComment parentComment;
+	
+	@OneToMany(mappedBy = "parentComment")
+	private List<RecipeComment> subComments;
 
 	public RecipeComment() {
 		super();
@@ -57,6 +69,14 @@ public class RecipeComment {
 		this.createDate = createDate;
 	}
 
+	public Recipe getRecipe() {
+		return recipe;
+	}
+
+	public void setRecipe(Recipe recipe) {
+		this.recipe = recipe;
+	}
+
 	public LocalDateTime getLastUpdate() {
 		return lastUpdate;
 	}
@@ -64,26 +84,32 @@ public class RecipeComment {
 	public void setLastUpdate(LocalDateTime lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
-
-	public Integer getInReplyToId() {
-		return inReplyToId;
+	
+	public List<RecipeComment> getSubComments() {
+		return subComments;
 	}
 
-	public void setInReplyToId(Integer inReplyToId) {
-		this.inReplyToId = inReplyToId;
+	public void setSubComments(List<RecipeComment> subComments) {
+		this.subComments = subComments;
 	}
 
-	
-	
+	public RecipeComment getParentComment() {
+		return parentComment;
+	}
+
+	public void setParentComment(RecipeComment parentComment) {
+		this.parentComment = parentComment;
+	}
+
 	@Override
 	public String toString() {
 		return "RecipeComment [id=" + id + ", comments=" + comments + ", createDate=" + createDate + ", lastUpdate="
-				+ lastUpdate + ", inReplyToId=" + inReplyToId + "]";
+				+ lastUpdate + ", parentComment=" + parentComment + ", subComments=" + subComments + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(comments, createDate, id, inReplyToId, lastUpdate);
+		return Objects.hash(comments, createDate, id, lastUpdate, parentComment, subComments);
 	}
 
 	@Override
@@ -96,11 +122,8 @@ public class RecipeComment {
 			return false;
 		RecipeComment other = (RecipeComment) obj;
 		return Objects.equals(comments, other.comments) && Objects.equals(createDate, other.createDate)
-				&& id == other.id && Objects.equals(inReplyToId, other.inReplyToId)
-				&& Objects.equals(lastUpdate, other.lastUpdate);
+				&& id == other.id && Objects.equals(lastUpdate, other.lastUpdate)
+				&& Objects.equals(parentComment, other.parentComment) && Objects.equals(subComments, other.subComments);
 	}
-	
-	
-	
 	
 }

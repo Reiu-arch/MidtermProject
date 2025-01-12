@@ -77,10 +77,6 @@ public class MealComment {
 		this.meal = meal;
 	}
 	
-	
-
-
-
 	public MealComment getParentComment() {
 		return parentComment;
 	}
@@ -122,14 +118,5 @@ public class MealComment {
 				&& Objects.equals(parentComment, other.parentComment) && Objects.equals(subComments, other.subComments);
 	}
 
-	
-
-	
-
-	
-
-	
-	
-	
 	
 }

@@ -23,6 +23,14 @@ public class RecipeReviewId implements Serializable {
 	
 	
 
+	public RecipeReviewId(int userId, int recipeId) {
+		super();
+		this.userId = userId;
+		this.recipeId = recipeId;
+	}
+
+
+
 	public int getUserId() {
 		return userId;
 	}

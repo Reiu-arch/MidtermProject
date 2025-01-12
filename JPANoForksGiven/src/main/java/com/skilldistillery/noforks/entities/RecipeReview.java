@@ -6,6 +6,9 @@ import java.util.Objects;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,9 +27,27 @@ public class RecipeReview {
 	
 	@Column( name = "last_update")
 	private LocalDateTime lastUpdate;
+	
+	@ManyToOne
+	@JoinColumn(name = "recipe_id")
+	@MapsId(value = "recipeId")
+	private Recipe recipe;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	@MapsId(value = "userId")
+	private User user;
 
 	public RecipeReview() {
 		super();
+	}
+	
+	public RecipeReviewId getId() {
+		return id;
+	}
+
+	public void setId(RecipeReviewId id) {
+		this.id = id;
 	}
 
 	public Integer getRating() {

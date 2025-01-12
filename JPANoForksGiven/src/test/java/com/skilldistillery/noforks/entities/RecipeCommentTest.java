@@ -2,6 +2,7 @@ package com.skilldistillery.noforks.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.AfterAll;
@@ -51,5 +52,26 @@ class RecipeCommentTest {
 		assertNotNull(recipeComment);
 		assertEquals("V cant cook", recipeComment.getComments());
 	}
+	
+	@Test
+	void test_RecipeComment_ManyToOne_Recipe_mapping() {
+		assertEquals("Chicken Alfredo", recipeComment.getRecipe().getName());
+	}
 
+	//FIXME once Will adds the new comment, these asserts would be correct
+	@Test
+	void test_RecipeComment_to_SubComments_ManyToOne_mapping() {
+		recipeComment = em.find(RecipeComment.class, 2);
+		assertNotNull(recipeComment);
+		assertNull(recipeComment.getParentComment());
+		assertEquals(1,recipeComment.getParentComment().getId());
+	}
+	
+	//FIXME once Will adds the new comment, these asserts would be correct
+	@Test
+	void test_RecipeComment_SubComments_OneToMany_mapping() {
+		
+		assertNotNull(recipeComment.getSubComments());
+		assertTrue(recipeComment.getSubComments().size()>0);
+	}
 }

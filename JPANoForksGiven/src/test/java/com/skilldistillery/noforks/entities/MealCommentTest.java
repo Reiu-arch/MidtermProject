@@ -54,16 +54,21 @@ class MealCommentTest {
 
 	}
 	
+	//FIXME once Will adds the new comment, these asserts would be correct
 	@Test
-	void test_MealComment_ManyToOne_Meal_mapping() {
-		assertEquals("Tacos de Lengua", mealComment.getMeal().getName());
+	void test_MealComment_to_SubComments_ManyToOne_mapping() {
+		mealComment = em.find(MealComment.class, 2);
+		assertNotNull(mealComment);
+		assertNull(mealComment.getParentComment());
+		assertEquals(1,mealComment.getParentComment().getId());
 	}
 	
+	//FIXME once Will adds the new comment, these asserts would be correct
 	@Test
-	void test_MealComment_to_SubComments_manyToOne_mapping() {
-		assertNull(mealComment.getParentComment()); //Null value for in_reply_to_id
+	void test_MealComment_SubComments_OneToMany_mapping() {
+		
 		assertNotNull(mealComment.getSubComments());
-
+		assertTrue(mealComment.getSubComments().size()>0);
 	}
 
 }
