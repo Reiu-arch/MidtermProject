@@ -52,5 +52,11 @@ class UserTest {
 		assertEquals("admin", user.getUsername());
 		assertTrue(user.getEnabled());
 	}
+	
+	@Test
+	void test_User_OneToMany_Meal_mapping() {
+		assertNotNull(user.getMeals());
+		assertTrue(user.getMeals().size()>0);
+	}
 
 }

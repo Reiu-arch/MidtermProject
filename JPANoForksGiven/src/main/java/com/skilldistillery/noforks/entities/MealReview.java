@@ -43,7 +43,6 @@ public class MealReview {
 	}
 	
 	
-	
 	public MealReviewId getId() {
 		return id;
 	}

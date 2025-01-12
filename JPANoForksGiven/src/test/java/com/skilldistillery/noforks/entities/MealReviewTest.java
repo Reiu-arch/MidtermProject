@@ -54,5 +54,10 @@ class MealReviewTest {
 		assertNotNull(mealReview);
 		assertEquals(2025, mealReview.getCreateDate().getYear());
 	}
+	
+	@Test
+	void test_MealReview_ManyToOne_Meal_mapping() {
+		assertEquals(1, mealReview.getId().getUserId());
+	}
 
 }

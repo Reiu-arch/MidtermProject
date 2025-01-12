@@ -52,5 +52,10 @@ class MealCommentTest {
 		assertEquals("V cant cook", mealComment.getComments());
 
 	}
+	
+	@Test
+	void test_MealComment_ManyToOne_Meal_mapping() {
+		assertEquals("Tacos de Lengua", mealComment.getMeal().getName());
+	}
 
 }

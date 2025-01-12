@@ -1,5 +1,6 @@
 package com.skilldistillery.noforks.entities;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -49,6 +50,11 @@ class PlanMealTest {
 	void test_PlanMeal_entity_mapping() {
 		assertNotNull(planMeal);
 		assertNull(planMeal.getDayNumber());
+	}
+	
+	@Test
+	void test_PlanMeal_ManyToOne_Meal_mapping() {
+		assertEquals(1, planMeal.getMeal().getId());
 	}
 
 }
