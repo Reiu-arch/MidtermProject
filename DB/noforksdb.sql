@@ -487,6 +487,7 @@ START TRANSACTION;
 USE `noforksdb`;
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `email`, `create_date`, `last_update`, `profile_image_url`, `biography`) VALUES (1, 'admin', 'test', 1, NULL, NULL, '2025-01-10', '2025-01-10', NULL, NULL);
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `email`, `create_date`, `last_update`, `profile_image_url`, `biography`) VALUES (2, 'DwightS', 'beets', 1, NULL, NULL, '2025-01-10', '2025-01-10', NULL, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `email`, `create_date`, `last_update`, `profile_image_url`, `biography`) VALUES (3, 'SithLord', 'r2d2', 1, NULL, 'killjedi666@sithcorp.com', '2025-01-12', '2025-01-12', NULL, NULL);
 
 COMMIT;
 
@@ -496,7 +497,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `noforksdb`;
-INSERT INTO `plan` (`id`, `create_date`, `last_update`, `notes`, `user_id`, `image_url`) VALUES (1, '2025-01-10', '2025-01-10', NULL, 1, NULL);
+INSERT INTO `plan` (`id`, `create_date`, `last_update`, `notes`, `user_id`, `image_url`) VALUES (1, '2025-01-10', '2025-01-10', 'random note', 1, NULL);
+INSERT INTO `plan` (`id`, `create_date`, `last_update`, `notes`, `user_id`, `image_url`) VALUES (2, '2025-01-12', '2025-01-12', 'random note', 2, NULL);
 
 COMMIT;
 
@@ -506,7 +508,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `noforksdb`;
-INSERT INTO `diet` (`id`, `name`, `description`) VALUES (1, 'Vegan', NULL);
+INSERT INTO `diet` (`id`, `name`, `description`) VALUES (1, 'Vegan', 'No Animal Products');
+INSERT INTO `diet` (`id`, `name`, `description`) VALUES (2, 'Diabetic', 'Low Carb');
+INSERT INTO `diet` (`id`, `name`, `description`) VALUES (3, 'Keto', 'No Carbs');
 
 COMMIT;
 
@@ -516,7 +520,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `noforksdb`;
-INSERT INTO `recipe` (`id`, `name`, `description`, `prep_time_minutes`, `cook_time_minutes`, `instructions`, `servings`, `difficulty`, `user_id`, `ingredients`, `image_url`, `create_date`, `last_update`) VALUES (1, 'Chicken Alfredo', NULL, NULL, NULL, 'Boil water', NULL, NULL, 1, NULL, NULL, '2025-01-10', '2025-01-10');
+INSERT INTO `recipe` (`id`, `name`, `description`, `prep_time_minutes`, `cook_time_minutes`, `instructions`, `servings`, `difficulty`, `user_id`, `ingredients`, `image_url`, `create_date`, `last_update`) VALUES (1, 'Chicken Alfredo', 'Pasta, Chicken, Sauce', 5, 40, 'Boil water', 4, 'medium', 1, 'chicken', NULL, '2025-01-10', '2025-01-12');
+INSERT INTO `recipe` (`id`, `name`, `description`, `prep_time_minutes`, `cook_time_minutes`, `instructions`, `servings`, `difficulty`, `user_id`, `ingredients`, `image_url`, `create_date`, `last_update`) VALUES (2, 'Pizza', 'Pepperoni and Cheese', 20, 20, 'Knead dough', 2, 'medium', 2, 'flour', NULL, '2025-01-12', '2025-01-12');
 
 COMMIT;
 
@@ -526,10 +531,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `noforksdb`;
-INSERT INTO `meal_type` (`id`, `name`, `description`) VALUES (1, 'Breakfast', NULL);
-INSERT INTO `meal_type` (`id`, `name`, `description`) VALUES (2, 'Lunch', NULL);
-INSERT INTO `meal_type` (`id`, `name`, `description`) VALUES (3, 'Dinner', NULL);
-INSERT INTO `meal_type` (`id`, `name`, `description`) VALUES (4, 'Snack', NULL);
+INSERT INTO `meal_type` (`id`, `name`, `description`) VALUES (1, 'Breakfast', 'Morning');
+INSERT INTO `meal_type` (`id`, `name`, `description`) VALUES (2, 'Lunch', 'Mid-day');
+INSERT INTO `meal_type` (`id`, `name`, `description`) VALUES (3, 'Dinner', 'Evening');
+INSERT INTO `meal_type` (`id`, `name`, `description`) VALUES (4, 'Snack', 'Anytime');
 
 COMMIT;
 
@@ -539,7 +544,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `noforksdb`;
-INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`) VALUES (1, 1, 'Tacos de Lengua', NULL, NULL, NULL, 1, NULL);
+INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`) VALUES (1, 1, 'Tacos de Lengua', '2025-01-12', '2025-01-12', 'Cow Tongue', 3, NULL);
+INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`) VALUES (2, 3, 'Bibimbap', '2025-01-12', '2025-01-12', 'Best in a stone bowl', 3, NULL);
 
 COMMIT;
 
@@ -550,6 +556,7 @@ COMMIT;
 START TRANSACTION;
 USE `noforksdb`;
 INSERT INTO `meal_has_recipe` (`meal_id`, `recipe_id`) VALUES (1, 1);
+INSERT INTO `meal_has_recipe` (`meal_id`, `recipe_id`) VALUES (2, 2);
 
 COMMIT;
 
@@ -559,7 +566,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `noforksdb`;
-INSERT INTO `plan_meal` (`id`, `plan_id`, `meal_id`, `meal_type_id`, `day_number`, `notes`) VALUES (1, 1, 1, 1, NULL, NULL);
+INSERT INTO `plan_meal` (`id`, `plan_id`, `meal_id`, `meal_type_id`, `day_number`, `notes`) VALUES (1, 1, 1, 1, NULL, 'random note');
+INSERT INTO `plan_meal` (`id`, `plan_id`, `meal_id`, `meal_type_id`, `day_number`, `notes`) VALUES (2, 2, 1, 1, NULL, 'another note');
 
 COMMIT;
 
@@ -569,17 +577,17 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `noforksdb`;
-INSERT INTO `cuisine` (`id`, `name`, `description`, `image_url`) VALUES (1, 'Mexican', NULL, NULL);
-INSERT INTO `cuisine` (`id`, `name`, `description`, `image_url`) VALUES (2, 'American', NULL, NULL);
-INSERT INTO `cuisine` (`id`, `name`, `description`, `image_url`) VALUES (3, 'Italian', NULL, NULL);
-INSERT INTO `cuisine` (`id`, `name`, `description`, `image_url`) VALUES (4, 'Chinese', NULL, NULL);
-INSERT INTO `cuisine` (`id`, `name`, `description`, `image_url`) VALUES (5, 'Japanese', NULL, NULL);
-INSERT INTO `cuisine` (`id`, `name`, `description`, `image_url`) VALUES (6, 'Korean', NULL, NULL);
-INSERT INTO `cuisine` (`id`, `name`, `description`, `image_url`) VALUES (7, 'French', NULL, NULL);
-INSERT INTO `cuisine` (`id`, `name`, `description`, `image_url`) VALUES (8, 'German', NULL, NULL);
-INSERT INTO `cuisine` (`id`, `name`, `description`, `image_url`) VALUES (9, 'Filipino', NULL, NULL);
+INSERT INTO `cuisine` (`id`, `name`, `description`, `image_url`) VALUES (1, 'Mexican', 'Spanish', NULL);
+INSERT INTO `cuisine` (`id`, `name`, `description`, `image_url`) VALUES (2, 'American', 'American', NULL);
+INSERT INTO `cuisine` (`id`, `name`, `description`, `image_url`) VALUES (3, 'Italian', 'Italian', NULL);
+INSERT INTO `cuisine` (`id`, `name`, `description`, `image_url`) VALUES (4, 'Chinese', 'Asian', NULL);
+INSERT INTO `cuisine` (`id`, `name`, `description`, `image_url`) VALUES (5, 'Japanese', 'Asian', NULL);
+INSERT INTO `cuisine` (`id`, `name`, `description`, `image_url`) VALUES (6, 'Korean', 'Asian', NULL);
+INSERT INTO `cuisine` (`id`, `name`, `description`, `image_url`) VALUES (7, 'French', 'European', NULL);
+INSERT INTO `cuisine` (`id`, `name`, `description`, `image_url`) VALUES (8, 'German', 'European', NULL);
+INSERT INTO `cuisine` (`id`, `name`, `description`, `image_url`) VALUES (9, 'Filipino', 'Islander', NULL);
 INSERT INTO `cuisine` (`id`, `name`, `description`, `image_url`) VALUES (10, 'Indian', NULL, NULL);
-INSERT INTO `cuisine` (`id`, `name`, `description`, `image_url`) VALUES (11, 'Greek', NULL, NULL);
+INSERT INTO `cuisine` (`id`, `name`, `description`, `image_url`) VALUES (11, 'Greek', 'Mediterranean', NULL);
 
 COMMIT;
 
@@ -590,6 +598,18 @@ COMMIT;
 START TRANSACTION;
 USE `noforksdb`;
 INSERT INTO `diet_has_recipe` (`diet_id`, `recipe_id`) VALUES (1, 1);
+INSERT INTO `diet_has_recipe` (`diet_id`, `recipe_id`) VALUES (2, 2);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `cuisine_has_recipe`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `noforksdb`;
+INSERT INTO `cuisine_has_recipe` (`cuisine_id`, `recipe_id`) VALUES (1, 1);
+INSERT INTO `cuisine_has_recipe` (`cuisine_id`, `recipe_id`) VALUES (1, 2);
 
 COMMIT;
 
@@ -599,7 +619,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `noforksdb`;
-INSERT INTO `recipe_review` (`user_id`, `recipe_id`, `rating`, `remarks`, `create_date`, `last_update`) VALUES (1, 1, NULL, NULL, '2025-01-10', '2025-01-10');
+INSERT INTO `recipe_review` (`user_id`, `recipe_id`, `rating`, `remarks`, `create_date`, `last_update`) VALUES (1, 1, 4, NULL, '2025-01-10', '2025-01-10');
+INSERT INTO `recipe_review` (`user_id`, `recipe_id`, `rating`, `remarks`, `create_date`, `last_update`) VALUES (3, 2, 3, 'wasnt great', '2025-01-12', '2025-01-12');
 
 COMMIT;
 
@@ -609,7 +630,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `noforksdb`;
-INSERT INTO `meal_review` (`user_id`, `meal_id`, `rating`, `remarks`, `create_date`, `last_update`) VALUES (1, 1, NULL, NULL, '2025-01-10', '2025-01-10');
+INSERT INTO `meal_review` (`user_id`, `meal_id`, `rating`, `remarks`, `create_date`, `last_update`) VALUES (1, 1, 4, 'will make again', '2025-01-10', '2025-01-10');
+INSERT INTO `meal_review` (`user_id`, `meal_id`, `rating`, `remarks`, `create_date`, `last_update`) VALUES (3, 2, 5, 'very good', '2025-01-12', '2025-01-12');
 
 COMMIT;
 
@@ -620,6 +642,7 @@ COMMIT;
 START TRANSACTION;
 USE `noforksdb`;
 INSERT INTO `recipe_comment` (`id`, `comments`, `create_date`, `last_update`, `user_id`, `recipe_id`, `in_reply_to_id`) VALUES (1, 'V cant cook', '2025-01-10', '2025-01-10', 1, 1, NULL);
+INSERT INTO `recipe_comment` (`id`, `comments`, `create_date`, `last_update`, `user_id`, `recipe_id`, `in_reply_to_id`) VALUES (2, 'very simple', '2025-01-12', '2025-01-12', 2, 2, NULL);
 
 COMMIT;
 
@@ -630,6 +653,7 @@ COMMIT;
 START TRANSACTION;
 USE `noforksdb`;
 INSERT INTO `meal_comment` (`id`, `comments`, `create_date`, `user_id`, `in_reply_to_id`, `meal_id`) VALUES (1, 'V cant cook', '2025-01-10', 1, NULL, 1);
+INSERT INTO `meal_comment` (`id`, `comments`, `create_date`, `user_id`, `in_reply_to_id`, `meal_id`) VALUES (2, 'Takes a little longer than told', '2025-01-12', 2, NULL, 2);
 
 COMMIT;
 
@@ -639,7 +663,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `noforksdb`;
-INSERT INTO `plan_comment` (`id`, `comments`, `create_date`, `user_id`, `in_reply_to_id`, `plan_id`) VALUES (1, 'V cant cook', NULL, 1, NULL, 1);
+INSERT INTO `plan_comment` (`id`, `comments`, `create_date`, `user_id`, `in_reply_to_id`, `plan_id`) VALUES (1, 'V cant cook', '2025-01-12', 1, NULL, 1);
+INSERT INTO `plan_comment` (`id`, `comments`, `create_date`, `user_id`, `in_reply_to_id`, `plan_id`) VALUES (2, 'great for high carbs', '2025-01-12', 3, NULL, 1);
 
 COMMIT;
 
@@ -650,6 +675,8 @@ COMMIT;
 START TRANSACTION;
 USE `noforksdb`;
 INSERT INTO `favorite_meal` (`user_id`, `meal_id`) VALUES (1, 1);
+INSERT INTO `favorite_meal` (`user_id`, `meal_id`) VALUES (2, 2);
+INSERT INTO `favorite_meal` (`user_id`, `meal_id`) VALUES (3, 1);
 
 COMMIT;
 
@@ -660,6 +687,8 @@ COMMIT;
 START TRANSACTION;
 USE `noforksdb`;
 INSERT INTO `followed_user` (`user_id`, `followed_user_id`) VALUES (1, 2);
+INSERT INTO `followed_user` (`user_id`, `followed_user_id`) VALUES (2, 1);
+INSERT INTO `followed_user` (`user_id`, `followed_user_id`) VALUES (3, 1);
 
 COMMIT;
 

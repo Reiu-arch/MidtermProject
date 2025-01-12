@@ -71,8 +71,6 @@ public class PlanComment {
 	}
 	public void setPlanId(int planId) {
 		this.planId = planId;
-			
-		
 	}
 	public PlanComment getParentComment() {
 		return parentComment;
@@ -86,6 +84,9 @@ public class PlanComment {
 	public void setSubComments(List<PlanComment> subComments) {
 		this.subComments = subComments;
 	}
+	
+	
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -102,6 +103,9 @@ public class PlanComment {
 		PlanComment other = (PlanComment) obj;
 		return id == other.id;
 	}
+	
+	
+	
 	@Override
 	public String toString() {
 		return "PlanComment [id=" + id + ", comments=" + comments + ", createDate=" + createDate + ", userId=" + userId

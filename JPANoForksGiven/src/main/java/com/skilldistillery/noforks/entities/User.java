@@ -133,70 +133,45 @@ public class User {
 	public void setBiography(String biography) {
 		this.biography = biography;
 	}
-	
 	public List<Meal> getMeals() {
 		return meals;
 	}
-
 	public void setMeals(List<Meal> meals) {
 		this.meals = meals;
 	}
-
-
 	public List<Meal> getUserMeals() {
 		return userMeals;
 	}
-
-
-
 	public void setUserMeals(List<Meal> userMeals) {
 		this.userMeals = userMeals;
 	}
-	
-	
-
 	public List<RecipeReview> getRecipeReviews() {
 		return recipeReviews;
 	}
-
 	public void setRecipeReviews(List<RecipeReview> recipeReviews) {
 		this.recipeReviews = recipeReviews;
 	}
-
 	public List<User> getFollowedUsersList() {
 		return followedUsersList;
 	}
-
 	public void setFollowedUsersList(List<User> followedUsersList) {
 		this.followedUsersList = followedUsersList;
 	}
-
 	public User getUserFollowing() {
 		return userFollowing;
 	}
-
 	public void setUserFollowing(User userFollowing) {
 		this.userFollowing = userFollowing;
 	}
-
 	public List<MealReview> getMealReviews() {
 		return mealReviews;
 	}
-
-
-
 	public void setMealReviews(List<MealReview> mealReviews) {
 		this.mealReviews = mealReviews;
 	}
-
-
-
 	public List<Meal> getFavoriteMeals() {
 		return favoriteMeals;
 	}
-
-
-
 	public void setFavoriteMeals(List<Meal> favoriteMeals) {
 		this.favoriteMeals = favoriteMeals;
 	}

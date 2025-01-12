@@ -47,9 +47,6 @@ public class MealType {
 	}
 	public void setDescription(String description) {
 		this.description = description;
-		
-		
-		
 	}
 	public List<Meal> getMeals() {
 		return meals;
@@ -57,6 +54,9 @@ public class MealType {
 	public void setMeals(List<Meal> meals) {
 		this.meals = meals;
 	}
+	
+	
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

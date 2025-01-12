@@ -2,6 +2,7 @@ package com.skilldistillery.noforks.entities;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -145,53 +146,61 @@ public class Recipe {
 	public void setLastUpdate(LocalDateTime lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
-	
-	
 	public List<RecipeComment> getRecipeComments() {
 		return RecipeComments;
 	}
-
 	public void setRecipeComments(List<RecipeComment> recipeComments) {
 		RecipeComments = recipeComments;
 	}
-
 	public List<RecipeReview> getRecipeReviews() {
 		return RecipeReviews;
 	}
-
 	public void setRecipeReviews(List<RecipeReview> recipeReviews) {
 		RecipeReviews = recipeReviews;
 	}
-
 	public List<Cuisine> getCuisines() {
 		return cuisines;
 	}
-
 	public void setCuisines(List<Cuisine> cuisines) {
 		this.cuisines = cuisines;
 	}
-
 	public List<Diet> getDiets() {
 		return diets;
 	}
-
 	public void setDiets(List<Diet> diets) {
 		this.diets = diets;
 	}
-
 	public void setServings(Integer servings) {
 		this.servings = servings;
 	}
-
 	public List<Meal> getMeals() {
 		return meals;
 	}
-
-	
 	public void setMeals(List<Meal> meals) {
 		this.meals = meals;
 	}
 
+	
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Recipe other = (Recipe) obj;
+		return id == other.id;
+	}
+
+	
+	
 	@Override
 	public String toString() {
 		return "Recipe [id=" + id + ", name=" + name + ", description=" + description + ", prepTimeMin=" + prepTimeMin
