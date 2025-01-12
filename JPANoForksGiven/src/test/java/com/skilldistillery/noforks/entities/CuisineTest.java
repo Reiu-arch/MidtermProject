@@ -52,4 +52,11 @@ class CuisineTest {
 		assertEquals("Mexican", cuisine.getName());
 	}
 
+	@Test
+	void test_ManyToMany_mapping_to_Recipe() {
+		assertNotNull(cuisine.getRecipes());
+		//FIXME we need to have Will add a cuisine has recipe data of recipe 1 to cuisine 3
+		//the join column is empty
+//		assertTrue(cuisine.getRecipes().size()>0);
+	}
 }

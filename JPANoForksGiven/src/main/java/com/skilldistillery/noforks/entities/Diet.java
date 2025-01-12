@@ -1,11 +1,15 @@
 package com.skilldistillery.noforks.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Diet {
@@ -17,6 +21,12 @@ public class Diet {
 	private String name;
 	
 	private String description;
+	
+	@ManyToMany
+	@JoinTable(name="diet_has_recipe",
+	joinColumns=@JoinColumn(name="diet_id"),
+	inverseJoinColumns=@JoinColumn(name="recipe_id"))
+	private List<Recipe> recipes;
 
 	public Diet() {
 		super();
@@ -45,6 +55,16 @@ public class Diet {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	
+
+	public List<Recipe> getRecipes() {
+		return recipes;
+	}
+
+	public void setRecipes(List<Recipe> recipes) {
+		this.recipes = recipes;
+	}
 
 	@Override
 	public String toString() {
@@ -68,7 +88,4 @@ public class Diet {
 		return Objects.equals(description, other.description) && id == other.id && Objects.equals(name, other.name);
 	}
 
-	
-	
-	
 }

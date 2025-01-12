@@ -1,5 +1,6 @@
 package com.skilldistillery.noforks.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -7,6 +8,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Cuisine {
@@ -21,6 +25,13 @@ public class Cuisine {
 	
 	@Column(name = "image_url")
 	private String imageUrl;
+	
+	@ManyToMany
+	@JoinTable(
+			name="cuisine_has_recipe",
+			joinColumns=@JoinColumn(name="cuisine_id"),
+			inverseJoinColumns=@JoinColumn(name="recipe_id"))
+	private List<Recipe> recipes;
 
 	public Cuisine() {
 		super();
@@ -56,6 +67,16 @@ public class Cuisine {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+	
+	
+
+	public List<Recipe> getRecipes() {
+		return recipes;
+	}
+
+	public void setRecipes(List<Recipe> recipes) {
+		this.recipes = recipes;
 	}
 
 	@Override

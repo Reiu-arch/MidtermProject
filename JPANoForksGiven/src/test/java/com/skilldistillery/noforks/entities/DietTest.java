@@ -52,4 +52,10 @@ class DietTest {
 		assertEquals("Vegan", diet.getName());
 	}
 
+	@Test
+	void test_ManyToMany_mapping_to_Recipe() {
+		assertNotNull(diet.getRecipes());
+		assertTrue(diet.getRecipes().size()>0);
+		assertEquals("Chicken Alfredo", diet.getRecipes().getFirst().getName());
+	}
 }

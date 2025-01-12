@@ -50,6 +50,12 @@ public class Recipe {
 			inverseJoinColumns=@JoinColumn(name="recipe_id"))
 	private List<Meal> meals;
 	
+	@ManyToMany(mappedBy="recipes")
+	  private List<Diet> diets;
+	
+	@ManyToMany(mappedBy="recipes")
+	private List<Cuisine> cuisines;
+	
 	public Recipe() {
 		super();
 	}
@@ -133,12 +139,33 @@ public class Recipe {
 		this.lastUpdate = lastUpdate;
 	}
 
+	
+	
+	public List<Cuisine> getCuisines() {
+		return cuisines;
+	}
 
+	public void setCuisines(List<Cuisine> cuisines) {
+		this.cuisines = cuisines;
+	}
+
+	public List<Diet> getDiets() {
+		return diets;
+	}
+
+	public void setDiets(List<Diet> diets) {
+		this.diets = diets;
+	}
+
+	public void setServings(Integer servings) {
+		this.servings = servings;
+	}
 
 	public List<Meal> getMeals() {
 		return meals;
 	}
 
+	
 	public void setMeals(List<Meal> meals) {
 		this.meals = meals;
 	}

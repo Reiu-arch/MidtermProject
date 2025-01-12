@@ -2,6 +2,7 @@ package com.skilldistillery.noforks.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -47,6 +48,13 @@ class RecipeTest {
 		assertNotNull(recipe);
 		assertEquals("Chicken Alfredo", recipe.getName());
 		assertEquals("Boil water", recipe.getInstructions());
+	}
+	
+	@Test
+	void test_ManyToMany_mapping_to_Diet() {
+		assertNotNull(recipe.getDiets());
+		assertTrue(recipe.getDiets().size()>0);
+		assertEquals("Vegan",recipe.getDiets().getFirst().getName());
 	}
 
 }
