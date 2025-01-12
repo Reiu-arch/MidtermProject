@@ -2,6 +2,7 @@ package com.skilldistillery.noforks.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.AfterAll;
@@ -50,6 +51,18 @@ class MealCommentTest {
 	void test_MealComment_entity_mapping() {
 		assertNotNull(mealComment);
 		assertEquals("V cant cook", mealComment.getComments());
+
+	}
+	
+	@Test
+	void test_MealComment_ManyToOne_Meal_mapping() {
+		assertEquals("Tacos de Lengua", mealComment.getMeal().getName());
+	}
+	
+	@Test
+	void test_MealComment_to_SubComments_manyToOne_mapping() {
+		assertNull(mealComment.getParentComment()); //Null value for in_reply_to_id
+		assertNotNull(mealComment.getSubComments());
 
 	}
 

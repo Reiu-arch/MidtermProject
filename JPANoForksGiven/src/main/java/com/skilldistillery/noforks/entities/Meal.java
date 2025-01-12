@@ -46,8 +46,9 @@ public class Meal {
 	private List<MealComment> mealComments;
 	
 	//through meal_review
-	@ManyToMany(mappedBy = "meals")
-	private List<User> users;
+	@OneToMany(mappedBy = "meal")
+	private List<MealReview> mealReviews;
+
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
@@ -115,12 +116,14 @@ public class Meal {
 	}
 
 	
-	public List<User> getUsers() {
-		return users;
+	
+
+	public List<MealReview> getMealReviews() {
+		return mealReviews;
 	}
 
-	public void setUsers(List<User> users) {
-		this.users = users;
+	public void setMealReviews(List<MealReview> mealReviews) {
+		this.mealReviews = mealReviews;
 	}
 
 	public void setMealTypeId(MealType mealTypeId) {
@@ -174,10 +177,12 @@ public class Meal {
 	
 	
 	
+
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(createDate, id, imageUrl, lastUpdate, mealComments, mealTypeId, name, notes, recipes, user,
-				users);
+		return Objects.hash(createDate, id, imageUrl, lastUpdate, mealComments, mealReviews, mealTypeId, name, notes,
+				planmeals, recipes, user, usersWithFavMeals);
 	}
 
 	@Override
@@ -191,10 +196,11 @@ public class Meal {
 		Meal other = (Meal) obj;
 		return Objects.equals(createDate, other.createDate) && id == other.id
 				&& Objects.equals(imageUrl, other.imageUrl) && Objects.equals(lastUpdate, other.lastUpdate)
-				&& Objects.equals(mealComments, other.mealComments) && Objects.equals(mealTypeId, other.mealTypeId)
-				&& Objects.equals(name, other.name) && Objects.equals(notes, other.notes)
+				&& Objects.equals(mealComments, other.mealComments) && Objects.equals(mealReviews, other.mealReviews)
+				&& Objects.equals(mealTypeId, other.mealTypeId) && Objects.equals(name, other.name)
+				&& Objects.equals(notes, other.notes) && Objects.equals(planmeals, other.planmeals)
 				&& Objects.equals(recipes, other.recipes) && Objects.equals(user, other.user)
-				&& Objects.equals(users, other.users);
+				&& Objects.equals(usersWithFavMeals, other.usersWithFavMeals);
 	}
 
 	@Override

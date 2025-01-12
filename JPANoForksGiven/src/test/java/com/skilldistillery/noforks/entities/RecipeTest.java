@@ -56,5 +56,10 @@ class RecipeTest {
 		assertTrue(recipe.getDiets().size()>0);
 		assertEquals("Vegan",recipe.getDiets().getFirst().getName());
 	}
+	@Test
+	void test_Recipe_ManyToMany_Meal_mapping_mealHasRecipe() {
+		assertTrue(recipe.getMeals().size()>0);
+		
+	}
 
 }

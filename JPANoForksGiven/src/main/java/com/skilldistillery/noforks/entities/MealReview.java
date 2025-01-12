@@ -6,6 +6,9 @@ import java.util.Objects;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,6 +17,7 @@ public class MealReview {
 	
 	@EmbeddedId
 	private MealReviewId id;
+	
 	private Integer rating;
 	private String remarks;
 	
@@ -23,12 +27,20 @@ public class MealReview {
 	@Column(name="last_update")
 	private LocalDateTime lastUpdate;
 	
+	@ManyToOne
+	@JoinColumn(name = "meal_id")
+	@MapsId(value = "mealId")
+	private Meal meal;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	@MapsId(value = "userId")
+	private User user;
 	
 
 	public MealReview() {
 		super();
 	}
-	
 	
 	
 	public MealReviewId getId() {

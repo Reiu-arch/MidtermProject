@@ -36,6 +36,9 @@ public class User {
 	private String profileImage;
 	private String biography;
 	
+	@OneToMany(mappedBy = "user")
+	private List<MealReview> mealReviews;
+	
 	@ManyToMany
 	@JoinTable(
 			name="meal_comment", 
@@ -151,6 +154,18 @@ public class User {
 	
 	
 	
+
+	public List<MealReview> getMealReviews() {
+		return mealReviews;
+	}
+
+
+
+	public void setMealReviews(List<MealReview> mealReviews) {
+		this.mealReviews = mealReviews;
+	}
+
+
 
 	public List<Meal> getFavoriteMeals() {
 		return favoriteMeals;
