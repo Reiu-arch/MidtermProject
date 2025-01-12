@@ -57,7 +57,11 @@ class MealReviewTest {
 	
 	@Test
 	void test_MealReview_ManyToOne_Meal_mapping() {
-		assertEquals(1, mealReview.getId().getUserId());
+		assertEquals(1, mealReview.getId().getMealId());
 	}
 
+	@Test
+	void test_MealReview_ManyToOne_User_mapping() {
+		assertEquals(1, mealReview.getId().getUserId());
+	}
 }
