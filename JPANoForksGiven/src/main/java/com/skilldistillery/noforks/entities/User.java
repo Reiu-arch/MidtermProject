@@ -62,12 +62,24 @@ public class User {
 			inverseJoinColumns=@JoinColumn(name="user_id"))
 	private List<Meal> favoriteMeals;
 	
-	@ManyToOne
-	@JoinColumn(name = "user_id")
+	//--------------------------------------------------------------
+	
+	@ManyToMany
+	@JoinTable(
+			name="followed_user", 
+			joinColumns=@JoinColumn(name="user_id"),
+			inverseJoinColumns=@JoinColumn(name="followed_user_id"))
 	private List<User> followedUsersList;
 	
-	@OneToMany(mappedBy = "users")
-	private User userFollowing;
+//	@ManyToOne
+//	@JoinColumn(name = "user_id")
+//	private List<User> followedUsersList;
+	
+//	@OneToMany(mappedBy = "users")
+//	private User userFollowing;
+	
+	@ManyToMany(mappedBy = "followedUsersList")
+	private List<User> userFollowing;
 	
 	public User() {
 		super();
@@ -157,10 +169,10 @@ public class User {
 	public void setFollowedUsersList(List<User> followedUsersList) {
 		this.followedUsersList = followedUsersList;
 	}
-	public User getUserFollowing() {
+	public List<User> getUserFollowing() {
 		return userFollowing;
 	}
-	public void setUserFollowing(User userFollowing) {
+	public void setUserFollowing(List<User> userFollowing) {
 		this.userFollowing = userFollowing;
 	}
 	public List<MealReview> getMealReviews() {
