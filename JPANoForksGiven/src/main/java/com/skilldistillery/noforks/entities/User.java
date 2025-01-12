@@ -53,8 +53,9 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Meal> userMeals;
 	
-	//FIXME wouldnt the mappedBy be favoriteMeals since thats the name used in the List<Meal> field?
-	//FIXME also wouldnt this be a one to many relationship?
+	//FIXME wouldnt the mappedBy be favoriteMeals since thats the name used in the List<Meal> field? -fixed!
+	//FIXME also wouldnt this be a one to many relationship? - I think it's manyToMany since its many users have many meals,
+	//
 	@ManyToMany
 	@JoinTable(
 			name="favorite_meal", 

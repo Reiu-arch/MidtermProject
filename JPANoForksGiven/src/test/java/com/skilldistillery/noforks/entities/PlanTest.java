@@ -46,7 +46,9 @@ class PlanTest {
 	void test_Plan_entity_mapping() {
 		assertNotNull(plan);
 		assertEquals(2025, plan.getCreateDate().getYear());
-		
 	}
 
+	
+	
+	
 }
