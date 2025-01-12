@@ -11,20 +11,18 @@
 	<h1>No Forks Given</h1>
 	<p>Why Fork Around. Just Eat</p>
 
-
-
-
-
-
-	<form action="result.do" method="GET">
+	<form action="browseResults.do" method="GET">
 		<fieldset>
-			<legend>
-				<h3></h3>
-			</legend>
-			<label for="id">Enter ID:</label> <input type="number" name="id"
-				id="id"> <input type="submit" value="Search">
+			<label for="keyword"></label> 
+			<input type="text" name="keyword" id="keyword" placeholder="Search"> 
 		</fieldset>
 	</form>
+
+<!-- "View All Recipes" Button -->
+<a href="browseResults.do" class="button">View All Recipes</a>
+
+<!-- Login Button -->
+<a href="login.do" class="button">Login</a>
 
 </body>
 </html>
