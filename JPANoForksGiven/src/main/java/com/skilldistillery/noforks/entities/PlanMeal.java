@@ -27,6 +27,14 @@ public class PlanMeal {
 	@ManyToOne
 	@JoinColumn(name = "meal_id")
 	private Meal meal;
+	
+	@ManyToOne
+	@JoinColumn(name = "plan_id")
+	private Plan plan;
+	
+	@ManyToOne
+	@JoinColumn(name = "meal_type_id")
+	private MealType mealTypeId;
 
 	public PlanMeal() {
 		super();
@@ -64,17 +72,24 @@ public class PlanMeal {
 	public void setMeal(Meal meal) {
 		this.meal = meal;
 	}
+	
+	
+	public Plan getPlan() {
+		return plan;
+	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public void setPlan(Plan plan) {
+		this.plan = plan;
+	}
+
+	public MealType getMealTypeId() {
+		return mealTypeId;
+	}
+
+	public void setMealTypeId(MealType mealTypeId) {
+		this.mealTypeId = mealTypeId;
+	}
+
 	@Override
 	public String toString() {
 		return "PlanMeal [id=" + id + ", dayNumber=" + dayNumber + ", notes=" + notes + "]";

@@ -24,6 +24,8 @@ public class MealType {
 	@OneToMany(mappedBy = "mealTypeId")
 	private List<Meal> meals;
 	
+	@OneToMany(mappedBy = "mealTypeId")
+	private List<PlanMeal> planMeals;
 	
 	public MealType() {
 		super();

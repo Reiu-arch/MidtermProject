@@ -1,6 +1,7 @@
 package com.skilldistillery.noforks.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -8,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Plan {
@@ -29,13 +31,12 @@ public class Plan {
 	@Column(name="image_url")
 	private String imageUrl;
 	
-	
+	@OneToMany(mappedBy ="plan")
+	private List<PlanMeal> planmeals;
 
 	public Plan() {
 		super();
 	}
-
-
 
 	public int getId() {
 		return id;

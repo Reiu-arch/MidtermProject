@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -39,6 +40,9 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<MealReview> mealReviews;
 	
+	@OneToMany(mappedBy = "user")
+	private List<RecipeReview> recipeReviews;
+	
 	@ManyToMany
 	@JoinTable(
 			name="meal_comment", 
@@ -49,7 +53,8 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Meal> userMeals;
 	
-	
+	//FIXME wouldnt the mappedBy be favoriteMeals since thats the name used in the List<Meal> field?
+	//FIXME also wouldnt this be a one to many relationship?
 	@ManyToMany
 	@JoinTable(
 			name="favorite_meal", 
@@ -57,12 +62,17 @@ public class User {
 			inverseJoinColumns=@JoinColumn(name="user_id"))
 	private List<Meal> favoriteMeals;
 	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private List<User> followedUsersList;
+	
+	@OneToMany(mappedBy = "users")
+	private User userFollowing;
+	
 	public User() {
 		super();
 	}
-
 	
-
 	public int getId() {
 		return id;
 	}
@@ -142,18 +152,32 @@ public class User {
 	public void setUserMeals(List<Meal> userMeals) {
 		this.userMeals = userMeals;
 	}
+	
+	
 
+	public List<RecipeReview> getRecipeReviews() {
+		return recipeReviews;
+	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public void setRecipeReviews(List<RecipeReview> recipeReviews) {
+		this.recipeReviews = recipeReviews;
+	}
+
+	public List<User> getFollowedUsersList() {
+		return followedUsersList;
+	}
+
+	public void setFollowedUsersList(List<User> followedUsersList) {
+		this.followedUsersList = followedUsersList;
+	}
+
+	public User getUserFollowing() {
+		return userFollowing;
+	}
+
+	public void setUserFollowing(User userFollowing) {
+		this.userFollowing = userFollowing;
+	}
 
 	public List<MealReview> getMealReviews() {
 		return mealReviews;

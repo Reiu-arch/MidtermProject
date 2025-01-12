@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Recipe {
@@ -55,6 +56,12 @@ public class Recipe {
 	
 	@ManyToMany(mappedBy="recipes")
 	private List<Cuisine> cuisines;
+	
+	@OneToMany(mappedBy ="meal")
+	private List<RecipeComment> RecipeComments;
+	
+	@OneToMany(mappedBy = "meal")
+	private List<RecipeReview> RecipeReviews;
 	
 	public Recipe() {
 		super();
@@ -138,9 +145,24 @@ public class Recipe {
 	public void setLastUpdate(LocalDateTime lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
+	
+	
+	public List<RecipeComment> getRecipeComments() {
+		return RecipeComments;
+	}
 
-	
-	
+	public void setRecipeComments(List<RecipeComment> recipeComments) {
+		RecipeComments = recipeComments;
+	}
+
+	public List<RecipeReview> getRecipeReviews() {
+		return RecipeReviews;
+	}
+
+	public void setRecipeReviews(List<RecipeReview> recipeReviews) {
+		RecipeReviews = recipeReviews;
+	}
+
 	public List<Cuisine> getCuisines() {
 		return cuisines;
 	}

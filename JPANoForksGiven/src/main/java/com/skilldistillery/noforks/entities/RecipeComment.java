@@ -40,6 +40,9 @@ public class RecipeComment {
 	
 	@OneToMany(mappedBy = "parentComment")
 	private List<RecipeComment> subComments;
+	
+	@Column(name="user_id")
+	private int userId;
 
 	public RecipeComment() {
 		super();
@@ -109,7 +112,7 @@ public class RecipeComment {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(comments, createDate, id, lastUpdate, parentComment, subComments);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -121,9 +124,9 @@ public class RecipeComment {
 		if (getClass() != obj.getClass())
 			return false;
 		RecipeComment other = (RecipeComment) obj;
-		return Objects.equals(comments, other.comments) && Objects.equals(createDate, other.createDate)
-				&& id == other.id && Objects.equals(lastUpdate, other.lastUpdate)
-				&& Objects.equals(parentComment, other.parentComment) && Objects.equals(subComments, other.subComments);
+		return id == other.id;
 	}
+
+	
 	
 }

@@ -39,7 +39,9 @@ public class MealComment {
 	@OneToMany(mappedBy = "parentComment")
 	private List<MealComment> subComments;
 	
-
+	@Column(name="user_id")
+	private int userId;
+	
 	public MealComment() {
 		super();
 	}

@@ -55,6 +55,8 @@ public class Meal {
 	private User user;
 	
 	//through favorite_meal
+	//FIXME wouldnt the mappedBy be favoriteMeals since thats the name used in the List<Meal> field?
+	//FIXME also wouldnt this be a one to many relationship?
 	@ManyToMany(mappedBy = "meals")
 	private List<User> usersWithFavMeals;
 	
