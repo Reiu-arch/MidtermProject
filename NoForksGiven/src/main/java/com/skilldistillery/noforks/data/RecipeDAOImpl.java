@@ -14,8 +14,7 @@ public class RecipeDAOImpl implements RecipeDAO{
 
 	@PersistenceContext
 	private EntityManager em;
-	
-	@Transactional
+
 	@Override
 	public Recipe addRecipe(Recipe recipe) {
 			em.persist(recipe);
