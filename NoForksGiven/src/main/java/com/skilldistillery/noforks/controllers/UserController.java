@@ -1,5 +1,7 @@
 package com.skilldistillery.noforks.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.skilldistillery.noforks.data.UserDAO;
+import com.skilldistillery.noforks.entities.Recipe;
 import com.skilldistillery.noforks.entities.User;
 
 import jakarta.servlet.http.HttpSession;
@@ -26,64 +29,64 @@ public class UserController {
 	// Result Page
 	@RequestMapping(path = { "browseResults.do" })
 	public String goBrowseResult(Model model) {
+		List<Recipe> recipeList = userDao.findAllRecipes();
+		model.addAttribute("recipeList", recipeList);
 		return "browseResults";
 	}
-	
+
 	@GetMapping("login.do")
 	public String goToLogin(HttpSession session) {
-		if(session.getAttribute("loggedInUser") == null) {
+		if (session.getAttribute("loggedInUser") == null) {
 			return "login";
 		}
 		return "home";
 	}
-	
+
 	@PostMapping("login.do")
 	public String login(User user, HttpSession session) {
 		user = userDao.authenticateUser(user.getUsername(), user.getPassword());
-	
-		if(user!=null) {
+
+		if (user != null) {
 			session.setAttribute("loggedInUser", user);
 			return "account";
-		}
-		else {
-		return "login";
-		}
-	}
-	
-	
-	@RequestMapping(path="logout.do")
-	public String logout(HttpSession session) {
-		
-		session.removeAttribute("loggedInUser");
-		
-		return "home";
-	}
-	
-	@GetMapping("account.do")
-	public String goToAccount(HttpSession session) {
-		if(session.getAttribute("loggedInUser") != null) {
-			return "account";
-		}
-		else {
+		} else {
 			return "login";
 		}
 	}
-	
-	@GetMapping(path="createaccount.do")
-	public String goCreateAccount(Model model) {
-		return "createaccount";
+
+	@RequestMapping(path = "logout.do")
+	public String logout(HttpSession session) {
+
+		session.removeAttribute("loggedInUser");
+
+		return "home";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-}
-	
+
+	@GetMapping("account.do")
+	public String goToAccount(HttpSession session) {
+		if (session.getAttribute("loggedInUser") != null) {
+			return "account";
+		} else {
+			return "login";
+		}
+	}
 
 	
+	@GetMapping(path = "createaccount.do")
+	public String gocreate(User user, Model model) {
+			return "createaccount";
+	}
+	
+	@PostMapping(path = "createaccount.do")
+	public String goCreateAccount(User user, HttpSession session) {
+		user = userDao.authenticateUser(user.getUsername(), user.getPassword());
+		if (user != null) {
+			userDao.addUser(user);
+			session.setAttribute("loggedInUser", user);
+			return "account";
+		} else {
+			return "login";
+		}
+
+	}
+}
