@@ -115,6 +115,7 @@ public class UserController {
 			} 
 			recipe.setUser(loggedInUser);
 			recipe.setCreateDate(LocalDateTime.now());
+			recipe.setLastUpdate(LocalDateTime.now());
 			
 			recipeDao.addRecipe(recipe);
 				
