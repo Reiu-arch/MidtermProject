@@ -26,9 +26,6 @@ public class PlanComment {
 	@Column(name="create_date")
 	private LocalDateTime createDate;
 	
-	@Column(name="user_id")
-	private int userId;
-	
 	@ManyToOne
 	@JoinColumn(name = "in_reply_to_id")
 	private PlanComment parentComment;
@@ -39,6 +36,10 @@ public class PlanComment {
 	@ManyToOne
 	@JoinColumn(name = "plan_id")
 	private Plan plan;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	public PlanComment() {
 		super();
@@ -61,14 +62,7 @@ public class PlanComment {
 	public void setCreateDate(LocalDateTime createDate) {
 		this.createDate = createDate;
 	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-	
-	
+
 	public PlanComment getParentComment() {
 		return parentComment;
 	}
@@ -82,8 +76,12 @@ public class PlanComment {
 		this.subComments = subComments;
 	}
 	
-	
-	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public Plan getPlan() {
 		return plan;
 	}
@@ -92,12 +90,12 @@ public class PlanComment {
 	}
 	@Override
 	public String toString() {
-		return "PlanComment [id=" + id + ", comments=" + comments + ", createDate=" + createDate + ", userId=" + userId
-				+ ", parentComment=" + parentComment + ", subComments=" + subComments + ", plan=" + plan + "]";
+		return "PlanComment [id=" + id + ", comments=" + comments + ", createDate=" + createDate + ", parentComment="
+				+ parentComment + ", plan=" + plan + ", user=" + user + "]";
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(comments, createDate, id, parentComment, plan, subComments, userId);
+		return Objects.hash(comments, createDate, id, parentComment, plan, user);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -110,9 +108,9 @@ public class PlanComment {
 		PlanComment other = (PlanComment) obj;
 		return Objects.equals(comments, other.comments) && Objects.equals(createDate, other.createDate)
 				&& id == other.id && Objects.equals(parentComment, other.parentComment)
-				&& Objects.equals(plan, other.plan) && Objects.equals(subComments, other.subComments)
-				&& userId == other.userId;
+				&& Objects.equals(plan, other.plan) && Objects.equals(user, other.user);
 	}
+	
 	
 	
 	

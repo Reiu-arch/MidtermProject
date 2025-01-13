@@ -41,8 +41,10 @@ public class RecipeComment {
 	@OneToMany(mappedBy = "parentComment")
 	private List<RecipeComment> subComments;
 	
-	@Column(name="user_id")
-	private int userId;
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+
 
 	public RecipeComment() {
 		super();
@@ -102,6 +104,16 @@ public class RecipeComment {
 
 	public void setParentComment(RecipeComment parentComment) {
 		this.parentComment = parentComment;
+	}
+	
+	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override

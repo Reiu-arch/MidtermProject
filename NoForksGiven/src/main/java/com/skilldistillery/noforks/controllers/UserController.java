@@ -35,7 +35,7 @@ public class UserController {
 		List<Recipe> recipeList = userDao.findAllRecipes();
 		model.addAttribute("recipeList", recipeList);
 		return "browseResults";
-	}
+	} 
 
 	@GetMapping("login.do")
 	public String goToLogin(HttpSession session) {
