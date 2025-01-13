@@ -32,7 +32,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `profile_image_url` VARCHAR(2000) NULL,
   `biography` TEXT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE)
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
