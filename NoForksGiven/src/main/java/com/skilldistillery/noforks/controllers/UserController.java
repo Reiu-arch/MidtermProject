@@ -68,6 +68,21 @@ public class UserController {
 			return "login";
 		}
 	}
+	
+	@RequestMapping(path="createaccount.do")
+	public String goCreateAccount(Model model) {
+		return "createaccount";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
 	
 
