@@ -87,6 +87,9 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Recipe>recipes;
 	
+	@OneToMany(mappedBy = "user")
+	private List<MealComment>mealComments; 
+	
 	
 	
 	public User() {
@@ -208,6 +211,18 @@ public class User {
 	}
 	public void setRecipes(List<Recipe> recipes) {
 		this.recipes = recipes;
+	}
+
+
+
+	public List<MealComment> getMealComments() {
+		return mealComments;
+	}
+
+
+
+	public void setMealComments(List<MealComment> mealComments) {
+		this.mealComments = mealComments;
 	}
 
 

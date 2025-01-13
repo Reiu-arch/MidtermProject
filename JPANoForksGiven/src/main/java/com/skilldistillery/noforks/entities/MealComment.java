@@ -39,68 +39,71 @@ public class MealComment {
 	@OneToMany(mappedBy = "parentComment")
 	private List<MealComment> subComments;
 	
-	@Column(name="user_id")
-	private int userId;
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+
+	
 	
 	public MealComment() {
 		super();
 	}
-
+	
+	
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	public String getComments() {
 		return comments;
 	}
-
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
-
 	public LocalDateTime getCreateDate() {
 		return createDate;
 	}
-
 	public void setCreateDate(LocalDateTime createDate) {
 		this.createDate = createDate;
 	}
-
-
 	public Meal getMeal() {
 		return meal;
 	}
-
 	public void setMeal(Meal meal) {
 		this.meal = meal;
 	}
-	
 	public MealComment getParentComment() {
 		return parentComment;
 	}
-
 	public void setParentComment(MealComment parentComment) {
 		this.parentComment = parentComment;
 	}
-
 	public List<MealComment> getSubComments() {
 		return subComments;
 	}
-
 	public void setSubComments(List<MealComment> subComments) {
 		this.subComments = subComments;
 	}
-
+	
+	
+	
 	@Override
 	public String toString() {
 		return "MealComment [id=" + id + ", comments=" + comments + ", createDate=" + createDate + ", meal=" + meal
 				+ ", parentComment=" + parentComment + ", subComments=" + subComments + "]";
 	}
 
+	
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(comments, createDate, id, meal, parentComment, subComments);
