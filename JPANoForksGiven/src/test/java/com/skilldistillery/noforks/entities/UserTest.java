@@ -89,5 +89,6 @@ class UserTest {
 		assertNotNull(user.getPlanComments());
 		assertTrue(user.getPlanComments().size()>0);
 	}
+
 }
 

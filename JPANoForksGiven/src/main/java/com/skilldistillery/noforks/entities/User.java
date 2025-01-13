@@ -93,8 +93,6 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Recipe> recipes;
 	
-
-	
 	public User() {
 		super();
 	}
