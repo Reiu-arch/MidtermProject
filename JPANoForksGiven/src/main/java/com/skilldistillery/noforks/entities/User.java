@@ -90,7 +90,7 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<MealComment>mealComments; 
 	
-	@OneToMany()
+	@OneToMany(mappedBy = "user")
 	private List<RecipeComment> recipeComments;
 
 	

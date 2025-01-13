@@ -23,7 +23,7 @@
 		<li>${recipe.servings} </li>
 		<li>${recipe.difficulty} </li>
 		<li>${recipe.ingredients} </li>
-		<li>${recipe.userId} </li>
+		<li>${recipe.userId}</li>
 		<li>${recipe.createDate} </li>
 		<li>${recipe.lastUpdate} </li>
 	</ol>
