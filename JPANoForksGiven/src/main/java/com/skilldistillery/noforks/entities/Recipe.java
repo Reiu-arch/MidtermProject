@@ -213,9 +213,7 @@ public class Recipe {
 		return "Recipe [id=" + id + ", name=" + name + ", description=" + description + ", prepTimeMin=" + prepTimeMin
 				+ ", cookTimeMin=" + cookTimeMin + ", instructions=" + instructions + ", servings=" + servings
 				+ ", difficulty=" + difficulty + ", ingredients=" + ingredients + ", imageUrl=" + imageUrl
-				+ ", createDate=" + createDate + ", lastUpdate=" + lastUpdate + ", meals=" + meals + ", diets=" + diets
-				+ ", cuisines=" + cuisines + ", RecipeComments=" + RecipeComments + ", RecipeReviews=" + RecipeReviews
-				+ ", user=" + user + "]";
+				+ ", createDate=" + createDate + ", lastUpdate=" + lastUpdate + ", user=" + user + "]";
 	}
 	
 }

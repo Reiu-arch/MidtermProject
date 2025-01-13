@@ -67,6 +67,10 @@ class RecipeCommentTest {
 	@Test
 	void test_RecipeComment_to_SubComments_ManyToOne_mapping() {
 		recipeComment = em.find(RecipeComment.class, 2);
+<<<<<<< HEAD
+		assertNotNull(recipeComment);
+=======
+>>>>>>> c83f76cf7bc37710b99e67a11c348365fc5755c2
 		assertNotNull(recipeComment.getParentComment());
 		assertEquals(1,recipeComment.getParentComment().getId());
 	}
