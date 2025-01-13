@@ -85,7 +85,9 @@ public class UserController {
 			user.setLastUpdate(LocalDateTime.now());
 			user.setEnabled(true);
 			userDao.addUser(user);
+			
 			user = userDao.authenticateUser(user.getUsername(), user.getPassword());
+			
 			if (user != null) {
 				session.setAttribute("loggedInUser", user);
 				return "account";
