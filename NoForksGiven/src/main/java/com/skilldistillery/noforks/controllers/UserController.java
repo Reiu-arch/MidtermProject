@@ -1,5 +1,6 @@
 package com.skilldistillery.noforks.controllers;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,14 +79,23 @@ public class UserController {
 	}
 	
 	@PostMapping(path = "createaccount.do")
-	public String goCreateAccount(User user, HttpSession session) {
-		userDao.addUser(user);
-		user = userDao.authenticateUser(user.getUsername(), user.getPassword());
-		if (user != null) {
-			session.setAttribute("loggedInUser", user);
-			return "account";
-		} else {
-			return "login";
+	public String goCreateAccount(User user, HttpSession session, Model model) {
+		try {
+			user.setCreateDate(LocalDateTime.now());
+			user.setLastUpdate(LocalDateTime.now());
+			user.setEnabled(true);
+			userDao.addUser(user);
+			user = userDao.authenticateUser(user.getUsername(), user.getPassword());
+			if (user != null) {
+				session.setAttribute("loggedInUser", user);
+				return "account";
+			} else {
+				return "login";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("errorMessage", "Error occured trying to create your account. Account name may already in use!");
+			return "createaccount";
 		}
 
 	}
