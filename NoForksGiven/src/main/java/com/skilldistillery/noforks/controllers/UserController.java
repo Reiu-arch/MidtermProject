@@ -28,62 +28,60 @@ public class UserController {
 	public String goBrowseResult(Model model) {
 		return "browseResults";
 	}
-	
+
 	@GetMapping("login.do")
 	public String goToLogin(HttpSession session) {
-		if(session.getAttribute("loggedInUser") == null) {
+		if (session.getAttribute("loggedInUser") == null) {
 			return "login";
 		}
 		return "home";
 	}
-	
+
 	@PostMapping("login.do")
 	public String login(User user, HttpSession session) {
 		user = userDao.authenticateUser(user.getUsername(), user.getPassword());
-	
-		if(user!=null) {
+
+		if (user != null) {
 			session.setAttribute("loggedInUser", user);
 			return "account";
-		}
-		else {
-		return "login";
-		}
-	}
-	
-	
-	@RequestMapping(path="logout.do")
-	public String logout(HttpSession session) {
-		
-		session.removeAttribute("loggedInUser");
-		
-		return "home";
-	}
-	
-	@GetMapping("account.do")
-	public String goToAccount(HttpSession session) {
-		if(session.getAttribute("loggedInUser") != null) {
-			return "account";
-		}
-		else {
+		} else {
 			return "login";
 		}
 	}
-	
-	@RequestMapping(path="createaccount.do")
-	public String goCreateAccount(Model model) {
-		return "createaccount";
+
+	@RequestMapping(path = "logout.do")
+	public String logout(HttpSession session) {
+
+		session.removeAttribute("loggedInUser");
+
+		return "home";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-}
-	
+
+	@GetMapping("account.do")
+	public String goToAccount(HttpSession session) {
+		if (session.getAttribute("loggedInUser") != null) {
+			return "account";
+		} else {
+			return "login";
+		}
+	}
 
 	
+	@GetMapping(path = "createaccount.do")
+	public String gocreate(User user, Model model) {
+			return "createaccount";
+	}
+	
+	@PostMapping(path = "createaccount.do")
+	public String goCreateAccount(User user, HttpSession session) {
+		user = userDao.authenticateUser(user.getUsername(), user.getPassword());
+		if (user != null) {
+			userDao.addUser(user);
+			session.setAttribute("loggedInUser", user);
+			return "account";
+		} else {
+			return "login";
+		}
+
+	}
+}
