@@ -1,7 +1,10 @@
 package com.skilldistillery.noforks.data;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.noforks.entities.Recipe;
 import com.skilldistillery.noforks.entities.User;
 
 import jakarta.persistence.EntityManager;
@@ -39,6 +42,13 @@ public class UserDAOImpl implements UserDAO{
 	public User addUser(User user) {
 		em.persist(user);
 		return user;
+	}
+
+	@Override
+	public List<Recipe> findAllRecipes() {
+	String jpql = "SELECT r FROM Recipe r";
+	List<Recipe> recipes = em.createQuery(jpql, Recipe.class).getResultList();
+		return recipes;
 	}
 
 }

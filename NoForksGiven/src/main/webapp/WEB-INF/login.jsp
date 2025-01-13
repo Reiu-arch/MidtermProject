@@ -13,7 +13,7 @@
 
 <h2>Log In</h2>
 
-<form action="account.do" method="POST">
+<form action="login.do" method="POST">
 
 	<input type="text" name="username" placeholder="username">
 	<input type="password" name="password" placeholder="password"/>
