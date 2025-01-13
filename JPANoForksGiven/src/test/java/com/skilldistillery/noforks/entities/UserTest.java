@@ -76,7 +76,6 @@ class UserTest {
 		assertNotNull(user.getRecipes());
 		assertTrue(user.getRecipes().size()>0);
 	}
-<<<<<<< HEAD
 
 	@Test
 	void test_User_OneToMany_RecipeComment_mapping() {
@@ -91,6 +90,4 @@ class UserTest {
 	}
 	
 	
-=======
->>>>>>> 3f7408faabb04da0157ad824425f05e4bad3f773
 }
