@@ -1,5 +1,7 @@
 package com.skilldistillery.noforks.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.skilldistillery.noforks.data.UserDAO;
+import com.skilldistillery.noforks.entities.Recipe;
 import com.skilldistillery.noforks.entities.User;
 
 import jakarta.servlet.http.HttpSession;
@@ -26,6 +29,8 @@ public class UserController {
 	// Result Page
 	@RequestMapping(path = { "browseResults.do" })
 	public String goBrowseResult(Model model) {
+		List<Recipe> recipeList = userDao.findAllRecipes();
+		model.addAttribute("recipeList", recipeList);
 		return "browseResults";
 	}
 
