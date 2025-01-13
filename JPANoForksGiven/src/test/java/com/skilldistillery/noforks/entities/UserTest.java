@@ -55,8 +55,8 @@ class UserTest {
 	
 	@Test
 	void test_User_OneToMany_Meal_mapping() {
-		assertNotNull(user.getMeals());
-		assertTrue(user.getMeals().size()>0);
+		assertNotNull(user.getUserMeals());
+		assertTrue(user.getUserMeals().size()>0);
 	}
 	
 	@Test

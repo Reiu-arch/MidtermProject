@@ -12,4 +12,6 @@ public interface UserDAO {
 	User addUser(User user);
 	
 	List<Recipe>findAllRecipes();
+	
+	
 }
