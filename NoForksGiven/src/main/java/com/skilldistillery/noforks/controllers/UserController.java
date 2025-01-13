@@ -56,7 +56,7 @@ public class UserController {
 		
 		session.removeAttribute("loggedInUser");
 		
-		return "index";
+		return "home";
 	}
 	
 	@GetMapping("account.do")
