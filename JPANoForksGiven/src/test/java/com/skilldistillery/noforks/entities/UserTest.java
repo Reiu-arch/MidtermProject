@@ -76,6 +76,12 @@ class UserTest {
 		assertNotNull(user.getRecipes());
 		assertTrue(user.getRecipes().size()>0);
 	}
+	
+	@Test
+	void test_User_OneToMany_MealComment_mapping() {
+		assertNotNull(user.getMealComments());
+		assertTrue(user.getMealComments().size()>0);
+	}
 
 
 	@Test

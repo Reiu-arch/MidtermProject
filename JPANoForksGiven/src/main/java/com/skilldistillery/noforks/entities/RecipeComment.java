@@ -118,8 +118,8 @@ public class RecipeComment {
 
 	@Override
 	public String toString() {
-		return "RecipeComment [id=" + id + ", comments=" + comments + ", createDate=" + createDate + ", lastUpdate="
-				+ lastUpdate + ", parentComment=" + parentComment + ", subComments=" + subComments + "]";
+		return "RecipeComment [id=" + id + ", comments=" + comments + ", createDate=" + createDate + ", recipe="
+				+ recipe + ", lastUpdate=" + lastUpdate + ", parentComment=" + parentComment + ", user=" + user + "]";
 	}
 
 	@Override

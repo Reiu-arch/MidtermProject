@@ -654,7 +654,7 @@ COMMIT;
 START TRANSACTION;
 USE `noforksdb`;
 INSERT INTO `meal_comment` (`id`, `comments`, `create_date`, `user_id`, `in_reply_to_id`, `meal_id`) VALUES (1, 'V cant cook', '2025-01-10', 1, NULL, 1);
-INSERT INTO `meal_comment` (`id`, `comments`, `create_date`, `user_id`, `in_reply_to_id`, `meal_id`) VALUES (2, 'Takes a little longer than told', '2025-01-12', 2, NULL, 2);
+INSERT INTO `meal_comment` (`id`, `comments`, `create_date`, `user_id`, `in_reply_to_id`, `meal_id`) VALUES (2, 'Takes a little longer than told', '2025-01-12', 2, 1, 2);
 
 COMMIT;
 
