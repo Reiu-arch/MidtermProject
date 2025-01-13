@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.skilldistillery.noforks.data.RecipeDAO;
 import com.skilldistillery.noforks.data.UserDAO;
 import com.skilldistillery.noforks.entities.Recipe;
 import com.skilldistillery.noforks.entities.User;
@@ -21,6 +22,7 @@ public class UserController {
 
 	@Autowired
 	private UserDAO userDao;
+	private RecipeDAO recipeDao;
 
 	@RequestMapping(path = { "/", "home.do" })
 	public String home(Model model) {
@@ -33,7 +35,7 @@ public class UserController {
 		List<Recipe> recipeList = userDao.findAllRecipes();
 		model.addAttribute("recipeList", recipeList);
 		return "browseResults";
-	}
+	} 
 
 	@GetMapping("login.do")
 	public String goToLogin(HttpSession session) {
@@ -101,4 +103,32 @@ public class UserController {
 		}
 
 	}
+	
+	@PostMapping(path = "createrecipe.do")
+	public String createRecipe(Recipe recipe, Model model, HttpSession session) {
+		recipe = recipeDao.addRecipe(recipe);
+		try {
+			User loggedInUser = (User) session.getAttribute("loggedInUser");
+			if (loggedInUser == null) {
+				model.addAttribute("errorMessage", "You need to log in to create a recipe");
+				return "login";
+			} 
+			recipe.setUser(loggedInUser);
+			recipe.setCreateDate(LocalDateTime.now());
+			recipe.setLastUpdate(LocalDateTime.now());
+			
+			recipeDao.addRecipe(recipe);
+				
+			model.addAttribute("sucessMessage", "Recipe created Successfully");
+			return "account";	
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("errorMessage", "An error occured while saving your recipe.");
+			return "createRecipe";
+		}
+	}
+	
+	
+	
+	
 }

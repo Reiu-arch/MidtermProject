@@ -54,6 +54,12 @@ class MealCommentTest {
 
 	}
 	
+	@Test
+	void test_MealComment_to_Meal_ManyToOne_mapping() {
+		assertNotNull(mealComment);
+		assertEquals(1, mealComment.getMeal().getId());
+	}
+	
 	
 	@Test
 	void test_MealComment_to_SubComments_ManyToOne_mapping() {

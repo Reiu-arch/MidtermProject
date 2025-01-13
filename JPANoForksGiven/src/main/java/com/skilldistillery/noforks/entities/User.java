@@ -85,12 +85,21 @@ public class User {
 	private List<User> userFollowing;
 	
 	@OneToMany(mappedBy = "user")
+<<<<<<< HEAD
 	private List<Recipe>recipes;
 	
 	@OneToMany(mappedBy = "user")
 	private List<MealComment>mealComments; 
 	
+=======
+	private List<RecipeComment> recipeComments;
+>>>>>>> c83f76cf7bc37710b99e67a11c348365fc5755c2
 	
+	@OneToMany(mappedBy = "user")
+	private List<PlanComment> planComments;
+
+	@OneToMany(mappedBy = "user")
+	private List<Recipe> recipes;
 	
 	public User() {
 		super();
@@ -215,6 +224,7 @@ public class User {
 
 
 
+<<<<<<< HEAD
 	public List<MealComment> getMealComments() {
 		return mealComments;
 	}
@@ -226,6 +236,23 @@ public class User {
 	}
 
 
+=======
+	public List<PlanComment> getPlanComments() {
+		return planComments;
+	}
+
+	public void setPlanComments(List<PlanComment> planComments) {
+		this.planComments = planComments;
+	}
+
+	public List<RecipeComment> getRecipeComments() {
+		return recipeComments;
+	}
+
+	public void setRecipeComments(List<RecipeComment> recipeComments) {
+		this.recipeComments = recipeComments;
+	}
+>>>>>>> c83f76cf7bc37710b99e67a11c348365fc5755c2
 
 	@Override
 	public int hashCode() {

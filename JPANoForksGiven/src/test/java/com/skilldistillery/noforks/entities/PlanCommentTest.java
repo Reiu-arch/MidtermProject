@@ -52,4 +52,10 @@ class PlanCommentTest {
 	void test_PlanComment_ManyToOne_Plan_mapping() {
 		assertEquals(1, pc.getPlan().getId());
 	}
+	
+	@Test
+	void test_PlanComment_ManyToOne_User_mapping() {
+		assertEquals("admin", pc.getUser().getUsername());
+	}
+	
 }

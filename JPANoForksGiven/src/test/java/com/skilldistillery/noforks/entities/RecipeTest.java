@@ -61,5 +61,10 @@ class RecipeTest {
 		assertTrue(recipe.getMeals().size()>0);
 		
 	}
+	
+	@Test
+	void test_Meal_ManyToOne_User_mapping() {
+		assertEquals(1, recipe.getUser().getId());
+	}
 
 }

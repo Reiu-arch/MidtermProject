@@ -57,12 +57,20 @@ class RecipeCommentTest {
 	void test_RecipeComment_ManyToOne_Recipe_mapping() {
 		assertEquals("Chicken Alfredo", recipeComment.getRecipe().getName());
 	}
+	
+	@Test
+	void test_RecipeComment_ManyToOne_User_mapping() {
+		assertEquals("admin", recipeComment.getUser().getUsername());
+	}
 
 	
 	@Test
 	void test_RecipeComment_to_SubComments_ManyToOne_mapping() {
 		recipeComment = em.find(RecipeComment.class, 2);
+<<<<<<< HEAD
 		assertNotNull(recipeComment);
+=======
+>>>>>>> c83f76cf7bc37710b99e67a11c348365fc5755c2
 		assertNotNull(recipeComment.getParentComment());
 		assertEquals(1,recipeComment.getParentComment().getId());
 	}
@@ -73,4 +81,6 @@ class RecipeCommentTest {
 		assertNotNull(recipeComment.getSubComments());
 		assertTrue(recipeComment.getSubComments().size()>0);
 	}
+	
+	
 }
