@@ -65,7 +65,6 @@ public class User {
 			inverseJoinColumns=@JoinColumn(name="user_id"))
 	private List<Meal> favoriteMeals;
 	
-	//--------------------------------------------------------------
 	
 	@ManyToMany
 	@JoinTable(
@@ -271,7 +270,8 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled
 				+ ", role=" + role + ", email=" + email + ", createDate=" + createDate + ", lastUpdate=" + lastUpdate
-				+ ", profileImage=" + profileImage + ", biography=" + biography + "]";
+				+ ", profileImage=" + profileImage + ", biography=" + biography + ", userFollowing=" + userFollowing
+				+ "]";
 	}
 
 }
