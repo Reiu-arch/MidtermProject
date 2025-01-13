@@ -12,7 +12,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -85,18 +84,23 @@ public class User {
 	@ManyToMany(mappedBy = "followedUsersList")
 	private List<User> userFollowing;
 	
+	@OneToMany(mappedBy = "user")
+	private List<Recipe>recipes;
+	
+	
+	
 	public User() {
 		super();
 	}
 	
+	
+	
 	public List<Plan> getPlans() {
 		return plans;
 	}
-
 	public void setPlans(List<Plan> plans) {
 		this.plans = plans;
 	}
-
 	public int getId() {
 		return id;
 	}
@@ -198,6 +202,12 @@ public class User {
 	}
 	public void setFavoriteMeals(List<Meal> favoriteMeals) {
 		this.favoriteMeals = favoriteMeals;
+	}
+	public List<Recipe> getRecipes() {
+		return recipes;
+	}
+	public void setRecipes(List<Recipe> recipes) {
+		this.recipes = recipes;
 	}
 
 

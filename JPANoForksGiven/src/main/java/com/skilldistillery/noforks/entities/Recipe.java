@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -32,8 +33,6 @@ public class Recipe {
 	private Integer servings;
 	private String difficulty;
 	
-	@Column(name="user_id")
-	private int userId;
 	private String ingredients;
 	
 	@Column(name="image_url")
@@ -64,9 +63,17 @@ public class Recipe {
 	@OneToMany(mappedBy = "recipe")
 	private List<RecipeReview> RecipeReviews;
 	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+	
+	
+	
 	public Recipe() {
 		super();
 	}
+	
+	
 
 	public int getId() {
 		return id;
@@ -115,12 +122,6 @@ public class Recipe {
 	}
 	public void setDifficulty(String difficulty) {
 		this.difficulty = difficulty;
-	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
 	}
 	public String getIngredients() {
 		return ingredients;
@@ -179,9 +180,15 @@ public class Recipe {
 	public void setMeals(List<Meal> meals) {
 		this.meals = meals;
 	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 
-	
-	
+
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -205,8 +212,10 @@ public class Recipe {
 	public String toString() {
 		return "Recipe [id=" + id + ", name=" + name + ", description=" + description + ", prepTimeMin=" + prepTimeMin
 				+ ", cookTimeMin=" + cookTimeMin + ", instructions=" + instructions + ", servings=" + servings
-				+ ", difficulty=" + difficulty + ", userId=" + userId + ", ingredients=" + ingredients + ", imageUrl="
-				+ imageUrl + ", createDate=" + createDate + ", lastUpdate=" + lastUpdate + "]";
+				+ ", difficulty=" + difficulty + ", ingredients=" + ingredients + ", imageUrl=" + imageUrl
+				+ ", createDate=" + createDate + ", lastUpdate=" + lastUpdate + ", meals=" + meals + ", diets=" + diets
+				+ ", cuisines=" + cuisines + ", RecipeComments=" + RecipeComments + ", RecipeReviews=" + RecipeReviews
+				+ ", user=" + user + "]";
 	}
 	
 }

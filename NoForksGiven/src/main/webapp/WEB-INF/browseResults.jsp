@@ -26,7 +26,6 @@
 		<li>${recipe.userId} </li>
 		<li>${recipe.createDate} </li>
 		<li>${recipe.lastUpdate} </li>
-	
 	</ol>
 
 </c:forEach>
