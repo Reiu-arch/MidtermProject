@@ -19,5 +19,9 @@
 	<input type="password" name="password" placeholder="password"/>
 	<input type="submit" value="Log In" > 
 </form>
+
+<a href="createaccount.do" class="button">Sign Up!</a>
+
+
 </body>
 </html>
