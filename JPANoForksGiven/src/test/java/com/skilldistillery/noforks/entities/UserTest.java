@@ -46,37 +46,37 @@ class UserTest {
 		 user = null;
 	 }
 	
-//	@Test
-//	void test_User_entity_mapping() {
-//		assertNotNull(user);
-//		assertEquals("admin", user.getUsername());
-//		assertTrue(user.getEnabled());
-//	}
-//	
-//	@Test
-//	void test_User_OneToMany_Meal_mapping() {
-//		assertNotNull(user.getMeals());
-//		assertTrue(user.getMeals().size()>0);
-//	}
-//	
-//	@Test
-//	void test_User_OneToMany_MealReview_mapping() {
-//		assertNotNull(user.getMealReviews());
-//		assertTrue(user.getMealReviews().size()>0);
-//	}
-//	
-//	@Test
-//	void test_User_OneToMany_Plan_mapping() {
-//		assertNotNull(user.getPlans());
-//		assertTrue(user.getPlans().size()>0);
-//	}
+	@Test
+	void test_User_entity_mapping() {
+		assertNotNull(user);
+		assertEquals("admin", user.getUsername());
+		assertTrue(user.getEnabled());
+	}
+	
+	@Test
+	void test_User_OneToMany_Meal_mapping() {
+		assertNotNull(user.getMeals());
+		assertTrue(user.getMeals().size()>0);
+	}
+	
+	@Test
+	void test_User_OneToMany_MealReview_mapping() {
+		assertNotNull(user.getMealReviews());
+		assertTrue(user.getMealReviews().size()>0);
+	}
+	
+	@Test
+	void test_User_OneToMany_Plan_mapping() {
+		assertNotNull(user.getPlans());
+		assertTrue(user.getPlans().size()>0);
+	}
 
 	@Test
 	void test_User_OneToMany_Recipe_mapping() {
 		assertNotNull(user.getRecipes());
 		assertTrue(user.getRecipes().size()>0);
 	}
-<<<<<<< HEAD
+
 
 	@Test
 	void test_User_OneToMany_RecipeComment_mapping() {
@@ -89,8 +89,5 @@ class UserTest {
 		assertNotNull(user.getPlanComments());
 		assertTrue(user.getPlanComments().size()>0);
 	}
-	
-	
-=======
->>>>>>> 3f7408faabb04da0157ad824425f05e4bad3f773
 }
+

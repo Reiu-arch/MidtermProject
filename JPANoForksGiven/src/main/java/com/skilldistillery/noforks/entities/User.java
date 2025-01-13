@@ -85,16 +85,15 @@ public class User {
 	private List<User> userFollowing;
 	
 	@OneToMany(mappedBy = "user")
-<<<<<<< HEAD
 	private List<RecipeComment> recipeComments;
 	
 	@OneToMany(mappedBy = "user")
 	private List<PlanComment> planComments;
-=======
-	private List<Recipe>recipes;
+
+	@OneToMany(mappedBy = "user")
+	private List<Recipe> recipes;
 	
-	
->>>>>>> 3f7408faabb04da0157ad824425f05e4bad3f773
+
 	
 	public User() {
 		super();
