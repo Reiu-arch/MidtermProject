@@ -642,7 +642,7 @@ COMMIT;
 START TRANSACTION;
 USE `noforksdb`;
 INSERT INTO `recipe_comment` (`id`, `comments`, `create_date`, `last_update`, `user_id`, `recipe_id`, `in_reply_to_id`) VALUES (1, 'V cant cook', '2025-01-10', '2025-01-10', 1, 1, NULL);
-INSERT INTO `recipe_comment` (`id`, `comments`, `create_date`, `last_update`, `user_id`, `recipe_id`, `in_reply_to_id`) VALUES (2, 'very simple', '2025-01-12', '2025-01-12', 2, 2, NULL);
+INSERT INTO `recipe_comment` (`id`, `comments`, `create_date`, `last_update`, `user_id`, `recipe_id`, `in_reply_to_id`) VALUES (2, 'very simple', '2025-01-12', '2025-01-12', 2, 1, 1);
 
 COMMIT;
 

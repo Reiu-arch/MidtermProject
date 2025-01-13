@@ -35,4 +35,10 @@ public class UserDAOImpl implements UserDAO{
 	
 	
 
+	@Override
+	public User addUser(User user) {
+		em.persist(user);
+		return user;
+	}
+
 }
