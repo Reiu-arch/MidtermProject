@@ -10,7 +10,7 @@
 <body>
 <form action="createrecipe.do" method="POST">
 		<!-- <li>${recipe.userId} </li> hidden value tag -->
-		<input type="hidden" name="id" value="${loggedInUser.id}">
+		<input type="hidden" name="user" value="${loggedInUser.id}">
 		<!-- <li>${recipe.createDate} </li> This needs to be added inside of the controller -->
 		<!-- <li>${recipe.lastUpdate} </li> This needs to be added inside of the controller -->
 
@@ -46,7 +46,7 @@
 		<!--<li>${recipe.ingredients} </li> String (text) -->
 		<label for="ingredients">Enter the recipe ingredients:</label> <input
 			type="text" id="ingredients" name="ingredients" size="100" required><br>
-	
+		<button type="submit" class="add-button">Submit</button>
 </form>
 </body>
 </html>
