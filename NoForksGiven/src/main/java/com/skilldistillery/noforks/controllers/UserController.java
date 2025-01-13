@@ -31,11 +31,9 @@ public class UserController {
 	
 	@GetMapping("login.do")
 	public String goToLogin(HttpSession session) {
-		
 		if(session.getAttribute("loggedInUser") == null) {
 			return "login";
 		}
-		
 		return "home";
 	}
 	
@@ -51,6 +49,7 @@ public class UserController {
 		return "login";
 		}
 	}
+	
 	
 	@RequestMapping(path="logout.do")
 	public String logout(HttpSession session) {

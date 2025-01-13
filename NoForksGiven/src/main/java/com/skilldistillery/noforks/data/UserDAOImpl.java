@@ -17,7 +17,7 @@ public class UserDAOImpl implements UserDAO{
 
 	@Override
 	public User authenticateUser(String username, String password) {
-		String jpql = "SELECT u FROM User u WHERE username = :un AND u.password = :pw AND u.enabled = true";
+		String jpql = "SELECT u FROM User u WHERE u.username = :un AND u.password = :pw AND u.enabled = true";
 		User authenticatedUser = null;
 		
 		try {
