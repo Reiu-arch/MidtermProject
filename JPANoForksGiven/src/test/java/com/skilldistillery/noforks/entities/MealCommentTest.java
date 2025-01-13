@@ -73,13 +73,7 @@ class MealCommentTest {
 	@Test
 	void test_MealComment_SubComments_OneToMany_mapping() {
 		assertNotNull(mealComment.getSubComments());
-<<<<<<< HEAD
-		
-	//FIXME in_reply_to_id column is currently still Null, once Will updates it, it should work!
-//		assertTrue(mealComment.getSubComments().size()>0);
-=======
 		assertTrue(mealComment.getSubComments().size()>0);
->>>>>>> 56d0aec9c12ce6789ce090f7f994c23bf62bd63b
 	}
 	
 	@Test

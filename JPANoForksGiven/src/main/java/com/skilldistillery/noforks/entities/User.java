@@ -90,6 +90,7 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<MealComment>mealComments; 
 	
+	@OneToMany()
 	private List<RecipeComment> recipeComments;
 
 	
