@@ -69,7 +69,7 @@ public class UserController {
 		}
 	}
 	
-	@RequestMapping(path="createaccount.do")
+	@GetMapping(path="createaccount.do")
 	public String goCreateAccount(Model model) {
 		return "createaccount";
 	}
