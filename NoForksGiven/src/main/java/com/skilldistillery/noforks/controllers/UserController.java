@@ -79,9 +79,9 @@ public class UserController {
 	
 	@PostMapping(path = "createaccount.do")
 	public String goCreateAccount(User user, HttpSession session) {
+		userDao.addUser(user);
 		user = userDao.authenticateUser(user.getUsername(), user.getPassword());
 		if (user != null) {
-			userDao.addUser(user);
 			session.setAttribute("loggedInUser", user);
 			return "account";
 		} else {
