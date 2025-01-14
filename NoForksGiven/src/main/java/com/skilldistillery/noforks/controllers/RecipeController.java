@@ -56,12 +56,19 @@ public class RecipeController {
 		return "Recipe";
 	}
 	
+	@GetMapping(path = "updateRecipe.do")
+	public String showUpdateRecipe(Model model, @RequestParam("recipeId") int recipeId) {
+		Recipe recipe = recipeDao.findRecipeById(recipeId);
+		model.addAttribute("recipe", recipe);
+		return "updateRecipe";
+	}
+	
 	@PostMapping(path = "updateRecipe.do")
 	public String updateRecipe(Model model, User user, Recipe recipe) {
 		Recipe recipeToUpdate = recipeDao.editByRecipeId(recipe.getId(), recipe, user);
 		model.addAttribute("recipe", recipeToUpdate);	
 				
-		return "Recipe";
+		return "redirect:Recipe.do?recipeId=" + recipe.getId();
 	}
 	
 	
