@@ -19,13 +19,6 @@
 		<li>${recipe.description} </li>
 		<li>${recipe.prepTimeMin} </li>
 		<li>${recipe.cookTimeMin} </li>
-		<li>${recipe.instructions} </li>
-		<li>${recipe.servings} </li>
-		<li>${recipe.difficulty} </li>
-		<li>${recipe.ingredients} </li>
-		<li>${recipe.user.username} </li>
-		<li>${recipe.createDate} </li>
-		<li>${recipe.lastUpdate} </li>
 	</ol>
 
 </c:forEach>
