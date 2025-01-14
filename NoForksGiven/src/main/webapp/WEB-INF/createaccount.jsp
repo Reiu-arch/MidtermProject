@@ -8,7 +8,7 @@
 <title>Register Account</title>
 </head>
 <body>
-	<jsp:include page="homebutton.jsp" />
+	<jsp:include page="navbar.jsp" />
 	<c:choose>
 		<c:when test="${not empty errorMessage}">
 			<p style="color: red;">${errorMessage}</p>

@@ -8,7 +8,7 @@
 <title>No Forks Given</title>
 </head>
 <body>
-<jsp:include page="homebutton.jsp"/>
+<jsp:include page="navbar.jsp"/>
 <h1>Recipes</h1>
 
 <c:forEach var="recipe" items="${recipeList}">
