@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Create Recipe</title>
 </head>
+<jsp:include page="navbar.jsp"/>
 <h1>Create Recipe</h1>
 <body>
 <form action="createrecipe.do" method="POST">
