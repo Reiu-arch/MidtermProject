@@ -15,7 +15,7 @@
 	<ol>
 		<li>${recipe.imageUrl} </li>
 		<li>${recipe.id} </li>
-		<li>${recipe.name} </li>
+		<li><a href="Recipe.do?recipeId=${recipe.id}">${recipe.name}</a> </li>
 		<li>${recipe.description} </li>
 		<li>${recipe.prepTimeMin} </li>
 		<li>${recipe.cookTimeMin} </li>

@@ -23,7 +23,14 @@ public class RecipeDAOImpl implements RecipeDAO{
 			em.persist(recipe);
 		return recipe;
 	}
-
+	
+//	@Override
+//	public Recipe editByRecipeId(int recipeId, User user) {
+//		Recipe recipe = em.find(Recipe.class, recipeId);
+//		
+//		return null;
+//	}
+	
 	@Override
 	public boolean deleteByRecipeId(int recipeId, User user) {
 		Recipe recipe = em.find(Recipe.class, recipeId);
@@ -42,5 +49,12 @@ public class RecipeDAOImpl implements RecipeDAO{
 		}
 		return true;
 	}
+
+	@Override
+	public Recipe findRecipeById(int recipeId) {
+		
+		return em.find(Recipe.class, recipeId);
+	}
+
 
 }

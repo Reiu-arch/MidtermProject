@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.noforks.data.RecipeDAO;
 import com.skilldistillery.noforks.entities.Recipe;
@@ -47,5 +48,13 @@ public class RecipeController {
 			return "createrecipe";
 		}
 	}
+	
+	@GetMapping(path = "Recipe.do")
+	public String showRecipe(Model model, @RequestParam("recipeId") int recipeId) {
+		Recipe recipe = recipeDao.findRecipeById(recipeId);
+		model.addAttribute("recipe", recipe);
+		return "Recipe";
+	}
+	
 	
 }
