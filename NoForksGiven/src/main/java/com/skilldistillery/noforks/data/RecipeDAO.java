@@ -1,5 +1,6 @@
 package com.skilldistillery.noforks.data;
 
+import com.skilldistillery.noforks.entities.Meal;
 import com.skilldistillery.noforks.entities.Recipe;
 import com.skilldistillery.noforks.entities.User;
 
