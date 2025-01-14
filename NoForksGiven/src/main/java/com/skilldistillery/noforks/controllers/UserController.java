@@ -22,8 +22,6 @@ public class UserController {
 
 	@Autowired
 	private UserDAO userDao;
-	@Autowired
-	private RecipeDAO recipeDao;
 
 	@RequestMapping(path = { "/", "home.do" })
 	public String home(Model model) {
@@ -104,36 +102,5 @@ public class UserController {
 		}
 
 	}
-	@GetMapping(path = "createrecipe.do")
-	public String gocreaterecipe(Model model) {
-		return "createrecipe";
-	}
-	
-	@PostMapping(path = "createrecipe.do")
-	public String createRecipe(Recipe recipe, Model model, HttpSession session) {
-		try {
-			User loggedInUser = (User) session.getAttribute("loggedInUser");
-			if (loggedInUser == null) {
-				model.addAttribute("errorMessage", "You need to log in to create a recipe");
-				return "login";
-			} 
-//			recipe.setUser(loggedInUser);
-			recipe.setCreateDate(LocalDateTime.now());
-			recipe.setLastUpdate(LocalDateTime.now());
-			
-			recipeDao.addRecipe(recipe, loggedInUser);
-				
-			model.addAttribute("sucessMessage", "Recipe created Successfully");
-			return "redirect:browseResults.do";	
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			model.addAttribute("errorMessage", "An error occured while saving your recipe.");
-			return "createrecipe";
-		}
-	}
-	
-	
-	
 	
 }
