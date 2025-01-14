@@ -8,6 +8,7 @@
 </head>
 <jsp:include page="navbar.jsp"/>
 <body>
+<h1>My Plans</h1>
 
 </body>
 </html>
