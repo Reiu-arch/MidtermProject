@@ -19,6 +19,7 @@
 		<li>${recipe.description} </li>
 		<li>${recipe.prepTimeMin} </li>
 		<li>${recipe.cookTimeMin} </li>
+		<li>${recipe.enabled} </li>
 	</ol>
 
 </c:forEach>

@@ -16,6 +16,11 @@
 		</h3>
 		
 		<a href="updateRecipe.do?recipeId=${recipe.id}">Update Recipe</a>
+		 <form action="deleteRecipe.do" method="GET" class="action-form"
+                  onsubmit="return window.confirm('Confirm Delete?');">
+                <input type="hidden" id="recipeId" name="recipeId" value="<c:out value='${recipe.id}' />">
+                <button type="submit" class="delete-button">Delete Recipe</button>
+            </form>
 
 	</c:if>
 

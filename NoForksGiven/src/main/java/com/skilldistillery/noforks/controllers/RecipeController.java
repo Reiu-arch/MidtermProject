@@ -1,7 +1,5 @@
 package com.skilldistillery.noforks.controllers;
 
-import java.time.LocalDateTime;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -64,11 +62,21 @@ public class RecipeController {
 	}
 	
 	@PostMapping(path = "updateRecipe.do")
-	public String updateRecipe(Model model, User user, Recipe recipe) {
+	public String updateRecipe(Model model, HttpSession session, Recipe recipe) {
+		User user = (User) session.getAttribute("loggedInUser");
 		Recipe recipeToUpdate = recipeDao.editByRecipeId(recipe.getId(), recipe, user);
 		model.addAttribute("recipe", recipeToUpdate);	
 				
 		return "redirect:Recipe.do?recipeId=" + recipe.getId();
+	}
+	
+	//we are able to get User from the session from the get attribute "SESSIONUSER"
+	@GetMapping(path = "deleteRecipe.do")
+	public String deleteRecipe(@RequestParam("recipeId") int recipeId, HttpSession session) {
+		User user = (User) session.getAttribute("loggedInUser");
+		recipeDao.deleteByRecipeId(recipeId, user);	
+		
+		return "redirect:browseResults.do";
 	}
 	
 	
