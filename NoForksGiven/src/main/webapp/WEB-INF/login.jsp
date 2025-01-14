@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<jsp:include page="homebutton.jsp"/>
+<jsp:include page="navbar.jsp"/>
 
 <h2>Log In</h2>
 

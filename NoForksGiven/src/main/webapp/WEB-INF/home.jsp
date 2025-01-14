@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>No Forks Given</title>
 </head>
+<jsp:include page="navbar.jsp"/>
 <body>
 
 	<h1>No Forks Given</h1>

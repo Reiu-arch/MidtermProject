@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<jsp:include page="homebutton.jsp"/>
+<jsp:include page="navbar.jsp"/>
 
 <c:if test="${not empty sessionScope.loggedInUser}">
 	<a href = "logout.do">Log Out</a>
