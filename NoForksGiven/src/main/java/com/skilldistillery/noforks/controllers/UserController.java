@@ -105,7 +105,7 @@ public class UserController {
 
 	}
 	@GetMapping(path = "createrecipe.do")
-	public String gocreaterecipe(User user, Model model) {
+	public String gocreaterecipe(Model model) {
 		return "createrecipe";
 	}
 	
@@ -121,14 +121,14 @@ public class UserController {
 			recipe.setCreateDate(LocalDateTime.now());
 			recipe.setLastUpdate(LocalDateTime.now());
 			
-			recipeDao.addRecipe(recipe);
+			recipeDao.addRecipe(recipe, loggedInUser);
 				
 			model.addAttribute("sucessMessage", "Recipe created Successfully");
-			return "browseResults";	
+			return "redirect:browseResults.do";	
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("errorMessage", "An error occured while saving your recipe.");
-			return "createRecipe";
+			return "createrecipe";
 		}
 	}
 	
