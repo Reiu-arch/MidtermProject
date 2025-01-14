@@ -35,8 +35,8 @@ public class RecipeController {
 				return "login";
 			} 
 //			recipe.setUser(loggedInUser);
-			recipe.setCreateDate(LocalDateTime.now());
-			recipe.setLastUpdate(LocalDateTime.now());
+//			recipe.setCreateDate(LocalDateTime.now());
+//			recipe.setLastUpdate(LocalDateTime.now());
 			
 			recipeDao.addRecipe(recipe, loggedInUser);
 				
@@ -53,6 +53,14 @@ public class RecipeController {
 	public String showRecipe(Model model, @RequestParam("recipeId") int recipeId) {
 		Recipe recipe = recipeDao.findRecipeById(recipeId);
 		model.addAttribute("recipe", recipe);
+		return "Recipe";
+	}
+	
+	@PostMapping(path = "updateRecipe.do")
+	public String updateRecipe(Model model, User user, Recipe recipe) {
+		Recipe recipeToUpdate = recipeDao.editByRecipeId(recipe.getId(), recipe, user);
+		model.addAttribute("recipe", recipeToUpdate);	
+				
 		return "Recipe";
 	}
 	

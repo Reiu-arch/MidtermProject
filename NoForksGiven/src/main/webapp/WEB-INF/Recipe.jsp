@@ -9,6 +9,40 @@
 </head>
 <body>
 	<jsp:include page="navbar.jsp"/>
+	
+
+<c:choose>
+<c:when test="${loggedInUser == recipe.user}">
+	<h3> <c:out value = "${loggedInUser.username}"></c:out></h3>
+<form action="updateRecipe.do" method="POST">
+    <input type="hidden" name="id" value="${recipe.id}">
+
+		<strong>Recipe Name:</strong> ${recipe.name} <br> 
+            <label for="name">Enter the recipe name:</label> 
+            <input type="text" id="name" name="name" placeholder="${recipe.name}"
+            required="required" value="${recipe.name}"><br>
+	
+	
+</form>	
+</c:when>
+	<c:otherwise>
+	<ol>
+		<li>${recipe.imageUrl} </li>
+		<li>${recipe.name}</li>
+		<li>${recipe.id} </li>
+		<li>${recipe.description} </li>
+		<li>${recipe.prepTimeMin} </li>
+		<li>${recipe.cookTimeMin} </li>
+		<li>${recipe.instructions} </li>
+		<li>${recipe.servings} </li>
+		<li>${recipe.difficulty} </li>
+		<li>${recipe.ingredients} </li>
+		<li>${recipe.user.username} </li>
+		<li>${recipe.createDate} </li>
+		<li>${recipe.lastUpdate} </li>
+</ol>
+	</c:otherwise>
+</c:choose>
 
 </body>
 </html>
