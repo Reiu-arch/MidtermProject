@@ -13,5 +13,5 @@ public interface UserDAO {
 	
 	List<Recipe>findAllRecipes();
 	
-	
+	boolean deleteByUserId(int userId, User user);
 }
