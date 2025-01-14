@@ -91,6 +91,7 @@ CREATE TABLE IF NOT EXISTS `recipe` (
   `image_url` VARCHAR(2000) NULL,
   `create_date` DATETIME NOT NULL,
   `last_update` DATETIME NOT NULL,
+  `enabled` TINYINT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_recipe_user1_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_recipe_user1`
@@ -521,8 +522,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `noforksdb`;
-INSERT INTO `recipe` (`id`, `name`, `description`, `prep_time_minutes`, `cook_time_minutes`, `instructions`, `servings`, `difficulty`, `user_id`, `ingredients`, `image_url`, `create_date`, `last_update`) VALUES (1, 'Chicken Alfredo', 'Pasta, Chicken, Sauce', 5, 40, 'Boil water', 4, 'medium', 1, 'chicken', NULL, '2025-01-10', '2025-01-12');
-INSERT INTO `recipe` (`id`, `name`, `description`, `prep_time_minutes`, `cook_time_minutes`, `instructions`, `servings`, `difficulty`, `user_id`, `ingredients`, `image_url`, `create_date`, `last_update`) VALUES (2, 'Pizza', 'Pepperoni and Cheese', 20, 20, 'Knead dough', 2, 'medium', 2, 'flour', NULL, '2025-01-12', '2025-01-12');
+INSERT INTO `recipe` (`id`, `name`, `description`, `prep_time_minutes`, `cook_time_minutes`, `instructions`, `servings`, `difficulty`, `user_id`, `ingredients`, `image_url`, `create_date`, `last_update`, `enabled`) VALUES (1, 'Chicken Alfredo', 'Pasta, Chicken, Sauce', 5, 40, 'Boil water', 4, 'medium', 1, 'chicken', NULL, '2025-01-10', '2025-01-12', 1);
+INSERT INTO `recipe` (`id`, `name`, `description`, `prep_time_minutes`, `cook_time_minutes`, `instructions`, `servings`, `difficulty`, `user_id`, `ingredients`, `image_url`, `create_date`, `last_update`, `enabled`) VALUES (2, 'Pizza', 'Pepperoni and Cheese', 20, 20, 'Knead dough', 2, 'medium', 2, 'flour', NULL, '2025-01-12', '2025-01-12', 1);
 
 COMMIT;
 
