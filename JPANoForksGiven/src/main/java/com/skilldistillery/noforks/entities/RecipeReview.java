@@ -3,6 +3,8 @@ package com.skilldistillery.noforks.entities;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -23,9 +25,11 @@ public class RecipeReview {
 	private String remarks;
 	
 	@Column( name = "create_date")
+	@CreationTimestamp
 	private LocalDateTime createDate;
 	
 	@Column( name = "last_update")
+	@CreationTimestamp
 	private LocalDateTime lastUpdate;
 	
 	@ManyToOne

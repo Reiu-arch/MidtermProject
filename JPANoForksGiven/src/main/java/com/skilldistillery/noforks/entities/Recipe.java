@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,9 +41,11 @@ public class Recipe {
 	private String imageUrl;
 	
 	@Column(name="create_date")
+	@CreationTimestamp
 	private LocalDateTime createDate;
 	
 	@Column(name="last_update")
+	@CreationTimestamp
 	private LocalDateTime lastUpdate;
 
 	@ManyToMany
