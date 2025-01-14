@@ -1,7 +1,7 @@
 <%@ taglib uri="jakarta.tags.core" prefix="c"%>
 <nav>
 	<a href="home.do">Home</a><!-- FOR ALL -->
-	<a href="browseResults.do">Browse</a><!-- FOR ALL -->
+	<a href="browseResults.do" class="button">Browse</a><!-- FOR ALL -->
 	<br>
 	<c:choose>
 <c:when test="${loggedInUser != null}">
