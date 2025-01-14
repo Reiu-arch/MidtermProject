@@ -7,5 +7,6 @@ public interface RecipeDAO {
 	
 	Recipe addRecipe(Recipe recipe, User user);
 	
+	boolean deleteByRecipeId(int recipeId, User user);
 	
 }

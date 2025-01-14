@@ -19,8 +19,28 @@ public class RecipeDAOImpl implements RecipeDAO{
 	@Override
 	public Recipe addRecipe(Recipe recipe, User user) {
 		recipe.setUser(user);
+		recipe.setEnabled(true);
 			em.persist(recipe);
 		return recipe;
+	}
+
+	@Override
+	public boolean deleteByRecipeId(int recipeId, User user) {
+		Recipe recipe = em.find(Recipe.class, recipeId);
+		if (
+			recipe.getUser().getId() != user.getId()
+		) {
+			return false;
+		}
+		
+		try {
+			recipe.setEnabled(false);
+		} catch(Exception e) {
+			
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 }
