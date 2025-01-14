@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
@@ -28,7 +29,7 @@ public class MealReview {
 	private LocalDateTime createDate;
 	
 	@Column(name="last_update")
-	@CreationTimestamp
+	@UpdateTimestamp
 	private LocalDateTime lastUpdate;
 	
 	@ManyToOne

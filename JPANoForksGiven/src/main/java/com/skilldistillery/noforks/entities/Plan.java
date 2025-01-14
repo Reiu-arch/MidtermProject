@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,7 +28,7 @@ public class Plan {
 	private LocalDateTime createDate;
 	
 	@Column(name="last_update")
-	@CreationTimestamp
+	@UpdateTimestamp
 	private LocalDateTime lastUpdate;
 	private String notes;
 	
