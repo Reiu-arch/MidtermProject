@@ -121,9 +121,9 @@ public class UserController {
 			recipe.setCreateDate(LocalDateTime.now());
 			recipe.setLastUpdate(LocalDateTime.now());
 			
-			recipeDao.addRecipe(recipe);
+			Recipe newRecipe = recipeDao.addRecipe(recipe);
 				
-			model.addAttribute("sucessMessage", "Recipe created Successfully");
+			model.addAttribute("sucessMessage", newRecipe);
 			return "browseResults";	
 		} catch (Exception e) {
 			e.printStackTrace();
