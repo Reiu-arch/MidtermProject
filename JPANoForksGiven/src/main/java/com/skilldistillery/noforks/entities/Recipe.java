@@ -71,6 +71,7 @@ public class Recipe {
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
+	private boolean enabled;
 	
 	
 	
@@ -191,6 +192,12 @@ public class Recipe {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 
 
 
@@ -218,7 +225,8 @@ public class Recipe {
 		return "Recipe [id=" + id + ", name=" + name + ", description=" + description + ", prepTimeMin=" + prepTimeMin
 				+ ", cookTimeMin=" + cookTimeMin + ", instructions=" + instructions + ", servings=" + servings
 				+ ", difficulty=" + difficulty + ", ingredients=" + ingredients + ", imageUrl=" + imageUrl
-				+ ", createDate=" + createDate + ", lastUpdate=" + lastUpdate + ", user=" + user + "]";
+				+ ", createDate=" + createDate + ", lastUpdate=" + lastUpdate + ", user=" + user + ", enabled="
+				+ enabled + "]";
 	}
 	
 }
