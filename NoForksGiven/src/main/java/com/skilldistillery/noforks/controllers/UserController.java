@@ -9,8 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.skilldistillery.noforks.data.RecipeDAO;
 import com.skilldistillery.noforks.data.UserDAO;
 import com.skilldistillery.noforks.entities.Recipe;
 import com.skilldistillery.noforks.entities.User;
@@ -101,6 +101,14 @@ public class UserController {
 			return "createaccount";
 		}
 
+	}
+	
+	@GetMapping(path = "deleteAccount.do")
+	public String deleteRecipe(@RequestParam("userId") int userId, HttpSession session) {
+		User user = (User) session.getAttribute("loggedInUser");
+		userDao.deleteByUserId(userId, user);	
+		
+		return "redirect:home.do";
 	}
 	
 }

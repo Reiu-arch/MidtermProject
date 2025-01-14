@@ -51,4 +51,19 @@ public class UserDAOImpl implements UserDAO{
 		return recipes;
 	}
 
+
+
+	@Override
+	public boolean deleteByUserId(int userId, User user) {
+		User sessionUser = em.find(User.class, userId);
+		if (sessionUser.getId() != user.getId()) {
+			return false;
+		}
+
+		sessionUser.setEnabled(false);
+		em.persist(sessionUser);
+
+		return true;
+	}
+
 }
