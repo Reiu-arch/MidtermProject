@@ -43,14 +43,14 @@ public class MealDOAImpl implements MealDAO {
 	}
 
 	@Override
-	public Meal addRecipeToMeal(int recipeId, int mealId, User user) {
+	public Meal addRecipeToMeal(int recipeId, int mealId, User userId) {
+//		if(meal.getUser().getId() != user.getId()) {
+//			return null;
+//			};
 		Recipe recipe = em.find(Recipe.class, recipeId);
-		Meal meal = em.find(Meal.class, mealId);
-		
-//		recipe.addMeal(meal); FIXME add method to recipe entity
-		return null; 
+		Meal addedToMeal = em.find(Meal.class, mealId);
+		addedToMeal.addRecipe(recipe);
+		return addedToMeal; 
 	}	
-	
-	
 	
 }

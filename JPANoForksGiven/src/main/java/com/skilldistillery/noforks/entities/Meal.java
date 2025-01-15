@@ -74,17 +74,6 @@ public class Meal {
 	public Meal() {
 		super();
 	}
-	
-	
-	public void addRecipe (Recipe recipe) {
-		if (recipes == null) {recipes = new ArrayList<>();
-		}
-		if (!recipes.contains(recipe)) {
-			recipes.add(recipe);
-			recipe.addMeal(this);
-		}
-		
-	}
 
 	
 	
@@ -169,6 +158,15 @@ public class Meal {
 	}
 
 
+	public void addRecipe (Recipe recipe) {
+		if (recipes == null) {recipes = new ArrayList<>();
+		}
+		if (!recipes.contains(recipe)) {
+			recipes.add(recipe);
+			recipe.addMeal(this);
+		}
+		
+	}
 	
 	
 	@Override

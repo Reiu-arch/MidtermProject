@@ -18,7 +18,9 @@
 			<input type="text" name="keyword" id="keyword" placeholder="Search"> 
 		</fieldset>
 	</form>
-
+<p>
+Craft your perfect meal plan with ease! Whether you're aiming to eat healthier, save time, or explore new flavors, our customizable meal planning tool has you covered. Select your favorite ingredients, dietary preferences, and portion sizes to create balanced, delicious meals tailored to your lifestyle. Say goodbye to food boredom and hello to stress-free dining!
+</p>
 <!-- "View All Recipes" Button -->
 <a href="browseResults.do" class="button">View All Recipes</a>
 

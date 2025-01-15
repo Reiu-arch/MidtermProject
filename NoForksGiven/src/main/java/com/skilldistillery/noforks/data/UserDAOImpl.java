@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.noforks.entities.Recipe;
 import com.skilldistillery.noforks.entities.User;
-import com.skilldistillery.noforks.entities.User;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -85,11 +84,19 @@ public class UserDAOImpl implements UserDAO{
 				sessionUser.setEmail(user.getEmail());
 				sessionUser.setProfileImage(user.getProfileImage());
 				sessionUser.setBiography(user.getBiography());
-				
+				em.persist(sessionUser);
 			}
 		} 
 
 		return sessionUser;
+	}
+
+
+
+	@Override
+	public List<Recipe> findRecipeByKeyword(String keyword) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

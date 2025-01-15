@@ -25,7 +25,7 @@
 	</c:if>
 
 	<ol>
-		<li>${recipe.imageUrl}</li>
+		<li><img src="${recipe.imageUrl}"/></li>
 		<li>${recipe.name}</li>
 		<li>${recipe.id}</li>
 		<li>${recipe.description}</li>
@@ -41,7 +41,7 @@
 	</ol>
 	
 	<c:if test="${loggedInUser != null}">	
-	 <form action="meal.do" method="GET" class="action-form">
+	 <form action="meal.do" method="POST" class="action-form">
          <input type="hidden" id="recipeId" name="recipeId" value="<c:out value='${recipe.id}' />">
          <button type="submit" class="button">Add Recipe to Meal</button>
      </form>
