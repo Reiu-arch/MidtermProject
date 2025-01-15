@@ -194,7 +194,7 @@ public class Meal {
 				&& Objects.equals(recipes, other.recipes) && Objects.equals(user, other.user)
 				&& Objects.equals(usersWithFavMeals, other.usersWithFavMeals);
 	}
-	
+	 
 
 	@Override
 	public String toString() {
