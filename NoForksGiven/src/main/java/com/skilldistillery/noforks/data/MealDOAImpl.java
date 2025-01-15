@@ -31,9 +31,16 @@ public class MealDOAImpl implements MealDAO {
 	}
 
 	@Override
-	public boolean deleteByMealId(int mealId, User user) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteMealById(int mealId, User user) {
+		Meal meal = em.find(Meal.class, mealId);
+		if (meal.getUser().getId() != user.getId()) {
+			return false;
+		}
+		
+		meal.setEnabled(false);
+		em.persist(meal);
+		
+		return true;
 	}
 
 	@Override

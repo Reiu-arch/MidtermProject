@@ -47,6 +47,7 @@ public class Plan {
 	
 	@Column(name="schedule_date")
 	private LocalDateTime scheduleDate;
+	private boolean enabled;
 	
 	
 
@@ -110,9 +111,15 @@ public class Plan {
 	public void setScheduleDate(LocalDateTime scheduleDate) {
 		this.scheduleDate = scheduleDate;
 	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 
-	
-	
+
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(createDate, id, imageUrl, lastUpdate, notes, planmeals, user);
@@ -138,7 +145,7 @@ public class Plan {
 	@Override
 	public String toString() {
 		return "Plan [id=" + id + ", createDate=" + createDate + ", lastUpdate=" + lastUpdate + ", user=" + user
-				+ ", imageUrl=" + imageUrl + ", scheduleDate=" + scheduleDate + "]";
+				+ ", imageUrl=" + imageUrl + ", scheduleDate=" + scheduleDate + ", enabled=" + enabled + "]";
 	}
 
 	

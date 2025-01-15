@@ -51,6 +51,7 @@ CREATE TABLE IF NOT EXISTS `plan` (
   `user_id` INT NOT NULL,
   `image_url` VARCHAR(2000) NULL,
   `schedule_date` DATETIME NULL,
+  `enabled` TINYINT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_planner_user1_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_planner_user1`
@@ -131,6 +132,7 @@ CREATE TABLE IF NOT EXISTS `meal` (
   `notes` TEXT NULL,
   `meal_type_id` INT NOT NULL,
   `image_url` VARCHAR(2000) NULL,
+  `enabled` TINYINT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_meal_user1_idx` (`user_id` ASC) VISIBLE,
   INDEX `fk_meal_meal_type1_idx` (`meal_type_id` ASC) VISIBLE,
@@ -501,8 +503,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `noforksdb`;
-INSERT INTO `plan` (`id`, `name`, `create_date`, `last_update`, `notes`, `user_id`, `image_url`, `schedule_date`) VALUES (1, 'customName', '2025-01-10', '2025-01-10', 'random note', 1, NULL, NULL);
-INSERT INTO `plan` (`id`, `name`, `create_date`, `last_update`, `notes`, `user_id`, `image_url`, `schedule_date`) VALUES (2, 'customName2', '2025-01-12', '2025-01-12', 'random note', 2, NULL, NULL);
+INSERT INTO `plan` (`id`, `name`, `create_date`, `last_update`, `notes`, `user_id`, `image_url`, `schedule_date`, `enabled`) VALUES (1, 'customName', '2025-01-10', '2025-01-10', 'random note', 1, NULL, NULL, 1);
+INSERT INTO `plan` (`id`, `name`, `create_date`, `last_update`, `notes`, `user_id`, `image_url`, `schedule_date`, `enabled`) VALUES (2, 'customName2', '2025-01-12', '2025-01-12', 'random note', 2, NULL, NULL, 1);
 
 COMMIT;
 
@@ -565,21 +567,21 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `noforksdb`;
-INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`) VALUES (1, 1, 'Dinner with Dad', '2025-01-12', '2025-01-14', NULL, 3, NULL);
-INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`) VALUES (2, 2, 'Super Bowl Party', '2025-01-12', '2025-01-14', NULL, 2, NULL);
-INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`) VALUES (3, 3, 'Fast Dinner', '2025-01-14', '2025-01-14', NULL, 3, NULL);
-INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`) VALUES (4, 1, 'Game Night', '2025-01-14', '2025-01-14', NULL, 2, NULL);
-INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`) VALUES (5, 2, 'Healthy Lunch', '2025-01-14', '2025-01-14', NULL, 2, NULL);
-INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`) VALUES (6, 3, 'Dinner with Neighbors', '2025-01-14', '2025-01-14', NULL, 3, NULL);
-INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`) VALUES (7, 1, 'Cheat Meal', '2025-01-14', '2025-01-14', NULL, 3, NULL);
-INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`) VALUES (8, 2, 'Bobby\'s Lunch', '2025-01-14', '2025-01-14', NULL, 2, NULL);
-INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`) VALUES (9, 3, 'Work Lunch', '2025-01-14', '2025-01-14', NULL, 2, NULL);
-INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`) VALUES (10, 1, 'Family Dinner', '2025-01-14', '2025-01-14', NULL, 3, NULL);
-INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`) VALUES (11, 2, 'Snowed in Dinner', '2025-01-14', '2025-01-14', NULL, 3, NULL);
-INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`) VALUES (12, 3, 'Movie Night', '2025-01-14', '2025-01-14', NULL, 3, NULL);
-INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`) VALUES (13, 1, 'Post Workout Breakfast', '2025-01-14', '2025-01-14', NULL, 1, NULL);
-INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`) VALUES (14, 2, 'Sarah\'s Birthday Dinner', '2025-01-14', '2025-01-14', NULL, 5, NULL);
-INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`) VALUES (15, 3, 'Work Snack', '2025-01-14', '2025-01-14', NULL, 4, NULL);
+INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`, `enabled`) VALUES (1, 1, 'Dinner with Dad', '2025-01-12', '2025-01-14', NULL, 3, NULL, 1);
+INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`, `enabled`) VALUES (2, 2, 'Super Bowl Party', '2025-01-12', '2025-01-14', NULL, 2, NULL, 1);
+INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`, `enabled`) VALUES (3, 3, 'Fast Dinner', '2025-01-14', '2025-01-14', NULL, 3, NULL, 1);
+INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`, `enabled`) VALUES (4, 1, 'Game Night', '2025-01-14', '2025-01-14', NULL, 2, NULL, 1);
+INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`, `enabled`) VALUES (5, 2, 'Healthy Lunch', '2025-01-14', '2025-01-14', NULL, 2, NULL, 1);
+INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`, `enabled`) VALUES (6, 3, 'Dinner with Neighbors', '2025-01-14', '2025-01-14', NULL, 3, NULL, 1);
+INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`, `enabled`) VALUES (7, 1, 'Cheat Meal', '2025-01-14', '2025-01-14', NULL, 3, NULL, 1);
+INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`, `enabled`) VALUES (8, 2, 'Bobby\'s Lunch', '2025-01-14', '2025-01-14', NULL, 2, NULL, 1);
+INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`, `enabled`) VALUES (9, 3, 'Work Lunch', '2025-01-14', '2025-01-14', NULL, 2, NULL, 1);
+INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`, `enabled`) VALUES (10, 1, 'Family Dinner', '2025-01-14', '2025-01-14', NULL, 3, NULL, 1);
+INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`, `enabled`) VALUES (11, 2, 'Snowed in Dinner', '2025-01-14', '2025-01-14', NULL, 3, NULL, 1);
+INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`, `enabled`) VALUES (12, 3, 'Movie Night', '2025-01-14', '2025-01-14', NULL, 3, NULL, 1);
+INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`, `enabled`) VALUES (13, 1, 'Post Workout Breakfast', '2025-01-14', '2025-01-14', NULL, 1, NULL, 1);
+INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`, `enabled`) VALUES (14, 2, 'Sarah\'s Birthday Dinner', '2025-01-14', '2025-01-14', NULL, 5, NULL, 1);
+INSERT INTO `meal` (`id`, `user_id`, `name`, `create_date`, `last_update`, `notes`, `meal_type_id`, `image_url`, `enabled`) VALUES (15, 3, 'Work Snack', '2025-01-14', '2025-01-14', NULL, 4, NULL, 1);
 
 COMMIT;
 

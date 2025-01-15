@@ -68,6 +68,7 @@ public class Meal {
 	
 	@OneToMany(mappedBy ="meal")
 	private List<PlanMeal> planmeals;
+	private boolean enabled;
 	
 	
 
@@ -156,6 +157,13 @@ public class Meal {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
 
 
 	public void addRecipe (Recipe recipe) {
@@ -166,6 +174,13 @@ public class Meal {
 			recipe.addMeal(this);
 		}
 		
+	}
+	
+	public void removeRecipe(Recipe recipe) {
+		if (recipes != null && recipes.contains(recipe)) {
+			recipes.remove(recipe);
+			recipe.removeMeal(this);
+		}
 	}
 	
 	
@@ -197,7 +212,8 @@ public class Meal {
 	@Override
 	public String toString() {
 		return "Meal [id=" + id + ", name=" + name + ", createDate=" + createDate + ", lastUpdate=" + lastUpdate
-				+ ", notes=" + notes + ", imageUrl=" + imageUrl + ", mealTypeId=" + mealTypeId + ", user=" + user + "]";
+				+ ", imageUrl=" + imageUrl + ", mealTypeId=" + mealTypeId + ", user=" + user + ", enabled=" + enabled
+				+ "]";
 	}
 	
 }
