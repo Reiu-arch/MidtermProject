@@ -91,4 +91,12 @@ public class UserDAOImpl implements UserDAO{
 		return sessionUser;
 	}
 
+
+
+	@Override
+	public List<Recipe> findRecipeByKeyword(String keyword) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
