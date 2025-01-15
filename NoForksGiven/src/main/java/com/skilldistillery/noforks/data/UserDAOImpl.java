@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.noforks.entities.Recipe;
 import com.skilldistillery.noforks.entities.User;
+import com.skilldistillery.noforks.entities.User;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -64,6 +65,30 @@ public class UserDAOImpl implements UserDAO{
 		em.persist(sessionUser);
 
 		return true;
+	}
+
+
+
+	@Override
+	public User editUser(User user) {
+		User sessionUser = em.find(User.class, user.getId());
+
+		if (user.getId() != sessionUser.getId()) {
+			return user;
+		}
+
+		if (user.getId() == sessionUser.getId()) {
+			if (sessionUser != null) {
+				sessionUser.setUsername(user.getUsername());
+				sessionUser.setPassword(user.getPassword());
+				sessionUser.setEmail(user.getEmail());
+				sessionUser.setProfileImage(user.getProfileImage());
+				sessionUser.setBiography(user.getBiography());
+				
+			}
+		} 
+
+		return sessionUser;
 	}
 
 }
