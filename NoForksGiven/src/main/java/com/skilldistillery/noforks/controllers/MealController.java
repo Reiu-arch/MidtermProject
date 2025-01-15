@@ -57,7 +57,7 @@ class MealController {
 			return "meal";
 	}
 	
-	@PostMapping(path = "addMeal.do")
+	@PostMapping(path = "meal.do")
 	public String addRecipeToMeal(HttpSession session, Model model, @RequestParam("mealId") int mealId,@RequestParam("recipeId") int recipeId ) {
 		
 		try {
