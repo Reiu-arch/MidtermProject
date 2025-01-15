@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.noforks.data.MealDAO;
 import com.skilldistillery.noforks.data.UserDAO;
@@ -51,12 +52,12 @@ class MealController {
 			return "meal";
 	}
 	
-	@PostMapping(path = "meal.do")
-	public String meal(HttpSession session, Model model, Meal meal, Recipe recipe) {
+	@PostMapping(path = "addMeal.do")
+	public String meal(HttpSession session, Model model, @RequestParam("mealId") int mealId,@RequestParam("recipeId") int recipeId ) {
 		
 		try {
 			User loggedInUser = (User) session.getAttribute("loggedInUser");
-			Meal mealWithRecipe = mealDao.addRecipeToMeal(recipe.getId(), meal.getId(), loggedInUser);
+			Meal mealWithRecipe = mealDao.addRecipeToMeal(recipeId, mealId, loggedInUser);
 			model.addAttribute("meal", mealWithRecipe);
 			return "meal";
 		} catch (Exception e) {

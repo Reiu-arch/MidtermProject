@@ -50,7 +50,9 @@ public class MealDOAImpl implements MealDAO {
 		Recipe recipe = em.find(Recipe.class, recipeId);
 		Meal addedToMeal = em.find(Meal.class, mealId);
 		addedToMeal.addRecipe(recipe);
+		
+		System.out.println(recipeId + " " + mealId);
 		return addedToMeal; 
 	}	
-	
+	 
 }
