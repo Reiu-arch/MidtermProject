@@ -1,6 +1,7 @@
 package com.skilldistillery.noforks.controllers;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -152,5 +153,16 @@ public class UserController {
 				
 		return "redirect:account.do";
 	}
-	
+	@GetMapping(path = { "findRecipe.do" })
+	public String searchRecipeByKeyword(@RequestParam(name = "name", required = true, defaultValue = "") String name, Model model) {
+	    if (name.trim().isEmpty()) {
+	        model.addAttribute("names", new ArrayList<>()); // Return an empty list
+	        model.addAttribute("keyword", name);
+	        return "browseResults";
+	    }
+	    List<Recipe> recipes = userDao.findRecipeByKeyword(name);
+	    model.addAttribute("recipes", recipes);
+	    model.addAttribute("keyword", name);
+	    return "browseResults";
+	}
 }
