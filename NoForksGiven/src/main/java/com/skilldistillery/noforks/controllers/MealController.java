@@ -66,5 +66,13 @@ class MealController {
 		}
 	}
 	
+	@GetMapping(path = "deleteMeal.do")
+	public String deleteMeal(HttpSession session, @RequestParam("mealId") int mealId) {
+		User user = (User) session.getAttribute("loggedInUser");
+		mealDao.deleteMealById(mealId, user);
+		
+		return "redirect:meal.do";
+		
+	}
 	
 }
