@@ -44,10 +44,17 @@ public class Plan {
 	
 	@OneToMany(mappedBy ="plan")
 	private List<PlanComment> plancomments;
+	
+	@Column(name="schedule_date")
+	private LocalDateTime scheduleDate;
+	
+	
 
 	public Plan() {
 		super();
 	}
+	
+	
 
 	public int getId() {
 		return id;
@@ -73,46 +80,42 @@ public class Plan {
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-	
-	
 	public User getUser() {
 		return user;
 	}
-
 	public void setUser(User user) {
 		this.user = user;
 	}
-
 	public String getImageUrl() {
 		return imageUrl;
 	}
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
-
-
-
 	public List<PlanMeal> getPlanmeals() {
 		return planmeals;
 	}
-
 	public void setPlanmeals(List<PlanMeal> planmeals) {
 		this.planmeals = planmeals;
 	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(createDate, id, imageUrl, lastUpdate, notes, planmeals, user);
-	}
-
-	
-	
 	public List<PlanComment> getPlancomments() {
 		return plancomments;
 	}
-
 	public void setPlancomments(List<PlanComment> plancomments) {
 		this.plancomments = plancomments;
+	}
+	public LocalDateTime getScheduleDate() {
+		return scheduleDate;
+	}
+	public void setScheduleDate(LocalDateTime scheduleDate) {
+		this.scheduleDate = scheduleDate;
+	}
+
+	
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(createDate, id, imageUrl, lastUpdate, notes, planmeals, user);
 	}
 
 	@Override
@@ -129,11 +132,13 @@ public class Plan {
 				&& Objects.equals(notes, other.notes) && Objects.equals(planmeals, other.planmeals)
 				&& Objects.equals(user, other.user);
 	}
+	
+	
 
 	@Override
 	public String toString() {
-		return "Plan [id=" + id + ", createDate=" + createDate + ", lastUpdate=" + lastUpdate + ", notes=" + notes
-				+ ", user=" + user + ", imageUrl=" + imageUrl + ", planmeals=" + planmeals + "]";
+		return "Plan [id=" + id + ", createDate=" + createDate + ", lastUpdate=" + lastUpdate + ", user=" + user
+				+ ", imageUrl=" + imageUrl + ", scheduleDate=" + scheduleDate + "]";
 	}
 
 	
