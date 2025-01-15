@@ -26,6 +26,11 @@
                 <input type="hidden" id="id" name="id" value="<c:out value='${loggedInUser.id}' />">
                 <button type="submit" class="edit-button">Create New Recipe</button>
             </form>
+            
+     <form action="createMeal.do" method="GET" class="action-form">
+                <input type="hidden" id="id" name="id" value="<c:out value='${loggedInUser.id}' />">
+                <button type="submit" class="edit-button">Create New Meal</button>
+            </form>
 </c:when>
 	<c:otherwise>User not logged in</c:otherwise>
 </c:choose>
