@@ -41,4 +41,10 @@ public class PlanDAOImpl implements PlanDAO {
 		return null;
 	}
 
+	@Override
+	public void savePlan(Plan plan) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
