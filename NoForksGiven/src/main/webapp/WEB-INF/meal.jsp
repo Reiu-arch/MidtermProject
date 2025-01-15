@@ -12,8 +12,8 @@
 <!-- ************ user will edit or delete meal here AND add recipe -->
 
 <ol>
-<c:forEach var="meal" items="${loggedInUser.userMeals}">
-<li>${meal.name}</li>
+<c:forEach var="recipe" items="${meal.recipes}">
+<li>${recipe.name}</li>
 </c:forEach>
 </ol>
 

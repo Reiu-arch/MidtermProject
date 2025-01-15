@@ -41,7 +41,12 @@
 	</ol>
 	
 	<c:if test="${loggedInUser != null}">	
-	 <form action="meal.do" method="POST" class="action-form">
+	 <form action="addMeal.do" method="POST" class="action-form">
+        <select name="mealId"> 
+        	<c:forEach var="meal" items="${loggedInUser.userMeals}">
+        		<option value="${meal.id}">${meal.name}</option>
+        	</c:forEach>
+        </select>
          <input type="hidden" id="recipeId" name="recipeId" value="<c:out value='${recipe.id}' />">
          <button type="submit" class="button">Add Recipe to Meal</button>
      </form>

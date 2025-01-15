@@ -44,6 +44,7 @@ DROP TABLE IF EXISTS `plan` ;
 
 CREATE TABLE IF NOT EXISTS `plan` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
   `create_date` DATETIME NOT NULL,
   `last_update` DATETIME NOT NULL,
   `notes` TEXT NULL,
@@ -490,7 +491,7 @@ START TRANSACTION;
 USE `noforksdb`;
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `email`, `create_date`, `last_update`, `profile_image_url`, `biography`) VALUES (1, 'admin', 'test', 1, 'Admin', NULL, '2025-01-10', '2025-01-10', 'https://www.ajc.org/sites/default/files/inline-images/Term%208%20-%20Pepe%20the%20FrogInline-300xflex.jpg', NULL);
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `email`, `create_date`, `last_update`, `profile_image_url`, `biography`) VALUES (2, 'DwightS', 'beets', 1, 'Member', NULL, '2025-01-10', '2025-01-10', 'https://img.nbc.com/files/images/2013/11/12/dwight-500x500.jpg', NULL);
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `email`, `create_date`, `last_update`, `profile_image_url`, `biography`) VALUES (3, 'SithLord', 'r2d2', 1, 'Member', 'killjedi666@sithcorp.com', '2025-01-12', '2025-01-12', 'https://static.wikia.nocookie.net/swfanon/images/2/20/DarthSidious.jpg/revision/latest?cb=20091207230620', NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `email`, `create_date`, `last_update`, `profile_image_url`, `biography`) VALUES (3, 'SithLord', 'r2d2', 1, 'Member', 'killjedi666@sithcorp.com', '2025-01-12', '2025-01-12', 'https://cdn.openart.ai/published/yFPd4qLOC4gLwjBdASN6/UrjsdNhZ_9iRE_1024.webp', NULL);
 
 COMMIT;
 
@@ -500,8 +501,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `noforksdb`;
-INSERT INTO `plan` (`id`, `create_date`, `last_update`, `notes`, `user_id`, `image_url`, `schedule_date`) VALUES (1, '2025-01-10', '2025-01-10', 'random note', 1, NULL, NULL);
-INSERT INTO `plan` (`id`, `create_date`, `last_update`, `notes`, `user_id`, `image_url`, `schedule_date`) VALUES (2, '2025-01-12', '2025-01-12', 'random note', 2, NULL, NULL);
+INSERT INTO `plan` (`id`, `name`, `create_date`, `last_update`, `notes`, `user_id`, `image_url`, `schedule_date`) VALUES (1, 'customName', '2025-01-10', '2025-01-10', 'random note', 1, NULL, NULL);
+INSERT INTO `plan` (`id`, `name`, `create_date`, `last_update`, `notes`, `user_id`, `image_url`, `schedule_date`) VALUES (2, 'customName2', '2025-01-12', '2025-01-12', 'random note', 2, NULL, NULL);
 
 COMMIT;
 
@@ -540,6 +541,7 @@ INSERT INTO `recipe` (`id`, `name`, `description`, `prep_time_minutes`, `cook_ti
 INSERT INTO `recipe` (`id`, `name`, `description`, `prep_time_minutes`, `cook_time_minutes`, `instructions`, `servings`, `difficulty`, `user_id`, `ingredients`, `image_url`, `create_date`, `last_update`, `enabled`) VALUES (13, 'Black Bean Bowl', 'This black bean breakfast bowl is a quick breakfast if you\'re trying to avoid carbs.', 10, 5, 'Heat olive oil in a small skillet over medium heat. Pour eggs into skillet; cook and stir eggs until set, 3 to 5 minutes.\n\nPlace black beans in a microwave-safe bowl. Microwave at High power until warm, about 1 minute. Divide between two bowls.\n\nDivide scrambled eggs between each bowl; top each with avocado and salsa, then season with salt and black pepper.', 2, 'Easy', 1, '2 tablespoons olive oil\n\n4 eggs, beaten\n\n1 (15 ounce) can black beans, drained and rinsed\n\n1 avocado, peeled and sliced \n\n¼ cup salsa\n\nsalt and ground black pepper to taste', 'https://www.allrecipes.com/thmb/suNrtM9UVwWve2x3T-Xx5pW2EUE=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/5437904-8d54d81d509d489c959e371bd7b6fc99.jpg', '2025-01-14', '2025-01-14', 1);
 INSERT INTO `recipe` (`id`, `name`, `description`, `prep_time_minutes`, `cook_time_minutes`, `instructions`, `servings`, `difficulty`, `user_id`, `ingredients`, `image_url`, `create_date`, `last_update`, `enabled`) VALUES (14, 'Strawberry Twinkie', 'This recipe makes a delicious make-ahead dessert using Twinkies, cream cheese, whipped dessert topping, and strawberries.', 15, 30, 'Combine strawberries and glaze in a small bowl.\n\nSlice Twinkies in half lengthwise, and place in a single layer over the bottom of a 9x13-inch dish.\n\nIn a mixing bowl, beat cream cheese and condensed milk until smooth. Fold in whipped topping and spread mixture over Twinkies. Spoon berries over cream cheese mixture. Cover and chill 30 minutes or more. Refrigerate leftovers.', 18, 'Easy', 2, '4 cups sliced fresh strawberries\n\n1 (18 3/4 ounce) can ready-to-use strawberry glaze\n\n8 Twinkies\n\n1 (8 ounce) package cream cheese, softened\n\n1 (14 ounce) can sweetened condensed milk\n\n1 (12 ounce) container frozen whipped topping, thawed', 'https://www.allrecipes.com/thmb/MNA_kzGcFHF9Yi-Cp6Lz3ioM26Q=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/438007-b15a68767ebf4a2e86cf18296bdb98b8.jpg', '2025-01-14', '2025-01-14', 1);
 INSERT INTO `recipe` (`id`, `name`, `description`, `prep_time_minutes`, `cook_time_minutes`, `instructions`, `servings`, `difficulty`, `user_id`, `ingredients`, `image_url`, `create_date`, `last_update`, `enabled`) VALUES (15, 'Spicy Avocado', 'This fresh, fast, and easy snack is heart-healthy and delicious. I have tried lemon, lime, orange, grapefruit, Meyer lemon, key limes and Satsuma juices and I like good \'ol fashioned lemon the best, but please experiment to your own tastes!', 10, 0, 'Slice the meat of each avocado half 3 or 4 times in one direction, turn avocado and slice 3 or 4 more slices perpendicular to the first slices creating 8 to 12 small cubes still attached to the peel.\n\nDrizzle lemon juice over each avocado and top with kosher salt. Drizzle hot sauce over each. Eat with a fork or spoon.', 2, 'Easy', 3, '1 cup ripe avocado, halved and pitted \n\n½ lemon, juiced\n\n2 tablespoons hot sauce (such as Valentina®), or to taste\n\n2 pinches kosher salt', 'https://www.allrecipes.com/thmb/KhwrLSvmQFeVRhaKmMD3Cq-1AGo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/4096750-spicy-avocado-snack-Buckwheat-Queen-4x3-1-ae022336a270404e9bb172181a6bf353.jpg', '2025-01-14', '2025-01-14', 1);
+INSERT INTO `recipe` (`id`, `name`, `description`, `prep_time_minutes`, `cook_time_minutes`, `instructions`, `servings`, `difficulty`, `user_id`, `ingredients`, `image_url`, `create_date`, `last_update`, `enabled`) VALUES (16, 'Burger King Foot Lettuce', 'The last thing you\'d want in your Burger King burger is someone\'s foot fungus. But as it turns out, that might be what you get. A 4channer uploaded a photo anonymously to the site showcasing his feet in a plastic bin of lettuce. With the statement: \"This is the lettuce you eat at Burger King.\" Admittedly, he had shoes on.', 2, 0, '1. Step on lettuce 2. Stir lettuce with feet 3. Serve to the rude customer', 1, 'Hard', 1, 'Lettuce, Feet', 'https://external-preview.redd.it/rtoe2W6F9VO8VQePrKcZpb5_lRZpJrr7sGftefhaUwI.jpg?width=1080&crop=smart&auto=webp&s=4c0f670786a4856d39eb1fd75800d76bb1042fc3', '2025-01-15', '2025-01-15', 1);
 
 COMMIT;
 
