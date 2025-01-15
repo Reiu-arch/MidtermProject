@@ -8,12 +8,18 @@
 <title>Meal</title>
 </head>
 <body>
+<jsp:include page="navbar.jsp"/>
+
+
 <h1>Meal Page</h1>
 <!-- ************ user will edit or delete meal here AND add recipe -->
 
 <ol>
+<c:forEach var="meal" items="${mealList}">
+<ul><strong>${meal.name}</strong></ul>
 <c:forEach var="recipe" items="${meal.recipes}">
 <li>${recipe.name}</li>
+</c:forEach>
 </c:forEach>
 </ol>
 

@@ -1,5 +1,7 @@
 package com.skilldistillery.noforks.data;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.noforks.entities.Meal;
@@ -53,6 +55,14 @@ public class MealDOAImpl implements MealDAO {
 		
 		System.out.println(recipeId + " " + mealId);
 		return addedToMeal; 
-	}	
+	}
+
+	@Override
+	public List<Meal> findAllMeals() {
+		String jpql = "SELECT m FROM Meal m";
+		List<Meal> meals = em.createQuery(jpql, Meal.class).getResultList();
+		return meals;
+	}
+	
 	 
 }
