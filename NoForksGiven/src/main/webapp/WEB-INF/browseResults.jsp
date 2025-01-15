@@ -10,6 +10,14 @@
 <body>
 <jsp:include page="navbar.jsp"/>
 <h1>Recipes</h1>
+<form action="findRecipe.do" method="GET" class="action-form">
+<label for="keyword">Search Recipes:</label>
+                <input type="text" id="keyword" name="keyword" placeholder="Search"
+                value = "${keyword }">
+                <button type="submit">Search</button>
+            </form>
+
+
 
 <c:forEach var="recipe" items="${recipeList}">
 	<ol>
@@ -23,6 +31,8 @@
 	</ol>
 
 </c:forEach>
-
+<c:if test="${empty recipeList }">
+<h2>No Results</h2>
+</c:if>
 </body>
 </html>

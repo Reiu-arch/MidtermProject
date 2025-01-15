@@ -209,6 +209,13 @@ public class Recipe {
 			meal.addRecipe(this);
 		}
 	}
+	
+	public void removeMeal(Meal meal) {
+		if (meals != null && meals.contains(meal)) {
+			meals.remove(meal);
+			meal.removeRecipe(this);
+		}
+	}
 
 	
 	@Override

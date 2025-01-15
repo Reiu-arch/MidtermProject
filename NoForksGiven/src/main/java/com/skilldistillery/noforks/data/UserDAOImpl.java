@@ -1,5 +1,6 @@
 package com.skilldistillery.noforks.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -91,12 +92,15 @@ public class UserDAOImpl implements UserDAO{
 		return sessionUser;
 	}
 
-
-
 	@Override
 	public List<Recipe> findRecipeByKeyword(String keyword) {
-		// TODO Auto-generated method stub
-		return null;
+		   if (keyword == null || keyword.trim().isEmpty()) {
+		        return new ArrayList<>(); // This will return an empty array list, but i also put a check on the controller. Works fine but still relatively unsure
+		    }
+		    String jpql = "SELECT r FROM Recipe r WHERE r.name LIKE :keyword";
+		    return em.createQuery(jpql, Recipe.class)
+		             .setParameter("keyword", "%" + keyword.trim() + "%")
+		             .getResultList();
 	}
 
 }
