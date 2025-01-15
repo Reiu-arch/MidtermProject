@@ -18,15 +18,27 @@ public class PlanDAOImpl implements PlanDAO {
 	private EntityManager em;
 	
 	@Override
-	public Recipe addPlan(Plan plan, User user) {
-		// TODO Auto-generated method stub
-		return null;
+	public Plan addPlan(Plan plan, User user) {
+		plan.setUser(user);
+		em.persist(plan);
+		return plan;
 	}
 
 	@Override
 	public boolean deleteByPlanId(int planId, User user) {
+		Plan plan = em.find(Plan.class, planId);
+		if (plan.getUser().getId() != user.getId()) {
+			return false;
+		}
+		
+		em.persist(plan);
+		return true;
+	}
+
+	@Override
+	public Plan savePlan(Plan plan) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 }

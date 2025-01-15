@@ -6,9 +6,7 @@ import com.skilldistillery.noforks.entities.User;
 
 public interface PlanDAO {
 
-Recipe addPlan(Plan plan, User user);
-	
+	Plan addPlan(Plan plan, User user);
 	boolean deleteByPlanId(int planId, User user);
-
-	void savePlan(Plan plan);
+	Plan savePlan(Plan plan);
 }
