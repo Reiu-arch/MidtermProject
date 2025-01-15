@@ -10,5 +10,4 @@ public interface RecipeDAO {
 	Recipe editByRecipeId(int recipeId, Recipe recipeToUpdate, User user);
 	Recipe findRecipeById(int recipeId);
 	
-	
 }
