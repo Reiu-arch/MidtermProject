@@ -137,13 +137,18 @@ public class UserController {
 		if (session.getAttribute("loggedInUser") == null) {
 			return "login";
 		}
-		return "updateAccount";
+		return "updateaccount";
 	}
 	
 	@PostMapping(path = "updateAccount.do")
-	public String updateAccount( HttpSession session) {
-		User user = (User) session.getAttribute("loggedInUser");
-		userDao.editUser(user);
+	public String updateAccount( HttpSession session, User user) {
+		session.setAttribute("loggedInUser", user);
+		User sessionUser = (User) session.getAttribute("loggedInUser");
+		if (sessionUser == null) {
+			return "login";
+		}
+		
+		userDao.editUser(sessionUser);
 				
 		return "redirect:account.do";
 	}

@@ -10,9 +10,7 @@
 <body>
 <form action="updateAccount.do" method="POST">
     <input type="hidden" name="id" value="${loggedInUser.id}">
-
-		<strong>Recipe Name:</strong> ${recipe.name} <br><label for="name">Enter the recipe name:</label><input type="text" id="name" name="name" placeholder="${recipe.name}" required="required" value="${recipe.name}"><br>
-            
+    
         <label for="username">Username:</label> <input type="text" id="username" name="username" size="20" placeholder="${loggedInUser.username}" required value="${loggedInUser.username}"><br>
        
         <label for="password">Password:</label> <input type="text" id="password" name="password" size="20" placeholder="${loggedInUser.password}" required value="${loggedInUser.password}"><br>

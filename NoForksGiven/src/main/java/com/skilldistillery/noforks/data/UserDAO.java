@@ -16,4 +16,6 @@ public interface UserDAO {
 	boolean deleteByUserId(int userId, User user);
 	
 	User editUser(User user);
+	
+	public List<Recipe> findRecipeByKeyword(String keyword);
 }

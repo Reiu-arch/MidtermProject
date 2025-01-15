@@ -84,11 +84,19 @@ public class UserDAOImpl implements UserDAO{
 				sessionUser.setEmail(user.getEmail());
 				sessionUser.setProfileImage(user.getProfileImage());
 				sessionUser.setBiography(user.getBiography());
-				
+				em.persist(sessionUser);
 			}
 		} 
 
 		return sessionUser;
+	}
+
+
+
+	@Override
+	public List<Recipe> findRecipeByKeyword(String keyword) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

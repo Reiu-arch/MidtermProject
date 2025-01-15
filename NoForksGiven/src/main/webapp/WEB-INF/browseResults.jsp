@@ -13,7 +13,7 @@
 
 <c:forEach var="recipe" items="${recipeList}">
 	<ol>
-		<li>${recipe.imageUrl} </li>
+		<li><img src="${recipe.imageUrl}"/></li>
 		<li>${recipe.id} </li>
 		<li><a href="Recipe.do?recipeId=${recipe.id}">${recipe.name}</a> </li>
 		<li>${recipe.description} </li>
