@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.skilldistillery.noforks.data.MealDAO;
+import com.skilldistillery.noforks.data.UserDAO;
 import com.skilldistillery.noforks.entities.Meal;
 import com.skilldistillery.noforks.entities.User;
 
@@ -17,6 +18,10 @@ class MealController {
 
 	@Autowired
 	private MealDAO mealDao;
+	
+	@Autowired
+	private UserDAO userDao;
+	
 	
 	
 	@GetMapping(path = "createMeal.do")
@@ -30,7 +35,7 @@ class MealController {
 			User loggedInUser = (User) session.getAttribute("loggedInUser");
 			Meal newMeal = mealDao.addMeal(meal, loggedInUser);
 			model.addAttribute("meal", newMeal);
-			return "";
+			return "redirect:account.do";
 			
 			}catch (Exception e) {
 				e.printStackTrace();

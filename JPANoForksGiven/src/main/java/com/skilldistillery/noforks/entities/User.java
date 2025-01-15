@@ -50,13 +50,7 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Plan> plans;
 	
-	@ManyToMany
-	@JoinTable(
-			name="meal_comment", 
-			joinColumns=@JoinColumn(name="meal_id"), 
-			inverseJoinColumns=@JoinColumn(name="user_id"))
-	private List<Meal> meals;
-	
+
 	@OneToMany(mappedBy = "user")
 	private List<Meal> userMeals;
 	
@@ -174,12 +168,7 @@ public class User {
 	public void setBiography(String biography) {
 		this.biography = biography;
 	}
-	public List<Meal> getMeals() {
-		return meals;
-	}
-	public void setMeals(List<Meal> meals) {
-		this.meals = meals;
-	}
+
 	public List<Meal> getUserMeals() {
 		return userMeals;
 	}

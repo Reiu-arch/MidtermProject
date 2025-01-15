@@ -80,12 +80,20 @@ public class UserController {
 	@GetMapping("account.do")
 	public String goToAccount(HttpSession session) {
 		if (session.getAttribute("loggedInUser") != null) {
+			refreshLoggedInUser(session);
+			
 			return "account";
 		} else {
 			return "login";
 		}
 	}
 
+	private void refreshLoggedInUser(HttpSession session) {
+		User user = (User)session.getAttribute("loggedInUser");
+		user = userDao.authenticateUser(user.getUsername(), user.getPassword());
+		session.setAttribute("loggedInUser", user);
+	}
+	
 	
 	@GetMapping(path = "createaccount.do")
 	public String gocreate(User user, Model model) {
