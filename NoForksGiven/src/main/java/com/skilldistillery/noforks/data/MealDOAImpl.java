@@ -22,6 +22,11 @@ public class MealDOAImpl implements MealDAO {
 	@Override
 	public Meal addMeal(Meal meal, User user) {
 		meal.setUser(user);
+		System.out.println("****************************************************");
+		System.out.println(meal.getUser());
+		System.out.println(meal.getMealTypeId());
+		System.out.println(meal);
+		System.out.println("****************************************************");
 		em.persist(meal);
 		return meal;
 	}
