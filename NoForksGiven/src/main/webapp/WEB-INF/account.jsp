@@ -45,5 +45,13 @@
 	<c:otherwise>User not logged in</c:otherwise>
 </c:choose>
 
+
+<ol>
+<c:forEach var="meal" items="${loggedInUser.userMeals}">
+<li>${meal.name}</li>
+</c:forEach>
+</ol>
+
+
 </body>
 </html>

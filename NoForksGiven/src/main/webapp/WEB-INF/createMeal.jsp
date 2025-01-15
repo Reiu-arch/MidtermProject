@@ -8,6 +8,21 @@
 <title>Create Meal</title>
 </head>
 <body>
+<form action="createMeal.do" method="POST">
 
+<label for="name">Enter the name:</label> <input
+			type="text" id="name" name="name" size="50" required><br>
+
+<label for="notes">Enter the notes:</label> <input
+			type="text" id="notes" name="notes" size="50"><br>
+
+<label for="imageUrl">Enter image url:</label> <input
+			type="text" id="imageUrl" name="imageUrl" size="50"><br>
+			
+<label for="mealTypeId">Enter meal type Id (1: breakfast):</label> <input
+			type="text" id="mealTypeId" name="mealTypeId.id" size="50"><br>
+
+		<button onsubmit="return window.confirm('Confirm Add?');">SUBMIT </button>
+</form>
 </body>
 </html>
