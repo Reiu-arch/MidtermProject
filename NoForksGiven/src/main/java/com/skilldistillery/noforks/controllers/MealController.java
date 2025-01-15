@@ -57,6 +57,15 @@ class MealController {
 			return "meal";
 	}
 	
+	@GetMapping(path = "viewallmeals.do")
+	public String goAllMeals(User user, Model model, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		List<Meal> meals = mealDao.findAllMeals();
+		model.addAttribute("mealList", meals);
+		//add recipe
+			return "viewallmeals";
+	}
+	
 	@PostMapping(path = "addMeal.do")
 	public String addRecipeToMeal(HttpSession session, Model model, @RequestParam("mealId") int mealId,@RequestParam("recipeId") int recipeId ) {
 		

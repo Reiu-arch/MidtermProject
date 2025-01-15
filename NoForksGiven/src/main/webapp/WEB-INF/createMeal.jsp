@@ -8,6 +8,7 @@
 <title>Create Meal</title>
 </head>
 <body>
+<jsp:include page="navbar.jsp"/>
 <form action="createMeal.do" method="POST">
 
 <label for="name">Enter the name:</label> <input
