@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.noforks.data.RecipeDAO;
+import com.skilldistillery.noforks.data.UserDAO;
 import com.skilldistillery.noforks.entities.Recipe;
 import com.skilldistillery.noforks.entities.User;
 
@@ -18,6 +19,9 @@ public class RecipeController {
 	
 	@Autowired
 	private RecipeDAO recipeDao;
+	
+	@Autowired
+	private UserDAO userDao;
 
 	@GetMapping(path = "createrecipe.do")
 	public String gocreaterecipe(Model model) {
@@ -32,9 +36,6 @@ public class RecipeController {
 				model.addAttribute("errorMessage", "You need to log in to create a recipe");
 				return "login";
 			} 
-//			recipe.setUser(loggedInUser);
-//			recipe.setCreateDate(LocalDateTime.now());
-//			recipe.setLastUpdate(LocalDateTime.now());
 			
 			recipeDao.addRecipe(recipe, loggedInUser);
 				
@@ -48,9 +49,10 @@ public class RecipeController {
 	}
 	
 	@GetMapping(path = "Recipe.do")
-	public String showRecipe(Model model, @RequestParam("recipeId") int recipeId) {
+	public String showRecipe(Model model, @RequestParam("recipeId") int recipeId, HttpSession session) {
 		Recipe recipe = recipeDao.findRecipeById(recipeId);
 		model.addAttribute("recipe", recipe);
+		
 		return "Recipe";
 	}
 	
@@ -79,5 +81,10 @@ public class RecipeController {
 		return "redirect:browseResults.do";
 	}
 	
+	private void refreshLoggedInUser(HttpSession session) {
+		User user = (User)session.getAttribute("loggedInUser");
+		user = userDao.authenticateUser(user.getUsername(), user.getPassword());
+		session.setAttribute("loggedInUser", user);
+	}
 	
 }
