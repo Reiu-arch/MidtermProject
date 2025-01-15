@@ -123,18 +123,21 @@ public class UserController {
 		
 		return "redirect:goodbye.do";
 	}
+	
 	@GetMapping(path = "updateAccount.do")
-	public String showUpdateAccount(Model model, @RequestParam("recipeId") int recipeId) {
-		
+	public String goUpdateAccount(HttpSession session) {
+		if (session.getAttribute("loggedInUser") == null) {
+			return "login";
+		}
 		return "updateAccount";
 	}
 	
 	@PostMapping(path = "updateAccount.do")
-	public String updateRecipe( HttpSession session) {
+	public String updateAccount( HttpSession session) {
 		User user = (User) session.getAttribute("loggedInUser");
 		userDao.editUser(user);
 				
-		return "redirect:login.do";
+		return "redirect:account.do";
 	}
 	
 }

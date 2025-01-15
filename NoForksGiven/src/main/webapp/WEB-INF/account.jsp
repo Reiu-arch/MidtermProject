@@ -22,7 +22,10 @@
 	<h2>Welcome User Id:<c:out value = "${loggedInUser.id}"></c:out></h2>
 	<h3>user name: <c:out value = "${loggedInUser.username}"></c:out></h3>
 	
-	<a href="updateAccount.do?userId=${loggedInUser.id}">Update Account</a>
+	<form action="updateAccount.do" method="GET" class="action-form">
+                <input type="hidden" id="id" name="id" value="<c:out value='${loggedInUser.id}' />">
+                <button type="submit" class="edit-button">Edit Account</button>
+            </form>
 	
 	<form action="deleteAccount.do" action="logout.do" method="GET" class="action-form"
                   onsubmit="return window.confirm('Confirm Deletetion of your Account?');">

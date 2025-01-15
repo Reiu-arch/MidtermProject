@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.noforks.entities.Recipe;
 import com.skilldistillery.noforks.entities.User;
-import com.skilldistillery.noforks.entities.User;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
