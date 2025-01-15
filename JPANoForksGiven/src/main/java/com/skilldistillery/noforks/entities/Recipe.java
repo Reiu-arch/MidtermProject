@@ -80,14 +80,6 @@ public class Recipe {
 		super();
 	}
 	
-	public void addMeal(Meal meal) {
-		if (meals == null) {meals = new ArrayList<>();
-		}
-		if (! meals.contains(meal)) {
-			meals.add(meal);
-			meal.addRecipe(this);
-		}
-	}
 	
 
 	public int getId() {
@@ -209,7 +201,16 @@ public class Recipe {
 	}
 
 
+	public void addMeal(Meal meal) {
+		if (meals == null) {meals = new ArrayList<>();
+		}
+		if (! meals.contains(meal)) {
+			meals.add(meal);
+			meal.addRecipe(this);
+		}
+	}
 
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

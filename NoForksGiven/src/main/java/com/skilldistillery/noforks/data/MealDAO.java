@@ -10,5 +10,5 @@ public interface MealDAO {
 	Meal editMeal(int recipeId, Recipe recipeToUpdate, User user);
 	boolean deleteByMealId (int mealId, User user);
 	Meal findMealById (int mealId);
-	Meal addRecipeToMeal (int recipeId, int mealId, User user);
+	Meal addRecipeToMeal (int recipeId, int mealId, User userId);
 }
