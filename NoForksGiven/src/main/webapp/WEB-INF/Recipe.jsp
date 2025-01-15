@@ -25,7 +25,7 @@
 	</c:if>
 
 	<ol>
-		<li>${recipe.imageUrl}</li>
+		<li><img src="${recipe.imageUrl}"/></li>
 		<li>${recipe.name}</li>
 		<li>${recipe.id}</li>
 		<li>${recipe.description}</li>

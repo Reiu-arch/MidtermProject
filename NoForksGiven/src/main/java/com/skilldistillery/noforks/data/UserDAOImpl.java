@@ -84,7 +84,7 @@ public class UserDAOImpl implements UserDAO{
 				sessionUser.setEmail(user.getEmail());
 				sessionUser.setProfileImage(user.getProfileImage());
 				sessionUser.setBiography(user.getBiography());
-				
+				em.persist(sessionUser);
 			}
 		} 
 
