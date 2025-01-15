@@ -1,6 +1,7 @@
 package com.skilldistillery.noforks.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -79,6 +80,14 @@ public class Recipe {
 		super();
 	}
 	
+	public void addMeal(Meal meal) {
+		if (meals == null) {meals = new ArrayList<>();
+		}
+		if (! meals.contains(meal)) {
+			meals.add(meal);
+			meal.addRecipe(this);
+		}
+	}
 	
 
 	public int getId() {
