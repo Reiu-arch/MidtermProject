@@ -39,7 +39,13 @@
 		<li>${recipe.createDate}</li>
 		<li>${recipe.lastUpdate}</li>
 	</ol>
-
+	
+	<c:if test="${loggedInUser != null}">	
+	 <form action="meal.do" method="GET" class="action-form">
+         <input type="hidden" id="recipeId" name="recipeId" value="<c:out value='${recipe.id}' />">
+         <button type="submit" class="button">Add Recipe to Meal</button>
+     </form>
+	</c:if>
 
 </body>
 </html>
