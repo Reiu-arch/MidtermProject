@@ -49,6 +49,7 @@ CREATE TABLE IF NOT EXISTS `plan` (
   `notes` TEXT NULL,
   `user_id` INT NOT NULL,
   `image_url` VARCHAR(2000) NULL,
+  `schedule_date` DATETIME NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_planner_user1_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_planner_user1`
@@ -499,8 +500,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `noforksdb`;
-INSERT INTO `plan` (`id`, `create_date`, `last_update`, `notes`, `user_id`, `image_url`) VALUES (1, '2025-01-10', '2025-01-10', 'random note', 1, NULL);
-INSERT INTO `plan` (`id`, `create_date`, `last_update`, `notes`, `user_id`, `image_url`) VALUES (2, '2025-01-12', '2025-01-12', 'random note', 2, NULL);
+INSERT INTO `plan` (`id`, `create_date`, `last_update`, `notes`, `user_id`, `image_url`, `schedule_date`) VALUES (1, '2025-01-10', '2025-01-10', 'random note', 1, NULL, NULL);
+INSERT INTO `plan` (`id`, `create_date`, `last_update`, `notes`, `user_id`, `image_url`, `schedule_date`) VALUES (2, '2025-01-12', '2025-01-12', 'random note', 2, NULL, NULL);
 
 COMMIT;
 
