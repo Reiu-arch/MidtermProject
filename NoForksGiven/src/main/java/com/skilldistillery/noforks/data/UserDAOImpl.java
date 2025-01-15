@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.noforks.entities.Recipe;
 import com.skilldistillery.noforks.entities.User;
+import com.skilldistillery.noforks.entities.User;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -50,6 +51,45 @@ public class UserDAOImpl implements UserDAO{
 	String jpql = "SELECT r FROM Recipe r WHERE r.enabled=true";
 	List<Recipe> recipes = em.createQuery(jpql, Recipe.class).getResultList();
 		return recipes;
+	}
+
+
+
+	@Override
+	public boolean deleteByUserId(int userId, User user) {
+		User sessionUser = em.find(User.class, userId);
+		if (sessionUser.getId() != user.getId()) {
+			return false;
+		}
+
+		sessionUser.setEnabled(false);
+		em.persist(sessionUser);
+
+		return true;
+	}
+
+
+
+	@Override
+	public User editUser(User user) {
+		User sessionUser = em.find(User.class, user.getId());
+
+		if (user.getId() != sessionUser.getId()) {
+			return user;
+		}
+
+		if (user.getId() == sessionUser.getId()) {
+			if (sessionUser != null) {
+				sessionUser.setUsername(user.getUsername());
+				sessionUser.setPassword(user.getPassword());
+				sessionUser.setEmail(user.getEmail());
+				sessionUser.setProfileImage(user.getProfileImage());
+				sessionUser.setBiography(user.getBiography());
+				
+			}
+		} 
+
+		return sessionUser;
 	}
 
 }

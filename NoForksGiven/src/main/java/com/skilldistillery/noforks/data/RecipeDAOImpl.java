@@ -44,7 +44,7 @@ public class RecipeDAOImpl implements RecipeDAO {
 				recipe.setIngredients(recipeToUpdate.getIngredients());
 				recipe.setImageUrl(recipeToUpdate.getImageUrl());
 			}
-		}
+		} 
 
 		return recipe;
 	}

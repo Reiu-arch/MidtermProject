@@ -9,8 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.skilldistillery.noforks.data.RecipeDAO;
 import com.skilldistillery.noforks.data.UserDAO;
 import com.skilldistillery.noforks.entities.Recipe;
 import com.skilldistillery.noforks.entities.User;
@@ -45,14 +45,20 @@ public class UserController {
 	}
 
 	@PostMapping("login.do")
-	public String login(User user, HttpSession session) {
+	public String login(User user, HttpSession session, Model model) {
 		user = userDao.authenticateUser(user.getUsername(), user.getPassword());
 
-		if (user != null) {
-			session.setAttribute("loggedInUser", user);
-			return "account";
-		} else {
-			return "login";
+		try {
+			if (user != null) {
+				session.setAttribute("loggedInUser", user);
+				return "account";
+			} else {
+				return "login";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("loginErrorMessage", "Error occured trying to get in the main frame! Account does not exist or may be disabled.");
+			return "createaccount";
 		}
 	}
 
@@ -62,6 +68,13 @@ public class UserController {
 		session.removeAttribute("loggedInUser");
 
 		return "home";
+	}
+	@RequestMapping(path = "goodbye.do")
+	public String deleteLogout(HttpSession session) {
+		
+		session.removeAttribute("loggedInUser");
+		
+		return "goodbye";
 	}
 
 	@GetMapping("account.do")
@@ -101,6 +114,27 @@ public class UserController {
 			return "createaccount";
 		}
 
+	}
+	
+	@GetMapping(path = "deleteAccount.do")
+	public String deleteRecipe(@RequestParam("userId") int userId, HttpSession session) {
+		User user = (User) session.getAttribute("loggedInUser");
+		userDao.deleteByUserId(userId, user);	
+		
+		return "redirect:goodbye.do";
+	}
+	@GetMapping(path = "updateAccount.do")
+	public String showUpdateAccount(Model model, @RequestParam("recipeId") int recipeId) {
+		
+		return "updateAccount";
+	}
+	
+	@PostMapping(path = "updateAccount.do")
+	public String updateRecipe( HttpSession session) {
+		User user = (User) session.getAttribute("loggedInUser");
+		userDao.editUser(user);
+				
+		return "redirect:login.do";
 	}
 	
 }

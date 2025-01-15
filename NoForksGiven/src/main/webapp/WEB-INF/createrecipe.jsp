@@ -46,7 +46,7 @@
 		<!--<li>${recipe.ingredients} </li> String (text) -->
 		<label for="ingredients">Enter the recipe ingredients:</label> <input
 			type="text" id="ingredients" name="ingredients" size="100" required><br>
-		<button>SUBMIT</button>
+		<button onsubmit="return window.confirm('Confirm Add?');">SUBMIT </button>
 </form>
 </body>
 </html>
