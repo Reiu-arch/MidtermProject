@@ -154,15 +154,13 @@ public class UserController {
 		return "redirect:account.do";
 	}
 	@GetMapping(path = { "findRecipe.do" })
-	public String searchRecipeByKeyword(@RequestParam(name = "name", required = true, defaultValue = "") String name, Model model) {
-	    if (name.trim().isEmpty()) {
-	        model.addAttribute("names", new ArrayList<>()); // Return an empty list
-	        model.addAttribute("keyword", name);
-	        return "browseResults";
+	public String searchRecipeByKeyword(@RequestParam(name = "keyword", required = true, defaultValue = "") String keyword, Model model) {
+	    if (keyword.trim().isEmpty()) {
+	        return "redirect:browseResults.do";
 	    }
-	    List<Recipe> recipes = userDao.findRecipeByKeyword(name);
-	    model.addAttribute("recipes", recipes);
-	    model.addAttribute("keyword", name);
+	    List<Recipe> recipes = userDao.findRecipeByKeyword(keyword);
+	    model.addAttribute("recipeList", recipes);
+	    model.addAttribute("keyword", keyword);
 	    return "browseResults";
 	}
 }
