@@ -1,6 +1,7 @@
 package com.skilldistillery.noforks.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -67,72 +68,68 @@ public class Meal {
 	
 	@OneToMany(mappedBy ="meal")
 	private List<PlanMeal> planmeals;
+	
+	
 
 	public Meal() {
 		super();
 	}
+	
+	
+	public void addRecipe (Recipe recipe) {
+		if (recipes == null) {recipes = new ArrayList<>();
+		}
+		if (!recipes.contains(recipe)) {
+			recipes.add(recipe);
+			recipe.addMeal(this);
+		}
+		
+	}
 
+	
+	
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public LocalDateTime getCreateDate() {
 		return createDate;
 	}
-
 	public void setCreateDate(LocalDateTime createDate) {
 		this.createDate = createDate;
 	}
-
 	public LocalDateTime getLastUpdate() {
 		return lastUpdate;
 	}
-
 	public void setLastUpdate(LocalDateTime lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
-
 	public String getNotes() {
 		return notes;
 	}
-
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-
-
 	public String getImageUrl() {
 		return imageUrl;
 	}
-
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
-
-	
-	
-
 	public List<MealReview> getMealReviews() {
 		return mealReviews;
 	}
-
 	public void setMealReviews(List<MealReview> mealReviews) {
 		this.mealReviews = mealReviews;
 	}
-
 	public void setMealTypeId(MealType mealTypeId) {
 		this.mealTypeId = mealTypeId;
 	}
@@ -140,52 +137,40 @@ public class Meal {
 	public MealType getMealTypeId() {
 		return mealTypeId;
 	}
-
-
 	public List<Recipe> getRecipes() {
 		return recipes;
 	}
-
 	public void setRecipes(List<Recipe> recipes) {
 		this.recipes = recipes;
 	}
-
-
 	public List<MealComment> getMealComments() {
 		return mealComments;
 	}
-
 	public void setMealComments(List<MealComment> mealComments) {
 		this.mealComments = mealComments;
 	}
-
-	
-	
 	public List<PlanMeal> getPlanmeals() {
 		return planmeals;
 	}
-
 	public void setPlanmeals(List<PlanMeal> planmeals) {
 		this.planmeals = planmeals;
 	}
-
 	public List<User> getUsersWithFavMeals() {
 		return usersWithFavMeals;
 	}
-
 	public void setUsersWithFavMeals(List<User> usersWithFavMeals) {
 		this.usersWithFavMeals = usersWithFavMeals;
 	}
-
-	
-	
-	
-	
-	
-	
-	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 
+	
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(createDate, id, imageUrl, lastUpdate, mealComments, mealReviews, mealTypeId, name, notes,
@@ -209,24 +194,13 @@ public class Meal {
 				&& Objects.equals(recipes, other.recipes) && Objects.equals(user, other.user)
 				&& Objects.equals(usersWithFavMeals, other.usersWithFavMeals);
 	}
+	
 
 	@Override
 	public String toString() {
 		return "Meal [id=" + id + ", name=" + name + ", createDate=" + createDate + ", lastUpdate=" + lastUpdate
 				+ ", notes=" + notes + ", imageUrl=" + imageUrl + ", mealTypeId=" + mealTypeId + ", user=" + user + "]";
 	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-
-
-	
 	
 }
 
