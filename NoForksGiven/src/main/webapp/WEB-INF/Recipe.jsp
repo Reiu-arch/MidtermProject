@@ -54,11 +54,10 @@ nav a {
 	font-weight: bold;
 }
 
-
 .recipe-container {
 	display: flex;
 	justify-content: center;
-	margin-top: 40px;
+	margin-top: 10px;
 	padding: 20px;
 }
 
@@ -106,30 +105,95 @@ nav a {
 	background-color: #2c6e48;
 }
 
+.button-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	margin-top: 20px;
+}
+
+.button, .delete-button {
+	padding: 12px 20px;
+	font-size: 1.2em;
+	border-radius: 8px;
+	text-align: center;
+	cursor: pointer;
+	text-decoration: none;
+	display: inline-block;
+	transition: background-color 0.3s ease;
+	border: none;
+	width: auto;
+}
+
+.button {
+	background-color: #296A4B;
+	color: white;
+}
+
+.button:hover {
+	background-color: #2c6e48;
+}
+
 .delete-button {
 	background-color: #D9534F;
+	color: white;
 }
 
 .delete-button:hover {
 	background-color: #c9302c;
 }
 
+.action-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px auto;
+	width: 80%;
+	background-color: #E5F4ED;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.action-form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 15px;
+	width: 100%;
+}
+
 .form-select {
 	padding: 12px 20px;
-	font-size: 1.2em;
-	width: 100%;
-	border-radius: 8px;
+	font-size: 1.1em;
 	border: 1px solid #ddd;
-	background-color: #f9f9f9;
+	border-radius: 8px;
+	background-color: white;
 	color: #555;
-	margin-top: 20px;
-	box-sizing: border-box;
+	width: 60%;
 }
 
 .form-select:focus {
 	outline: none;
 	border-color: #296A4B;
 	box-shadow: 0 0 5px rgba(41, 106, 75, 0.5);
+}
+
+.button {
+	padding: 12px 20px;
+	font-size: 1.1em;
+	background-color: #296A4B;
+	color: white;
+	text-decoration: none;
+	border-radius: 8px;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.recipe-details img {
+	margin-top: 50px;
 }
 
 @media ( max-width : 768px) {
@@ -161,22 +225,39 @@ nav a {
 	<h1>Recipe Details</h1>
 	<jsp:include page="navbar.jsp" />
 
+	<!-- Dropdown and Add Recipe to Meal button -->
+	<c:if test="${loggedInUser != null}">
+		<div class="action-container">
+			<form action="addMeal.do" method="POST" class="action-form">
+				<select name="mealId" class="form-select">
+					<c:forEach var="meal" items="${loggedInUser.userMeals}">
+						<c:if test="${meal.enabled == true}">
+							<option value="${meal.id}">${meal.name}</option>
+						</c:if>
+					</c:forEach>
+				</select> <input type="hidden" id="recipeId" name="recipeId"
+					value="<c:out value='${recipe.id}' />">
+				<button type="submit" class="button">Add Recipe to Meal</button>
+			</form>
+		</div>
+	</c:if>
+
 	<div class="recipe-container">
 		<div class="recipe-details">
 
 			<c:if test="${loggedInUser == recipe.user}">
-				<h3>
-					<c:out value="${loggedInUser.username}"></c:out>
-				</h3>
-				<a href="updateRecipe.do?recipeId=${recipe.id}" class="button">Update
-					Recipe</a>
-				<form action="deleteRecipe.do" method="GET" class="action-form"
-					onsubmit="return window.confirm('Confirm Delete?');">
-					<input type="hidden" id="recipeId" name="recipeId"
-						value="<c:out value='${recipe.id}' />">
-					<button type="submit" class="delete-button">Delete Recipe</button>
-				</form>
+				<div class="button-container">
+					<a href="updateRecipe.do?recipeId=${recipe.id}" class="button">Update
+						Recipe</a>
+					<form action="deleteRecipe.do" method="GET" class="action-form"
+						onsubmit="return window.confirm('Confirm Delete?');">
+						<input type="hidden" id="recipeId" name="recipeId"
+							value="<c:out value='${recipe.id}' />">
+						<button type="submit" class="delete-button">Delete Recipe</button>
+					</form>
+				</div>
 			</c:if>
+
 
 			<img src="${recipe.imageUrl}" alt="Recipe Image" />
 			<h2>${recipe.name}</h2>
@@ -215,20 +296,6 @@ nav a {
 			</p>
 		</div>
 	</div>
-
-	<c:if test="${loggedInUser != null}">
-		<form action="addMeal.do" method="POST" class="action-form">
-			<select name="mealId" class="form-select">
-				<c:forEach var="meal" items="${loggedInUser.userMeals}">
-					<c:if test="${meal.enabled == true}">
-						<option value="${meal.id}">${meal.name}</option>
-					</c:if>
-				</c:forEach>
-			</select> <input type="hidden" id="recipeId" name="recipeId"
-				value="<c:out value='${recipe.id}' />">
-			<button type="submit" class="button">Add Recipe to Meal</button>
-		</form>
-	</c:if>
-
 </body>
+
 </html>

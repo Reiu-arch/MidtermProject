@@ -187,18 +187,6 @@ nav a {
 			</div>
 
 			<div class="profile-actions">
-				<form action="updateAccount.do" method="GET">
-					<input type="hidden" id="id" name="id"
-						value="<c:out value='${loggedInUser.id}' />">
-					<button type="submit" class="edit-button">Edit Account</button>
-				</form>
-
-				<form action="deleteAccount.do" method="GET"
-					onsubmit="return window.confirm('Confirm Deletion of your Account?');">
-					<input type="hidden" id="userId" name="userId"
-						value="<c:out value='${loggedInUser.id}' />">
-					<button type="submit" class="delete-button">Delete Account</button>
-				</form>
 
 				<form action="createrecipe.do" method="GET">
 					<input type="hidden" id="id" name="id"
@@ -218,9 +206,24 @@ nav a {
 						value="<c:out value='${loggedInUser.id}' />">
 					<button type="submit" class="edit-button">View Meals</button>
 				</form>
+				
+				<form action="updateAccount.do" method="GET">
+					<input type="hidden" id="id" name="id"
+						value="<c:out value='${loggedInUser.id}' />">
+					<button type="submit" class="edit-button">Edit Account</button>
+				</form>
+
+				<form action="deleteAccount.do" method="GET"
+					onsubmit="return window.confirm('Confirm Deletion of your Account?');">
+					<input type="hidden" id="userId" name="userId"
+						value="<c:out value='${loggedInUser.id}' />">
+					<button type="submit" class="delete-button">Delete Account</button>
+					
+				</form>
 			</div>
 
 			<div class="meal-list">
+
 				<h3>
 					Your Meals <a href="viewallmeals.do"
 						style="color: #296A4B; font-size: 1.1em; margin-left: 20px;">View
@@ -260,6 +263,27 @@ nav a {
 					</c:forEach>
 				</ul>
 			</div>
+
+    <%-- <h3>Your Meals
+        <a href="viewallmeals.do" style="color: #296A4B; font-size: 1.1em; margin-left: 20px;">View All Meals</a>
+    </h3>
+    <ul>
+        <c:forEach var="meal" items="${loggedInUser.userMeals}">
+            <c:if test="${meal.enabled == true }">
+                <li>
+                    ${meal.name}
+                    <form action="deleteMeal.do" method="GET" style="display:inline;">
+                        <input type="hidden" name="mealId" value="${meal.id}">
+                        <button type="submit" class="delete-button" onclick="return window.confirm('Are you sure you want to delete this meal?');">
+                            Delete Meal
+                        </button>
+                    </form>
+                </li>
+            </c:if>
+        </c:forEach>
+    </ul>
+</div> --%>
+
 
 		</c:when>
 
