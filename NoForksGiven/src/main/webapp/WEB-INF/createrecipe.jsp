@@ -125,7 +125,7 @@ form button:hover {
 		<label for="imageUrl">Enter the URL of your picture:</label> <input
 			type="text" id="imageUrl" name="imageUrl" size="50" required>
 
-		<label for="name">Enter the recipe name:</label> <input type="text"
+		<label for="name">Enter the recipe's name:</label> <input type="text"
 			id="name" name="name" size="20" required> <label
 			for="description">Enter the description:</label> <input type="text"
 			id="description" name="description" size="80" required> <label
@@ -133,7 +133,7 @@ form button:hover {
 			type="number" id="prepTimeMin" name="prepTimeMin" required> <label
 			for="cookTimeMin">Enter the cook time in minutes:</label> <input
 			type="number" id="cookTimeMin" name="cookTimeMin" required> <label
-			for="instructions">Enter the recipe instructions:</label> <input
+			for="instructions">Enter the recipe's instructions:</label> <input
 			type="text" id="instructions" name="instructions" size="100" required>
 
 		<label for="servings">Enter the serving size:</label> <input
@@ -144,7 +144,10 @@ form button:hover {
 		<label for="medium">Medium</label> <input type="radio" id="hard"
 			name="difficulty" value="Hard"> <label for="hard">Hard</label>
 
-		<label for="ingredients">Enter the recipe ingredients:</label> <input
+			<br>
+			<br>
+
+		<label for="ingredients">Enter the recipe's ingredients:</label> <input
 			type="text" id="ingredients" name="ingredients" size="100" required>
 
 		<button type="submit" onclick="return window.confirm('Confirm Add?');">Submit</button>
