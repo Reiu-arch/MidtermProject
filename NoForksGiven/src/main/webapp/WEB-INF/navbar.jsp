@@ -8,7 +8,7 @@
 			</h3>
 			<a href="home.do">Home</a>
 			<!-- FOR ALL -->
-			<a href="browseResults.do" class="button">Browse</a>
+			<a href="browseResults.do">Browse</a>
 			<!-- FOR ALL -->
 
 			<a href="account.do">Account</a>
@@ -25,7 +25,7 @@
 		<c:otherwise>
 			<a href="home.do">Home</a>
 			<!-- FOR ALL -->
-			<a href="browseResults.do" class="button">Browse</a>
+			<a href="browseResults.do">Browse</a>
 			<!-- FOR ALL -->
 			<a href="login.do">Login</a>
 			<!-- wont be shown upon logging in -->
