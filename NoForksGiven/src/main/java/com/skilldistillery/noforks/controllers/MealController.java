@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.skilldistillery.noforks.data.MealDAO;
 import com.skilldistillery.noforks.data.UserDAO;
 import com.skilldistillery.noforks.entities.Meal;
-import com.skilldistillery.noforks.entities.Recipe;
 import com.skilldistillery.noforks.entities.User;
 
 import jakarta.servlet.http.HttpSession;
