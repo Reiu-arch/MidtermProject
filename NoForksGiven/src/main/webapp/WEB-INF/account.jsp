@@ -211,6 +211,7 @@ nav a {
 						<c:if test="${meal.enabled == true}">
 							<li>${meal.name}
 								<form action="deleteMeal.do" method="GET" style="display: inline;">
+								<input type="hidden" id="mealId" name="mealId" value="<c:out value='${meal.id}' />">
 									<button type="submit" class="delete-button" 
 									onclick="return confirm('Are you sure you want to delete this meal?');">Delete Meal</button>
 								</form>
