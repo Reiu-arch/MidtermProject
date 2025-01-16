@@ -10,7 +10,7 @@
 <body>
 <jsp:include page="navbar.jsp"/>
 
-<form action="createPlanMeal.do" method="POST">
+<form action="CreatePlanMeal.do" method="POST">
 
 <label for="dayNumber">Choose the Day :</label>
 	<select name="dayNumber" id ="dayNumber">
