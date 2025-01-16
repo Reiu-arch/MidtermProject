@@ -97,8 +97,10 @@ public class UserDAOImpl implements UserDAO{
 		   if (keyword == null || keyword.trim().isEmpty()) {
 		        return new ArrayList<>(); // This will return an empty array list, but i also put a check on the controller. Works fine but still relatively unsure
 		    }
-		    String jpql = "SELECT r FROM Recipe r WHERE r.name LIKE :keyword";
+		    String jpql = "SELECT r FROM Recipe r WHERE r.name LIKE :keyword OR r.description LIKE :keyword OR r.ingredients LIKE :keyword";
 		    return em.createQuery(jpql, Recipe.class)
+		             .setParameter("keyword", "%" + keyword.trim() + "%")
+		             .setParameter("keyword", "%" + keyword.trim() + "%")
 		             .setParameter("keyword", "%" + keyword.trim() + "%")
 		             .getResultList();
 	}

@@ -101,7 +101,7 @@ nav a {
 
 .search-section a {
 	padding: 12px 20px;
-	background-color: #D4B57F;
+	background-color: #296A4B;
 	color: white;
 	text-decoration: none;
 	font-size: 1em;
@@ -183,17 +183,17 @@ footer a {
 </head>
 <body>
 	<header>
-		<p>Our Recipes, Your Choice!</p>
+		<p>Our Recipes Your Choice!</p>
 	</header>
 	<h1>No Forks Given</h1>
 	<jsp:include page="navbar.jsp" />
 	<p class="tagline">Why Fork Around. Just Eat</p>
 
-	<form action="browseResults.do" method="GET" class="search-section">
+	<form action="findRecipe.do" method="GET" class="search-section">
 		<fieldset>
-			<label for="keyword"></label> <input type="text" name="keyword"
-				id="keyword" placeholder="Search"> <a
-				href="browseResults.do" class="view-all">View All Recipes</a>
+			<label for="keyword"></label> 
+			<input type="text" name="keyword" id="keyword" placeholder="Search By Keyword" value="${keyword}"> 
+			<a href="browseResults.do" class="view-all">View All Recipes</a>
 		</fieldset>
 	</form>
 	
