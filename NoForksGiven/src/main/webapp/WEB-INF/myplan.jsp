@@ -12,6 +12,7 @@
 <body>
 <h1>My Plans</h1>
 
+<<<<<<< HEAD
 <table>
 <thead>
 	<tr>
@@ -53,6 +54,8 @@
 </table>
 
 
+=======
+>>>>>>> abc037d7c1854f073dddcdb765030d5ad79f022b
 
 </body>
 </html>

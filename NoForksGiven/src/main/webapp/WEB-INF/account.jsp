@@ -45,7 +45,7 @@
                 <button type="submit" class="edit-button">Create New Meal</button>
             </form>
             
-     <form action="meal.do" method="GET" class="action-form">
+     <form action="viewallmeals.do" method="GET" class="action-form">
                 <input type="hidden" id="id" name="id" value="<c:out value='${loggedInUser.id}' />">
                 <button type="submit" class="edit-button">View Meals</button>
             </form>
