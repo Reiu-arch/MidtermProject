@@ -19,19 +19,20 @@
 
 	<label for="imageUrl">Image Url:</label><input type="text" id="imageUrl" name="imageUrl" placeholder="${meal.imageUrl}" value="${meal.imageUrl}"><br>
             
-    <label for="mealTypeId">Meal Type:</label> <input type="text" id="mealTypeId" name="mealTypeId.id" size="80" placeholder="${meal.mealTypeId.id}" value="${meal.notes}"><br>
+    <label for="mealTypeId">Meal Type:</label> <input type="text" id="mealTypeId" name="mealTypeId.id" size="80" placeholder="${meal.mealTypeId.id}" value="${meal.mealTypeId.id}"><br>
 <button>Update</button>
 </form>
 
-
-
+ 
 <c:forEach var="recipe" items="${meal.recipes}">
-			<li>${recipe.name}</li>
-			 <form action="deleteRecipe.do" method="GET" class="action-form"
-                  onsubmit="return window.confirm('Confirm Delete?');">
-                <input type="hidden" id="recipeId" name="recipeId" value="<c:out value='${recipe.id}'/>">
-                <button type="submit" class="delete-button">Delete Recipe</button>
-            </form>
+	<li>${recipe.name}</li>
+		<form action="removeRecipe.do" method="POST" class="action-form"
+ 		onsubmit="return window.confirm('Confirm Delete?');">
+        <input type="hidden" id="recipeId" name="recipeId" value="<c:out value='${recipe.id}' />">
+       <input type="hidden" id="mealId" name="mealId" value="<c:out value='${meal.id}' />">	
+        <button type="submit" class="button">Remove Recipe</button>
+ 	   
+ 	    </form>
 </c:forEach>
 
 

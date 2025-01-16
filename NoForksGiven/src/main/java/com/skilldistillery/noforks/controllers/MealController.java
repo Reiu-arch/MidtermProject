@@ -88,6 +88,19 @@ class MealController {
 			return "redirect:account.do";
 		}
 	} 
+	@PostMapping(path = "removeRecipe.do")
+	public String remoeRecipe(HttpSession session, Model model, @RequestParam("mealId") int mealId,@RequestParam("recipeId") int recipeId ) {
+		
+		try {
+			User loggedInUser = (User) session.getAttribute("loggedInUser");
+			Meal mealWithRecipe = mealDao.removeRecipeFromMeal(recipeId, mealId, loggedInUser);
+			model.addAttribute("meal", mealWithRecipe);
+			return "meal";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "redirect:updateMeal.do";
+		}
+	}
 	
 	@GetMapping(path = "deleteMeal.do")
 	public String deleteMeal(HttpSession session, @RequestParam("mealId") int mealId) {

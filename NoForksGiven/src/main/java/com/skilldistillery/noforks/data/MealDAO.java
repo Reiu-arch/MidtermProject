@@ -13,5 +13,6 @@ public interface MealDAO {
 	boolean deleteMealById (int mealId, User user);
 	Meal findMealById (int mealId);
 	Meal addRecipeToMeal (int recipeId, int mealId, User userId);
+	Meal removeRecipeFromMeal (int recipeId, int mealId, User userId);
 	List<Meal>findAllMeals();
 } 

@@ -22,11 +22,6 @@ public class MealDOAImpl implements MealDAO {
 	@Override
 	public Meal addMeal(Meal meal, User user) {
 		meal.setUser(user);
-		System.out.println("****************************************************");
-		System.out.println(meal.getUser());
-		System.out.println(meal.getMealTypeId());
-		System.out.println(meal);
-		System.out.println("****************************************************");
 		em.persist(meal);
 		return meal;
 	}
@@ -57,15 +52,12 @@ public class MealDOAImpl implements MealDAO {
 
 	@Override
 	public Meal addRecipeToMeal(int recipeId, int mealId, User userId) {
-//		if(meal.getUser().getId() != user.getId()) {
-//			return null;
-//			};
 		Recipe recipe = em.find(Recipe.class, recipeId);
-		Meal addedToMeal = em.find(Meal.class, mealId);
-		addedToMeal.addRecipe(recipe);
+		Meal meal = em.find(Meal.class, mealId);
+		meal.addRecipe(recipe);
 		
 		System.out.println(recipeId + " " + mealId);
-		return addedToMeal; 
+		return meal; 
 	}
  
 	@Override
@@ -84,6 +76,16 @@ public class MealDOAImpl implements MealDAO {
 		meal.setEnabled(false);
 		em.persist(meal);
 		return true;
+	}
+
+	@Override
+	public Meal removeRecipeFromMeal(int recipeId, int mealId, User userId) {
+		Recipe recipe = em.find(Recipe.class, recipeId);
+		Meal meal = em.find(Meal.class, mealId);
+		meal.removeRecipe(recipe);
+		
+		System.out.println(recipeId + " " + mealId);
+		return meal;
 	}
 	
 	 
