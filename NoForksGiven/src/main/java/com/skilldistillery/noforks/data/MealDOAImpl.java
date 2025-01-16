@@ -52,8 +52,9 @@ public class MealDOAImpl implements MealDAO {
 
 	@Override
 	public Meal findMealById(int mealId) {
-		// TODO Auto-generated method stub
-		return null;
+		String jpql = "SELECT m FROM Meal m WHERE id = :mealId";
+		Meal meal = em.createQuery(jpql, Meal.class).setParameter("mealId",mealId).getSingleResult();
+		return meal;
 	}
 
 	@Override

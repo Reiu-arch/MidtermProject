@@ -49,10 +49,17 @@ class MealController {
 			}
 	}
 	
-	@RequestMapping(path = "meal.do")
-	public String goMeal(User user, Model model) {
-		List<Meal> meals = mealDao.findAllMeals();
-		model.addAttribute("mealList", meals);
+	@RequestMapping(path = "showMeal.do")
+	public String goMeal( Model model,@RequestParam("mealId") int mealId) {
+		Meal meal = mealDao.findMealById(mealId);
+		System.out.println("****************************************");
+		System.out.println("****************************************");
+		System.out.println("****************************************");
+		System.out.println(meal);
+		System.out.println("****************************************");
+		System.out.println("****************************************");
+		System.out.println("****************************************");
+		model.addAttribute("meal", meal);
 		//add recipe
 			return "meal";
 	}

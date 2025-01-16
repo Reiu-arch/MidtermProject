@@ -12,7 +12,10 @@
 
 	<ol>
 		<c:forEach var="meal" items="${mealList}">
-			<li><a href="meal.do?mealId=${meal.id}">${meal.name}</a> </li>
+			<li>
+			<form action="showMeal.do" method="GET" class="action-form">
+                <input type="hidden" id="mealId" name="mealId" value="${meal.id}">
+                <button type="submit" class="edit-button">View</button> </form> ${meal.name} </li>
 
 		</c:forEach>
 	</ol>
