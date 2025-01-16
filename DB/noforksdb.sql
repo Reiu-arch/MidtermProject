@@ -615,8 +615,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `noforksdb`;
-INSERT INTO `plan_meal` (`id`, `plan_id`, `meal_id`, `meal_type_id`, `day_number`, `notes`) VALUES (1, 1, 1, 1, NULL, 'random note');
-INSERT INTO `plan_meal` (`id`, `plan_id`, `meal_id`, `meal_type_id`, `day_number`, `notes`) VALUES (2, 2, 1, 1, NULL, 'another note');
+INSERT INTO `plan_meal` (`id`, `plan_id`, `meal_id`, `meal_type_id`, `day_number`, `notes`) VALUES (1, 1, 1, 1, 1, 'random note');
+INSERT INTO `plan_meal` (`id`, `plan_id`, `meal_id`, `meal_type_id`, `day_number`, `notes`) VALUES (2, 2, 1, 1, 2, 'another note');
 
 COMMIT;
 
