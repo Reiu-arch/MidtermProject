@@ -9,11 +9,7 @@
 </head>
 <body>
 <jsp:include page="navbar.jsp"/>
-<<<<<<< HEAD
 
-
-=======
->>>>>>> abc037d7c1854f073dddcdb765030d5ad79f022b
 <form action="createMeal.do" method="POST">
 
 <label for="name">Enter the name:</label> <input

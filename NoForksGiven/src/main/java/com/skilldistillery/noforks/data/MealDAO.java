@@ -9,7 +9,7 @@ import com.skilldistillery.noforks.entities.User;
 public interface MealDAO {
 
 	Meal addMeal(Meal meal, User user);
-	Meal editMeal(int recipeId, Recipe recipeToUpdate, User user);
+	Meal editMeal(int mealId, Meal mealToUpdate, User user);
 	boolean deleteMealById (int mealId, User user);
 	Meal findMealById (int mealId);
 	Meal addRecipeToMeal (int recipeId, int mealId, User userId);

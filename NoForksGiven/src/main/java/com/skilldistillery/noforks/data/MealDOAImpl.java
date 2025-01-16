@@ -32,9 +32,19 @@ public class MealDOAImpl implements MealDAO {
 	}
 
 	@Override
-	public Meal editMeal(int recipeId, Recipe recipeToUpdate, User user) {
-		// TODO Auto-generated method stub
-		return null;
+	public Meal editMeal(int mealId, Meal mealToUpdate, User user) {
+		
+		Meal meal = em.find(Meal.class, user.getId());
+		if (meal.getUser().getId() != user.getId()) {
+			return null;
+		}
+		if(meal !=null) {
+			meal.setName(mealToUpdate.getName());
+			meal.setNotes(mealToUpdate.getNotes());
+			meal.setImageUrl(mealToUpdate.getImageUrl());
+			meal.setMealTypeId(mealToUpdate.getMealTypeId());
+		}
+		return meal;
 	}
 
 
@@ -67,8 +77,13 @@ public class MealDOAImpl implements MealDAO {
 
 	@Override
 	public boolean deleteMealById(int mealId, User user) {
-		// TODO Auto-generated method stub
-		return false;
+		Meal meal = em.find(Meal.class, mealId);
+		if(meal.getUser().getId() != user.getId()) {
+			return false;
+		}
+		meal.setEnabled(false);
+		em.persist(meal);
+		return true;
 	}
 	
 	 

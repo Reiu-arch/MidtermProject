@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.skilldistillery.noforks.data.MealDAO;
 import com.skilldistillery.noforks.data.UserDAO;
 import com.skilldistillery.noforks.entities.Meal;
+import com.skilldistillery.noforks.entities.Recipe;
 import com.skilldistillery.noforks.entities.User;
 
 import jakarta.servlet.http.HttpSession;
@@ -70,7 +71,7 @@ class MealController {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
 		List<Meal> meals = mealDao.findAllMeals();
 		model.addAttribute("mealList", meals);
-		//add recipe
+		//add loggedUser to reference THEIR meals
 			return "viewallmeals";
 	}
 	
@@ -86,15 +87,32 @@ class MealController {
 			e.printStackTrace();
 			return "redirect:account.do";
 		}
-	}
+	} 
 	
 	@GetMapping(path = "deleteMeal.do")
 	public String deleteMeal(HttpSession session, @RequestParam("mealId") int mealId) {
 		User user = (User) session.getAttribute("loggedInUser");
 		mealDao.deleteMealById(mealId, user);
 		
-		return "redirect:meal.do";
+		return "redirect:account.do";
 		
+	}
+	
+	@GetMapping(path = "updateMeal.do")
+	public String showUpdateRecipe(Model model, @RequestParam("mealId") int mealId) {
+		Meal meal = mealDao.findMealById(mealId);
+		model.addAttribute("meal", meal);
+		return "updateMeal";
+	}
+	
+	
+	@PostMapping(path = "updateMeal.do")
+	public String updateRecipe(Model model, HttpSession session, Meal meal, @RequestParam("mealId") int mealId) {
+		User user = (User) session.getAttribute("loggedInUser");
+		Meal mealToUpdate = mealDao.editMeal(mealId, meal, user);
+		model.addAttribute("meal", mealToUpdate);	
+				
+		return "redirect:showMeal.do?mealId=" + mealToUpdate.getId();
 	}
 	
 }

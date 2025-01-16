@@ -13,7 +13,7 @@
 
 	<h1>Meal Page</h1>
 	<!-- ************ user will edit or delete meal here AND add recipe -->
-
+	<h2>${meal.name}</h2>
 	<ol>
 		<c:forEach var="recipe" items="${meal.recipes}">
 			<li>${recipe.name}</li>
@@ -22,5 +22,12 @@
 	</ol>
 
 	<a href="browseResults.do" class="button">Add Recipes to Meal</a>
+	<a href="updateMeal.do?mealId=${meal.id}">Update Meal</a>
+	<form action="deleteMeal.do" method="GET" class="action-form"
+          onsubmit="return window.confirm('Confirm Delete?');">
+          <input type="hidden" id="mealId" name="mealId" value="<c:out value='${meal.id}' />">
+          <button type="submit" class="delete-button">Delete meal</button>
+    </form>
+    
 </body>
 </html>
