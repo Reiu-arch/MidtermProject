@@ -37,18 +37,6 @@ public class MealDOAImpl implements MealDAO {
 		return null;
 	}
 
-	@Override
-	public boolean deleteMealById(int mealId, User user) {
-		Meal meal = em.find(Meal.class, mealId);
-		if (meal.getUser().getId() != user.getId()) {
-			return false;
-		}
-		
-		meal.setEnabled(false);
-		em.persist(meal);
-		
-		return true;
-	}
 
 	@Override
 	public Meal findMealById(int mealId) {
@@ -69,12 +57,18 @@ public class MealDOAImpl implements MealDAO {
 		System.out.println(recipeId + " " + mealId);
 		return addedToMeal; 
 	}
-
+ 
 	@Override
 	public List<Meal> findAllMeals() {
 		String jpql = "SELECT m FROM Meal m";
 		List<Meal> meals = em.createQuery(jpql, Meal.class).getResultList();
 		return meals;
+	}
+
+	@Override
+	public boolean deleteMealById(int mealId, User user) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	 

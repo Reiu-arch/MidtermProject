@@ -18,7 +18,7 @@ import com.skilldistillery.noforks.entities.User;
 import jakarta.servlet.http.HttpSession;
 
 @Controller 
-class MealController {
+class MealController { 
 
 	@Autowired
 	private MealDAO mealDao;
@@ -64,6 +64,7 @@ class MealController {
 			return "meal";
 	}
 	
+
 	@GetMapping(path = "viewallmeals.do")
 	public String goAllMeals(User user, Model model, HttpSession session) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");

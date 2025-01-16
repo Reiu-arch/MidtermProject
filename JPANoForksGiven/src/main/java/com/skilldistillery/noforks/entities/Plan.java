@@ -18,107 +18,130 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 public class Plan {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	@Column(name="create_date")
+
+	private String name;
+
+	@Column(name = "create_date")
 	@CreationTimestamp
 	private LocalDateTime createDate;
-	
-	@Column(name="last_update")
+
+	@Column(name = "last_update")
 	@UpdateTimestamp
 	private LocalDateTime lastUpdate;
 	private String notes;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-	
-	@Column(name="image_url")
+
+	@Column(name = "image_url")
 	private String imageUrl;
-	
-	@OneToMany(mappedBy ="plan")
+
+	@OneToMany(mappedBy = "plan")
 	private List<PlanMeal> planmeals;
-	
-	@OneToMany(mappedBy ="plan")
+
+	@OneToMany(mappedBy = "plan")
 	private List<PlanComment> plancomments;
-	
-	@Column(name="schedule_date")
+
+	@Column(name = "schedule_date")
 	private LocalDateTime scheduleDate;
 	private boolean enabled;
-	
-	
 
 	public Plan() {
 		super();
 	}
-	
-	
 
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public LocalDateTime getCreateDate() {
 		return createDate;
 	}
+
 	public void setCreateDate(LocalDateTime createDate) {
 		this.createDate = createDate;
 	}
+
 	public LocalDateTime getLastUpdate() {
 		return lastUpdate;
 	}
+
 	public void setLastUpdate(LocalDateTime lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
+
 	public String getNotes() {
 		return notes;
 	}
+
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
+
 	public User getUser() {
 		return user;
 	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}
+
 	public String getImageUrl() {
 		return imageUrl;
 	}
+
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
+
 	public List<PlanMeal> getPlanmeals() {
 		return planmeals;
 	}
+
 	public void setPlanmeals(List<PlanMeal> planmeals) {
 		this.planmeals = planmeals;
 	}
+
 	public List<PlanComment> getPlancomments() {
 		return plancomments;
 	}
+
 	public void setPlancomments(List<PlanComment> plancomments) {
 		this.plancomments = plancomments;
 	}
+
 	public LocalDateTime getScheduleDate() {
 		return scheduleDate;
 	}
+
 	public void setScheduleDate(LocalDateTime scheduleDate) {
 		this.scheduleDate = scheduleDate;
 	}
+
 	public boolean isEnabled() {
 		return enabled;
 	}
+
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
-
-
 
 	@Override
 	public int hashCode() {
@@ -139,15 +162,11 @@ public class Plan {
 				&& Objects.equals(notes, other.notes) && Objects.equals(planmeals, other.planmeals)
 				&& Objects.equals(user, other.user);
 	}
-	
-	
 
 	@Override
 	public String toString() {
 		return "Plan [id=" + id + ", createDate=" + createDate + ", lastUpdate=" + lastUpdate + ", user=" + user
 				+ ", imageUrl=" + imageUrl + ", scheduleDate=" + scheduleDate + ", enabled=" + enabled + "]";
 	}
-
-	
 
 }
