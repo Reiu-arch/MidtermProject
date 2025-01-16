@@ -22,6 +22,11 @@ public class MealDOAImpl implements MealDAO {
 	@Override
 	public Meal addMeal(Meal meal, User user) {
 		meal.setUser(user);
+		System.out.println("****************************************************");
+		System.out.println(meal.getUser());
+		System.out.println(meal.getMealTypeId());
+		System.out.println(meal);
+		System.out.println("****************************************************");
 		em.persist(meal);
 		return meal;
 	}
@@ -32,11 +37,6 @@ public class MealDOAImpl implements MealDAO {
 		return null;
 	}
 
-	@Override
-	public boolean deleteByMealId(int mealId, User user) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public Meal findMealById(int mealId) {
@@ -56,7 +56,7 @@ public class MealDOAImpl implements MealDAO {
 		System.out.println(recipeId + " " + mealId);
 		return addedToMeal; 
 	}
-
+ 
 	@Override
 	public List<Meal> findAllMeals() {
 		String jpql = "SELECT m FROM Meal m";

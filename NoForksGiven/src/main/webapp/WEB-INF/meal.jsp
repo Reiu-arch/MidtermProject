@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="jakarta.tags.core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -8,21 +8,19 @@
 <title>Meal</title>
 </head>
 <body>
-<jsp:include page="navbar.jsp"/>
+	<jsp:include page="navbar.jsp" />
 
 
-<h1>Meal Page</h1>
-<!-- ************ user will edit or delete meal here AND add recipe -->
+	<h1>Meal Page</h1>
+	<!-- ************ user will edit or delete meal here AND add recipe -->
 
-<ol>
-<c:forEach var="meal" items="${mealList}">
-<ul><strong>${meal.name}</strong></ul>
-<c:forEach var="recipe" items="${meal.recipes}">
-<li>${recipe.name}</li>
-</c:forEach>
-</c:forEach>
-</ol>
+	<ol>
+		<c:forEach var="recipe" items="${meal.recipes}">
+			<li>${recipe.name}</li>
 
-<a href="browseResults.do" class="button">Add Recipes to Meal</a>
+		</c:forEach>
+	</ol>
+
+	<a href="browseResults.do" class="button">Add Recipes to Meal</a>
 </body>
 </html>

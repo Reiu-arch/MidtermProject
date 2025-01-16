@@ -53,8 +53,8 @@ public class Recipe {
 	@ManyToMany
 	@JoinTable(
 			name="meal_has_recipe",
-			joinColumns=@JoinColumn(name="meal_id"),
-			inverseJoinColumns=@JoinColumn(name="recipe_id"))
+			joinColumns=@JoinColumn(name="recipe_id"),
+			inverseJoinColumns=@JoinColumn(name="meal_id"))
 	private List<Meal> meals;
 	
 	@ManyToMany(mappedBy="recipes")

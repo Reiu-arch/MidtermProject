@@ -25,7 +25,11 @@
 <label for="mealTypeId">Enter meal type Id (1: breakfast):</label> <input
 			type="text" id="mealTypeId" name="mealTypeId.id" size="50"><br>
 
-		<button onsubmit="return window.confirm('Confirm Add?');">SUBMIT </button>
+		<button onclick="return window.confirm('Confirm Add?');">SUBMIT </button>
+		
+		<c:if test="${not empty errorMessage}">
+		<p>${errorMessage}</p>
+		</c:if>
 </form>
 </body>
 </html>
