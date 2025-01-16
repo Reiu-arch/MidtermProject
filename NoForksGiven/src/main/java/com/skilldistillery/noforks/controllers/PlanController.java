@@ -91,6 +91,12 @@ public class PlanController {
 		return "redirect:home.do";
 	}
 	
-	
+	@GetMapping(path = "deletePlan.do")
+	public String deletePlan(HttpSession session, @RequestParam("planId")int planId) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		planDao.deleteByPlanId(planId, loggedInUser);
+
+		return "redirect:account.do";
+	}
 	
 }

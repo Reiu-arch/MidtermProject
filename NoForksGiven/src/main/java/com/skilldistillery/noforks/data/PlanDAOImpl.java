@@ -33,7 +33,7 @@ public class PlanDAOImpl implements PlanDAO {
 		if (plan.getUser().getId() != user.getId()) {
 			return false;
 		}
-		
+		plan.setEnabled(false);
 		em.persist(plan);
 		return true;
 	}
@@ -51,6 +51,5 @@ public class PlanDAOImpl implements PlanDAO {
 		
 		return em.find(Plan.class, planId);
 	}
-
 
 }

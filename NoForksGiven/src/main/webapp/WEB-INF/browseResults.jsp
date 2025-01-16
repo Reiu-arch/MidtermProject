@@ -187,7 +187,9 @@ footer a {
         <c:forEach var="recipe" items="${recipeList}">
             <div class="recipe-item">
                 <img src="${recipe.imageUrl}" alt="${recipe.name}">
-                <h3>${recipe.name}</h3>
+                <h3>
+                <a href="Recipe.do?recipeId=${recipe.id}">${recipe.name}</a>
+                </h3>
                 <p>${recipe.description}</p>
                 <p>Prep Time: ${recipe.prepTimeMin} minutes</p>
                 <p>Cook Time: ${recipe.cookTimeMin} minutes</p>
