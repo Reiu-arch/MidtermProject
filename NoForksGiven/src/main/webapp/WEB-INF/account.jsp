@@ -198,7 +198,8 @@ nav a {
 				<form action="updateAccount.do" method="GET">
 					<button type="submit">Edit Account</button>
 				</form>
-				<form action="deleteAccount.do" method="GET" onsubmit="return confirm('Confirm Deletion of your Account?');">
+				<form action="deleteAccount.do" method="GET" 
+				onsubmit="return confirm('Confirm Deletion of your Account?');">
 					<button type="submit" class="delete-button">Delete Account</button>
 				</form>
 			</div>
@@ -210,7 +211,9 @@ nav a {
 						<c:if test="${meal.enabled == true}">
 							<li>${meal.name}
 								<form action="deleteMeal.do" method="GET" style="display: inline;">
-									<button type="submit" class="delete-button" onclick="return confirm('Are you sure you want to delete this meal?');">Delete Meal</button>
+								<input type="hidden" id="mealId" name="mealId" value="<c:out value='${meal.id}' />">
+									<button type="submit" class="delete-button" 
+									onclick="return confirm('Are you sure you want to delete this meal?');">Delete Meal</button>
 								</form>
 							</li>
 						</c:if>
@@ -225,7 +228,9 @@ nav a {
 						<c:if test="${plan.enabled == true}">
 							<li><a href="planDetails.do?planId=${plan.id}">${plan.name}</a>
 								<form action="deletePlan.do" method="GET" style="display: inline;">
-									<button type="submit" class="delete-button" onclick="return confirm('Are you sure you want to delete this plan?');">Delete Plan</button>
+								<input type="hidden" id="planId" name="planId" value="<c:out value='${plan.id}' />">
+									<button type="submit" class="delete-button" 
+									onclick="return confirm('Are you sure you want to delete this plan?');">Delete Plan</button>
 								</form>
 							</li>
 						</c:if>

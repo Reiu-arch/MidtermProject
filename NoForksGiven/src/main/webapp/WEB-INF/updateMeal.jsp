@@ -146,6 +146,53 @@
 </head>
 <body>
 
+<<<<<<< HEAD
+	<jsp:include page="navbar.jsp" />
+
+	<h2>Update Meal: ${meal.name}</h2>
+
+	<form action="updateMeal.do" method="POST">
+		<input type="hidden" name="mealId" value="${meal.id}"> <label
+			for="name">Enter the meal name:</label> <input type="text" id="name"
+			name="name" placeholder="${meal.name}" required="required"
+			value="${meal.name}"><br> <label for="notes">Notes:</label>
+		<input type="text" id="notes" name="notes" size="80"
+			placeholder="${meal.notes}" value="${meal.notes}"><br> <label
+			for="imageUrl">Image Url:</label> <input type="text" id="imageUrl"
+			name="imageUrl" placeholder="${meal.imageUrl}"
+			value="${meal.imageUrl}"><br> <label for="mealTypeId">Choose
+			meal type:</label> <select name="mealTypeId.id" id="mealTypeId">
+			<option value="1"
+				<c:if test='${meal.mealTypeId.id =="1"}'>selected</c:if>>Breakfast</option>
+			<option value="2"
+				<c:if test='${meal.mealTypeId.id =="2"}'>selected</c:if>>Lunch</option>
+			<option value="3"
+				<c:if test='${meal.mealTypeId.id =="3"}'>selected</c:if>>Dinner</option>
+			<option value="4"
+				<c:if test='${meal.mealTypeId.id =="4"}'>selected</c:if>>Snack</option>
+			<option value="5"
+				<c:if test='${meal.mealTypeId.id =="5"}'>selected</c:if>>Dessert</option>
+		</select>
+
+		<button>Update Meal</button>
+	</form>
+
+	<div class="recipe-actions">
+		<c:forEach var="recipe" items="${meal.recipes}">
+			<div class="recipe-item">
+				<p>${recipe.name}</p>
+				<form action="removeRecipe.do" method="POST" class="action-form"
+					onsubmit="return window.confirm('Confirm Delete?');">
+					<input type="hidden" id="recipeId" name="recipeId" value="<c:out value='${recipe.id}' />"> 
+					
+					<input type="hidden" id="mealId" name="mealId" value="<c:out value='${meal.id}' />">
+					
+					<button type="submit" class="button">Remove Recipe</button>
+				</form>
+			</div>
+		</c:forEach>
+	</div>
+=======
     <header>
         <p>Meal Update</p>
     </header>
@@ -192,6 +239,7 @@
             </div>
         </c:forEach>
     </div>
+>>>>>>> 98bb5e165c0518cad184dfa5c083bba47bb348a6
 
 </body>
 </html>

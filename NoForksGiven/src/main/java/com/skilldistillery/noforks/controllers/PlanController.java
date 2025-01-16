@@ -92,7 +92,7 @@ public class PlanController {
 	}
 	
 	@GetMapping(path = "deletePlan.do")
-	public String deletePlan(HttpSession session, @RequestParam("planId")int planId) {
+	public String deletePlan(HttpSession session, @RequestParam("planId") int planId) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
 		planDao.deleteByPlanId(planId, loggedInUser);
 
