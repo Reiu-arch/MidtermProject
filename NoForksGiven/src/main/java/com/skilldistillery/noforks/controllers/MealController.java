@@ -105,7 +105,7 @@ class MealController {
 	}
 	
 	@GetMapping(path = "updateMeal.do")
-	public String showUpdateRecipe(Model model, @RequestParam("mealId") int mealId) {
+	public String showUpdateMeal(Model model, @RequestParam("mealId") int mealId) {
 		Meal meal = mealDao.findMealById(mealId);
 		model.addAttribute("meal", meal);
 		return "updateMeal";
@@ -113,7 +113,7 @@ class MealController {
 	
 	
 	@PostMapping(path = "updateMeal.do")
-	public String updateRecipe(Model model, HttpSession session, Meal meal, @RequestParam("mealId") int mealId) {
+	public String updateMeal(Model model, HttpSession session, Meal meal, @RequestParam("mealId") int mealId) {
 		User user = (User) session.getAttribute("loggedInUser");
 		Meal mealToUpdate = mealDao.editMeal(mealId, meal, user);
 		model.addAttribute("meal", mealToUpdate);	

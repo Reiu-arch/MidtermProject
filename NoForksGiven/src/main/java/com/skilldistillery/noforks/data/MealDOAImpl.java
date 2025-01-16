@@ -30,7 +30,7 @@ public class MealDOAImpl implements MealDAO {
 	@Override
 	public Meal editMeal(int mealId, Meal mealToUpdate, User user) {
 		
-		Meal meal = em.find(Meal.class, user.getId());
+		Meal meal = em.find(Meal.class, mealId);
 		if (meal.getUser().getId() != user.getId()) {
 			return null;
 		}
