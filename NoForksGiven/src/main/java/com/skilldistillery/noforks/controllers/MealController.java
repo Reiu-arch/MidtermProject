@@ -62,7 +62,7 @@ class MealController {
 	@GetMapping(path = "viewallmeals.do")
 	public String goAllMeals(User user, Model model, HttpSession session) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
-		List<Meal> meals = mealDao.findAllMeals();
+		List<Meal> meals = mealDao.findAllMeals(loggedInUser.getId());
 		model.addAttribute("mealList", meals);
 		//add loggedUser to reference THEIR meals
 			return "viewallmeals";

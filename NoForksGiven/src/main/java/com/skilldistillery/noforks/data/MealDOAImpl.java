@@ -21,6 +21,7 @@ public class MealDOAImpl implements MealDAO {
 
 	@Override
 	public Meal addMeal(Meal meal, User user) {
+		meal.setEnabled(true);
 		meal.setUser(user);
 		em.persist(meal);
 		return meal;
@@ -61,9 +62,9 @@ public class MealDOAImpl implements MealDAO {
 	}
  
 	@Override
-	public List<Meal> findAllMeals() {
-		String jpql = "SELECT m FROM Meal m WHERE m.enabled = true";
-		List<Meal> meals = em.createQuery(jpql, Meal.class).getResultList();
+	public List<Meal> findAllMeals(int userId) {
+		String jpql = "SELECT m FROM Meal m WHERE m.enabled = true AND m.user.id = :u";
+		List<Meal> meals = em.createQuery(jpql, Meal.class).setParameter("u", userId).getResultList();
 		return meals;
 	}
 

@@ -14,5 +14,5 @@ public interface MealDAO {
 	Meal findMealById (int mealId);
 	Meal addRecipeToMeal (int recipeId, int mealId, User user);
 	Meal removeRecipeFromMeal (int recipeId, int mealId, User user);
-	List<Meal>findAllMeals();
+	List<Meal>findAllMeals(int userId);
 } 

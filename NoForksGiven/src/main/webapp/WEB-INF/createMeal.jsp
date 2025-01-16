@@ -20,10 +20,16 @@
 
 <label for="imageUrl">Enter image url:</label> <input
 			type="text" id="imageUrl" name="imageUrl" size="50"><br>
-			
-<label for="mealTypeId">Enter meal type Id (1: breakfast):</label> <input
-			type="text" id="mealTypeId" name="mealTypeId.id" size="50"><br>
 
+<label for="mealTypeId">Choose meal type:</label>
+	<select name="mealTypeId.id" id ="mealTypeId">
+		<option value="" disabled selected>Meal Types</option>
+		<option value="1">Breakfast</option>
+		<option value="2">Lunch</option>
+		<option value="3">Dinner</option>
+		<option value="4">Snack</option>
+		<option value="5">Dessert</option>
+	</select>
 		<button onclick="return window.confirm('Confirm Add?');">SUBMIT </button>
 		
 		<c:if test="${not empty errorMessage}">
