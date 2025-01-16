@@ -36,6 +36,25 @@ h1 {
 	font-family: 'Georgia', serif;
 }
 
+nav {
+	background-color: white;
+	border-top: 3px solid #296A4B;
+	border-bottom: 3px solid #296A4B;
+	padding: 10px 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+nav a {
+	color: #296A4B;
+	text-decoration: none;
+	font-size: 1.1em;
+	margin: 0 20px;
+	font-weight: bold;
+}
+
+
 form {
 	width: 70%;
 	margin: 30px auto;
