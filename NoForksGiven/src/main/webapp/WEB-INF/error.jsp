@@ -95,7 +95,7 @@
 <div class="error-container">
     <h1>Oops! Something went wrong.</h1>
     <p>We're sorry, but we couldn't process your request. Please try again later or contact support if the issue persists.</p>
-    <a href="home.jsp" class="home-button">Return to Home</a>
+    <a href="home.do" class="home-button">Return to Home</a>
 </div>
 </body>
 </html>
