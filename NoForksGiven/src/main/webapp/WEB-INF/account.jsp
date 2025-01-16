@@ -226,8 +226,7 @@ nav a {
 
 				<h3>
 					Your Meals <a href="viewallmeals.do"
-						style="color: #296A4B; font-size: 1.1em; margin-left: 20px;">View
-						All Meals</a>
+						style="color: #296A4B; font-size: 1.1em; margin-left: 20px;"></a>
 				</h3>
 				<ul>
 					<c:forEach var="meal" items="${loggedInUser.userMeals}">
