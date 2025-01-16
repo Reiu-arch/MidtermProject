@@ -5,10 +5,68 @@
 <head>
 <meta charset="UTF-8">
 <title>No Forks Given</title>
-</head>
-<jsp:include page="navbar.jsp"/>
-<body>
+<style>
+	
+	body{
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f9f9f9;
+	color: #333;
+	}
+	
+	header {
+	background-color: #296A4B;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	}
+	
+	header a {
+	color: white;
+	text-decoration: none;
+	margin: 0 15px;
+	font-weight: bold;
+	}
+	
+	.hero-section {
+	text-align: center;
+	padding: 20px;
+	}
+	
+	.hero-section {
+	font-family: 'Georgia', serif;
+	font-style: italic;
+	}
+	
+	
+</style>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+	<header>
+	<jsp:include page="navbar.jsp"/>
+	</header>
 	<h1>No Forks Given</h1>
 	<p>Why Fork Around. Just Eat</p>
 

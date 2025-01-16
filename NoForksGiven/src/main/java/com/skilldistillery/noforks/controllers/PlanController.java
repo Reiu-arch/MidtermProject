@@ -27,12 +27,6 @@ public class PlanController {
 		return "createplans";
 	}
 	
-//	@GetMapping(path = "myplan.do")
-//	public String goplan(Model model) {
-//		return "myplan";
-//	}
-	
-	
 	@PostMapping(path = "savemyplan.do")
 	public String saveMyPlan(@RequestParam("day")String day, @RequestParam("planName") String planName, Model model) {
 		Plan plan = new Plan();

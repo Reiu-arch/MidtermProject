@@ -30,39 +30,56 @@
 
 			<tr>
 				<td>Breakfast</td>
-				<c:forEach var="day" items="${['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']}">
-					<td><select name="breakfast_${day}">
-							<option value="" selected disabled hidden>Choose Meal</option>
-							<c:forEach var="meal" items="${loggedInUser.userMeals}">
-								<option value="${meal.id}">${meal.name}</option>
-							</c:forEach>
-					</select></td>
+				<c:forEach var="day"
+					items="${['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']}">
+					<td>
+						<form method="GET" action="showMeal.do">
+							<select name="mealId" required>
+								<option value="" selected disabled hidden>Choose Meal</option>
+								<c:forEach var="meal" items="${loggedInUser.userMeals}">
+									<option value="${meal.id}">${meal.name}</option>
+								</c:forEach>
+							</select>
+							<button type="submit" class="view-button">View</button>
+						</form>
+
+					</td>
 				</c:forEach>
 			</tr>
-			
-			
+
+
 			<tr>
 				<td>Lunch</td>
-				<c:forEach var="day" items="${['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']}">
-					<td><select name="breakfast_${day}">
-							<option value="" selected disabled hidden>Choose Meal</option>
-							<c:forEach var="meal" items="${loggedInUser.userMeals}">
-								<option value="${meal.id}">${meal.name}</option>
-							</c:forEach>
-					</select></td>
+				<c:forEach var="day"
+					items="${['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']}">
+					<td>
+						<form method="GET" action="showMeal.do">
+							<select name="mealId" required>
+								<option value="" selected disabled hidden>Choose Meal</option>
+								<c:forEach var="meal" items="${loggedInUser.userMeals}">
+									<option value="${meal.id}">${meal.name}</option>
+								</c:forEach>
+							</select>
+							<button type="submit" class="view-button">View</button>
+						</form>
+					</td>
 				</c:forEach>
 			</tr>
-			
-			
+
+
 			<tr>
 				<td>Dinner</td>
-				<c:forEach var="day" items="${['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']}">
-					<td><select name="breakfast_${day}">
-							<option value="" selected disabled hidden>Choose Meal</option>
-							<c:forEach var="meal" items="${loggedInUser.userMeals}">
-								<option value="${meal.id}">${meal.name}</option>
-							</c:forEach>
-					</select></td>
+				<c:forEach var="day"
+					items="${['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']}">
+					<td><form method="GET" action="showMeal.do">
+							<select name="mealId" required>
+								<option value="" selected disabled hidden>Choose Meal</option>
+								<c:forEach var="meal" items="${loggedInUser.userMeals}">
+									<option value="${meal.id}">${meal.name}</option>
+								</c:forEach>
+							</select>
+							<button type="submit" class="view-button">View</button>
+						</form></td>
 				</c:forEach>
 			</tr>
 
@@ -70,7 +87,6 @@
 
 
 	</table>
-
 
 
 </body>
