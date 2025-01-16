@@ -183,7 +183,7 @@ footer a {
 </head>
 <body>
 	<header>
-		<p>Our Recipes Your Choice!</p>
+		<p>Our Recipes, Your Choice!</p>
 	</header>
 	<h1>No Forks Given</h1>
 	<jsp:include page="navbar.jsp" />

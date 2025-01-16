@@ -191,7 +191,6 @@ footer a {
                 <p>${recipe.description}</p>
                 <p>Prep Time: ${recipe.prepTimeMin} minutes</p>
                 <p>Cook Time: ${recipe.cookTimeMin} minutes</p>
-                <p>Enabled: ${recipe.enabled}</p>
                 <a href="Recipe.do?recipeId=${recipe.id}">View Recipe</a>
             </div>
         </c:forEach>
