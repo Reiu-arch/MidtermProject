@@ -17,7 +17,7 @@
 			<!-- shown for logged in -->
 			<a href="myplan.do">My Plan</a>
 			<!-- shown for logged in -->
-			<a href="createplans.do">Create Plan</a>
+			<a href="createPlan.do">Create Plan</a>
 			<!-- shown for logged in -->
 
 
