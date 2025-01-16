@@ -1,5 +1,7 @@
 package com.skilldistillery.noforks.data;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.noforks.entities.Plan;
@@ -39,6 +41,13 @@ public class PlanDAOImpl implements PlanDAO {
 	public Plan savePlan(Plan plan) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Plan> allPlans() {
+		String jpql = "SELECT p FROM Plan p";
+		List<Plan> allPlansList = em.createQuery(jpql, Plan.class).getResultList();
+		return allPlansList;
 	}
 
 
