@@ -28,6 +28,10 @@ public class UserController {
 	public String home(Model model) {
 		return "home";
 	}
+	@RequestMapping(path = { "/error" })
+	public String error(Model model) {
+		return "error";
+	}
 
 	// Result Page
 	@RequestMapping(path = { "browseResults.do" })

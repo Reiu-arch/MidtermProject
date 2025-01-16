@@ -43,6 +43,12 @@ h3 {
 	margin: 10px 0;
 	font-family: 'Georgia', serif;
 }
+h4 {
+	color: #296A4B;
+	font-size: 1em;
+	margin: 10px 0;
+	font-family: 'Georgia', serif;
+}
 
 .profile-img {
 	display: block;
@@ -176,6 +182,7 @@ nav a {
 				<h3>Welcome: <c:out value="${loggedInUser.username}" /></h3>
 				<h3>User Id: <c:out value="${loggedInUser.id}" /></h3>
 				<img src="${loggedInUser.profileImage}" alt="Profile Image" class="profile-img" />
+				<h4>Biography: <c:out value="${loggedInUser.biography}" /></h4>
 			</div>
 
 			<div class="profile-actions">
