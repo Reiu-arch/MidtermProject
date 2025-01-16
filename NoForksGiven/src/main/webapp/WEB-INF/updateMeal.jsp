@@ -19,7 +19,17 @@
 
 	<label for="imageUrl">Image Url:</label><input type="text" id="imageUrl" name="imageUrl" placeholder="${meal.imageUrl}" value="${meal.imageUrl}"><br>
             
-    <label for="mealTypeId">Meal Type:</label> <input type="text" id="mealTypeId" name="mealTypeId.id" size="80" placeholder="${meal.mealTypeId.id}" value="${meal.mealTypeId.id}"><br>
+   
+<label for="mealTypeId">Choose meal type:</label>
+	<select name="mealTypeId.id" id ="mealTypeId">
+		<option value="1"><c:if test='${meal.mealTypeId.id =="1"}'>selected</c:if>Breakfast</option>
+		<option value="2"><c:if test='${meal.mealTypeId.id =="2"}'>selected</c:if>Lunch</option>
+		<option value="3"><c:if test='${meal.mealTypeId.id =="3"}'>selected</c:if>Dinner</option>
+		<option value="4"><c:if test='${meal.mealTypeId.id =="4"}'>selected</c:if>Snack</option>
+		<option value="5"><c:if test='${meal.mealTypeId.id =="5"}'>selected</c:if>Dessert</option>
+	</select>
+<!-- place holder value="${meal.mealTypeId.id} -->
+
 <button>Update</button>
 </form>
 

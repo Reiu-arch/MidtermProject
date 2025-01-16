@@ -9,6 +9,5 @@ public interface PlanDAO {
 
 	Plan addPlan(Plan plan, User user);
 	boolean deleteByPlanId(int planId, User user);
-	Plan savePlan(Plan plan);
 	List<Plan> allPlans();
 }

@@ -21,6 +21,7 @@ public class PlanDAOImpl implements PlanDAO {
 	
 	@Override
 	public Plan addPlan(Plan plan, User user) {
+		plan.setEnabled(true);
 		plan.setUser(user);
 		em.persist(plan);
 		return plan;
@@ -37,11 +38,6 @@ public class PlanDAOImpl implements PlanDAO {
 		return true;
 	}
 
-	@Override
-	public Plan savePlan(Plan plan) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public List<Plan> allPlans() {
