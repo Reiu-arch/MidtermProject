@@ -59,6 +59,7 @@ h3 {
 
 .profile-actions {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 	margin-top: 20px;
 }
@@ -77,7 +78,7 @@ h3 {
 	border-radius: 8px;
 	cursor: pointer;
 	transition: background-color 0.3s;
-	width: 250px;
+	width: 200px;
 }
 
 .profile-actions button:hover {
@@ -171,73 +172,38 @@ nav a {
 	<c:choose>
 		<c:when test="${not empty sessionScope.loggedInUser}">
 			<div class="profile-details">
-				<a href="logout.do"
-					style="color: #296A4B; font-size: 1.1em; text-align: center; display: block; margin: 20px 0;">Log
-					Out</a>
-				<h3>
-					Welcome:
-					<c:out value="${loggedInUser.username}" />
-				</h3>
-				<h3>
-					User Id:
-					<c:out value="${loggedInUser.id}" />
-				</h3>
-				<img src="${loggedInUser.profileImage}" alt="Profile Image"
-					class="profile-img" />
+				<a href="logout.do" style="color: #296A4B; font-size: 1.1em; text-align: center; display: block; margin: 20px 0;">Log Out</a>
+				<h3>Welcome: <c:out value="${loggedInUser.username}" /></h3>
+				<h3>User Id: <c:out value="${loggedInUser.id}" /></h3>
+				<img src="${loggedInUser.profileImage}" alt="Profile Image" class="profile-img" />
 			</div>
 
 			<div class="profile-actions">
-
 				<form action="createrecipe.do" method="GET">
-					<input type="hidden" id="id" name="id"
-						value="<c:out value='${loggedInUser.id}' />">
-					<button type="submit" class="edit-button">Create New
-						Recipe</button>
+					<button type="submit">Create New Recipe</button>
 				</form>
-
 				<form action="createMeal.do" method="GET">
-					<input type="hidden" id="id" name="id"
-						value="<c:out value='${loggedInUser.id}' />">
-					<button type="submit" class="edit-button">Create New Meal</button>
+					<button type="submit">Create New Meal</button>
 				</form>
-
 				<form action="viewallmeals.do" method="GET">
-					<input type="hidden" id="id" name="id"
-						value="<c:out value='${loggedInUser.id}' />">
-					<button type="submit" class="edit-button">View Meals</button>
+					<button type="submit">View Meals</button>
 				</form>
-				
 				<form action="updateAccount.do" method="GET">
-					<input type="hidden" id="id" name="id"
-						value="<c:out value='${loggedInUser.id}' />">
-					<button type="submit" class="edit-button">Edit Account</button>
+					<button type="submit">Edit Account</button>
 				</form>
-
-				<form action="deleteAccount.do" method="GET"
-					onsubmit="return window.confirm('Confirm Deletion of your Account?');">
-					<input type="hidden" id="userId" name="userId"
-						value="<c:out value='${loggedInUser.id}' />">
+				<form action="deleteAccount.do" method="GET" onsubmit="return confirm('Confirm Deletion of your Account?');">
 					<button type="submit" class="delete-button">Delete Account</button>
-					
 				</form>
 			</div>
 
 			<div class="meal-list">
-
-				<h3>
-					Your Meals <a href="viewallmeals.do"
-						style="color: #296A4B; font-size: 1.1em; margin-left: 20px;"></a>
-				</h3>
+				<h3>Your Meals</h3>
 				<ul>
 					<c:forEach var="meal" items="${loggedInUser.userMeals}">
-						<c:if test="${meal.enabled == true }">
+						<c:if test="${meal.enabled == true}">
 							<li>${meal.name}
-								<form action="deleteMeal.do" method="GET"
-									style="display: inline;">
-									<input type="hidden" name="mealId" value="${meal.id}">
-									<button type="submit" class="delete-button"
-										onclick="return window.confirm('Are you sure you want to delete this meal?');">
-										Delete Meal</button>
+								<form action="deleteMeal.do" method="GET" style="display: inline;">
+									<button type="submit" class="delete-button" onclick="return confirm('Are you sure you want to delete this meal?');">Delete Meal</button>
 								</form>
 							</li>
 						</c:if>
@@ -249,43 +215,17 @@ nav a {
 				<h3>Your Plans</h3>
 				<ul>
 					<c:forEach var="plan" items="${loggedInUser.plans}">
-						<c:if test="${plan.enabled == true }">
+						<c:if test="${plan.enabled == true}">
 							<li><a href="planDetails.do?planId=${plan.id}">${plan.name}</a>
-								<form action="deletePlan.do" method="GET"
-									style="display: inline;">
-									<input type="hidden" name="planId" value="${plan.id}">
-									<button type="submit" class="delete-button"
-										onclick="return window.confirm('Are you sure you want to delete this plan?');">
-										Delete Plan</button>
-								</form></li>
+								<form action="deletePlan.do" method="GET" style="display: inline;">
+									<button type="submit" class="delete-button" onclick="return confirm('Are you sure you want to delete this plan?');">Delete Plan</button>
+								</form>
+							</li>
 						</c:if>
 					</c:forEach>
 				</ul>
 			</div>
-
-    <%-- <h3>Your Meals
-        <a href="viewallmeals.do" style="color: #296A4B; font-size: 1.1em; margin-left: 20px;">View All Meals</a>
-    </h3>
-    <ul>
-        <c:forEach var="meal" items="${loggedInUser.userMeals}">
-            <c:if test="${meal.enabled == true }">
-                <li>
-                    ${meal.name}
-                    <form action="deleteMeal.do" method="GET" style="display:inline;">
-                        <input type="hidden" name="mealId" value="${meal.id}">
-                        <button type="submit" class="delete-button" onclick="return window.confirm('Are you sure you want to delete this meal?');">
-                            Delete Meal
-                        </button>
-                    </form>
-                </li>
-            </c:if>
-        </c:forEach>
-    </ul>
-</div> --%>
-
-
 		</c:when>
-
 		<c:otherwise>
 			<h3>User not logged in</h3>
 		</c:otherwise>
