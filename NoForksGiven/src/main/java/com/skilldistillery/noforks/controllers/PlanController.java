@@ -27,10 +27,10 @@ public class PlanController {
 		return "createplans";
 	}
 	
-	@GetMapping(path = "myplan.do")
-	public String goplan(Model model) {
-		return "myplan";
-	}
+//	@GetMapping(path = "myplan.do")
+//	public String goplan(Model model) {
+//		return "myplan";
+//	}
 	
 	
 	@PostMapping(path = "savemyplan.do")

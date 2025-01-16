@@ -12,7 +12,7 @@
 <body>
 <h1>My Plans</h1>
 
-<<<<<<< HEAD
+HEAD
 <table>
 <thead>
 	<tr>
