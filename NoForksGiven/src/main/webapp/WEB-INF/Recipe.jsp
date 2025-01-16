@@ -44,7 +44,9 @@
 	 <form action="addMeal.do" method="POST" class="action-form">
         <select name="mealId"> 
         	<c:forEach var="meal" items="${loggedInUser.userMeals}">
+        	<c:if test="${meal.enabled == true }">
         		<option value="${meal.id}">${meal.name}</option>
+			</c:if>
         	</c:forEach>
         </select>
          <input type="hidden" id="recipeId" name="recipeId" value="<c:out value='${recipe.id}' />">

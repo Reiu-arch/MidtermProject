@@ -54,12 +54,14 @@
 </c:choose>
 
 
+
 <ol>
 <c:forEach var="meal" items="${loggedInUser.userMeals}">
+<c:if test="${meal.enabled == true }">
 <li>${meal.name}</li>
+</c:if>
 </c:forEach>
 </ol>
-
 
 </body>
 </html>

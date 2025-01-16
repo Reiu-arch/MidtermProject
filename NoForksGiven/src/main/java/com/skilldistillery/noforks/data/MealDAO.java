@@ -12,7 +12,7 @@ public interface MealDAO {
 	Meal editMeal(int mealId, Meal mealToUpdate, User user);
 	boolean deleteMealById (int mealId, User user);
 	Meal findMealById (int mealId);
-	Meal addRecipeToMeal (int recipeId, int mealId, User userId);
-	Meal removeRecipeFromMeal (int recipeId, int mealId, User userId);
+	Meal addRecipeToMeal (int recipeId, int mealId, User user);
+	Meal removeRecipeFromMeal (int recipeId, int mealId, User user);
 	List<Meal>findAllMeals();
 } 
