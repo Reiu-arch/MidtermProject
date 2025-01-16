@@ -85,60 +85,60 @@ h3 {
 }
 
 .meal-list {
-    text-align: center;
-    margin-top: 40px;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 40px;
+	text-align: center;
+	margin-top: 40px;
+	background-color: #ffffff;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	margin-bottom: 40px;
 }
 
 .meal-list h3 {
-    font-family: 'Georgia', serif;
-    color: #296A4B;
-    font-size: 1.5em;
-    margin-bottom: 20px;
+	font-family: 'Georgia', serif;
+	color: #296A4B;
+	font-size: 1.5em;
+	margin-bottom: 20px;
 }
 
 .meal-list ul {
-    list-style-type: none;
-    padding: 0;
+	list-style-type: none;
+	padding: 0;
 }
 
 .meal-list li {
-    font-size: 1.2em;
-    margin: 15px 0;
-    font-family: 'Georgia', serif;
-    color: #333;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
+	font-size: 1.2em;
+	margin: 15px 0;
+	font-family: 'Georgia', serif;
+	color: #333;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 10px;
 }
 
 .meal-list li:last-child {
-    border-bottom: none;
+	border-bottom: none;
 }
 
 .meal-list form {
-    margin: 0;
-    display: inline-block;
+	margin: 0;
+	display: inline-block;
 }
 
 .delete-button {
-    background-color: #df4e4e;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+	background-color: #df4e4e;
+	color: white;
+	padding: 8px 16px;
+	border-radius: 8px;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
 }
 
 .delete-button:hover {
-    background-color: #e13c3c;
+	background-color: #e13c3c;
 }
 
 nav {
@@ -221,25 +221,45 @@ nav a {
 			</div>
 
 			<div class="meal-list">
-    <h3>Your Meals
-        <a href="viewallmeals.do" style="color: #296A4B; font-size: 1.1em; margin-left: 20px;">View All Meals</a>
-    </h3>
-    <ul>
-        <c:forEach var="meal" items="${loggedInUser.userMeals}">
-            <c:if test="${meal.enabled == true }">
-                <li>
-                    ${meal.name}
-                    <form action="deleteMeal.do" method="GET" style="display:inline;">
-                        <input type="hidden" name="mealId" value="${meal.id}">
-                        <button type="submit" class="delete-button" onclick="return window.confirm('Are you sure you want to delete this meal?');">
-                            Delete Meal
-                        </button>
-                    </form>
-                </li>
-            </c:if>
-        </c:forEach>
-    </ul>
-</div>
+				<h3>
+					Your Meals <a href="viewallmeals.do"
+						style="color: #296A4B; font-size: 1.1em; margin-left: 20px;">View
+						All Meals</a>
+				</h3>
+				<ul>
+					<c:forEach var="meal" items="${loggedInUser.userMeals}">
+						<c:if test="${meal.enabled == true }">
+							<li>${meal.name}
+								<form action="deleteMeal.do" method="GET"
+									style="display: inline;">
+									<input type="hidden" name="mealId" value="${meal.id}">
+									<button type="submit" class="delete-button"
+										onclick="return window.confirm('Are you sure you want to delete this meal?');">
+										Delete Meal</button>
+								</form>
+							</li>
+						</c:if>
+					</c:forEach>
+				</ul>
+			</div>
+
+			<div class="meal-list">
+				<h3>Your Plans</h3>
+				<ul>
+					<c:forEach var="plan" items="${loggedInUser.plans}">
+						<c:if test="${plan.enabled == true }">
+							<li><a href="planDetails.do?planId=${plan.id}">${plan.name}</a>
+								<form action="deletePlan.do" method="GET"
+									style="display: inline;">
+									<input type="hidden" name="planId" value="${plan.id}">
+									<button type="submit" class="delete-button"
+										onclick="return window.confirm('Are you sure you want to delete this plan?');">
+										Delete Plan</button>
+								</form></li>
+						</c:if>
+					</c:forEach>
+				</ul>
+			</div>
 
 		</c:when>
 

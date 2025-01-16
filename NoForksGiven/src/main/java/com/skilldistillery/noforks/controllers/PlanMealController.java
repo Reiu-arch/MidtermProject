@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.skilldistillery.noforks.data.PlanMealDAO;
+import com.skilldistillery.noforks.entities.Meal;
 import com.skilldistillery.noforks.entities.Plan;
 import com.skilldistillery.noforks.entities.PlanMeal;
 import com.skilldistillery.noforks.entities.User;
@@ -21,15 +22,15 @@ public class PlanMealController {
 	
 	
 	@GetMapping(path = "CreatePlanMeal.do")
-	public String goPlanMeal(Model model) {
+	public String goCreatePlanMeal(Model model) {
 			return "CreatePlanMeal";
 	}	
 	
 	@PostMapping(path = "CreatePlanMeal.do")
-	public String goCreateMeal(HttpSession session, Model model, PlanMeal planMeal, Plan plan) {
+	public String createPlanMeal(HttpSession session, Model model, PlanMeal planMeal, Plan plan, Meal meal) {
 		try {
 			User loggedInUser = (User) session.getAttribute("loggedInUser");
-			PlanMeal newPlanMeal = planMealDao.addPlanMeal(planMeal, plan);
+			PlanMeal newPlanMeal = planMealDao.addPlanMeal(planMeal, plan, meal);
 			model.addAttribute("planMeal", newPlanMeal);
 			return "redirect:account.do";
 			}catch (Exception e) {

@@ -24,7 +24,7 @@ public class MealType {
 	@OneToMany(mappedBy = "mealTypeId")
 	private List<Meal> meals;
 	
-	@OneToMany(mappedBy = "mealTypeId")
+	@OneToMany(mappedBy = "mealType")
 	private List<PlanMeal> planMeals;
 	
 	public MealType() {

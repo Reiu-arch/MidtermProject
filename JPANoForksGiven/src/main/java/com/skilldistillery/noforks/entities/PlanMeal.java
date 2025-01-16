@@ -34,7 +34,7 @@ public class PlanMeal {
 	
 	@ManyToOne
 	@JoinColumn(name = "meal_type_id")
-	private MealType mealTypeId;
+	private MealType mealType;
 
 	public PlanMeal() {
 		super();
@@ -82,12 +82,12 @@ public class PlanMeal {
 		this.plan = plan;
 	}
 
-	public MealType getMealTypeId() {
-		return mealTypeId;
+	public MealType getMealType() {
+		return mealType;
 	}
 
-	public void setMealTypeId(MealType mealTypeId) {
-		this.mealTypeId = mealTypeId;
+	public void setMealType(MealType mealTypeId) {
+		this.mealType = mealTypeId;
 	}
 
 	@Override

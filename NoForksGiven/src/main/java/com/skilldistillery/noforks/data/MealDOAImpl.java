@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.noforks.entities.Meal;
+import com.skilldistillery.noforks.entities.MealType;
 import com.skilldistillery.noforks.entities.Recipe;
 import com.skilldistillery.noforks.entities.User;
 
@@ -87,6 +88,12 @@ public class MealDOAImpl implements MealDAO {
 		
 		System.out.println(recipeId + " " + mealId);
 		return meal;
+	}
+
+	@Override
+	public List<MealType> findAllMealTypes() {
+		String jpql ="SELECT m FROM MealType m";
+		return em.createQuery(jpql, MealType.class).getResultList();
 	}
 	
 	 

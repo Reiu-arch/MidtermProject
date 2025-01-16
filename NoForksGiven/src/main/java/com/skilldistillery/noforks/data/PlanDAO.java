@@ -10,4 +10,5 @@ public interface PlanDAO {
 	Plan addPlan(Plan plan, User user);
 	boolean deleteByPlanId(int planId, User user);
 	List<Plan> allPlans();
+	Plan findById(int planId);
 }

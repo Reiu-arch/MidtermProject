@@ -46,5 +46,11 @@ public class PlanDAOImpl implements PlanDAO {
 		return allPlansList;
 	}
 
+	@Override
+	public Plan findById(int planId) {
+		
+		return em.find(Plan.class, planId);
+	}
+
 
 }
