@@ -7,7 +7,7 @@ Our MidTerm Project, NoForksGiven, is a Java/Web based application that enables 
 **Key Features:**
 
 - **View all recipes** All users can view and search all recipes within the database.
-	-Users can earch by recipe name, description and ingredients.
+	-Users can search by recipe name, description and ingredients.
 
 - **Create an account** Enables full access to the website.
 	- Add/Edit/Delete Logged in User's recipe's.
