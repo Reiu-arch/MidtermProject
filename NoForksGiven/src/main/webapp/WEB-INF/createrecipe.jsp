@@ -112,8 +112,8 @@ nav a {
 	<jsp:include page="navbar.jsp" />
 
 	<form action="createrecipe.do" method="POST">
-		<label for="imageUrl">Enter the URL of your picture:</label>
-		<input type="text" id="imageUrl" name="imageUrl" size="50" required>
+		<label for="imageUrl">Enter recipe image URL:</label>
+		<input type="text" id="imageUrl" name="imageUrl" size="50">
 
 		<label for="name">Enter the recipe's name:</label>
 		<input type="text" id="name" name="name" size="20" required>

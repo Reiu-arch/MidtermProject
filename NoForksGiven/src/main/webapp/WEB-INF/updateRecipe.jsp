@@ -135,6 +135,9 @@ label {
 		<label for="name">Recipe Name:</label>
 		<input type="text" id="name" name="name" placeholder="${recipe.name}" required="required" value="${recipe.name}"><br>
 
+		<label for="imageUrl">Image:</label>
+		<input type="text" id="imageUrl" name="imageUrl" size="80" placeholder="${recipe.imageUrl}" required value="${recipe.imageUrl}"><br>
+
 		<label for="description">Description:</label>
 		<input type="text" id="description" name="description" size="80" placeholder="${recipe.description}" required value="${recipe.description}"><br>
 
