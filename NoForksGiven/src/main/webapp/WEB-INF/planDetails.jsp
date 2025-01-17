@@ -42,6 +42,10 @@ h3 {
 	text-align: center;
 }
 
+.button h3 a  {
+	background-color: #2c6e48;
+}
+
 nav {
 	background-color: white;
 	border-top: 3px solid #296A4B;
@@ -158,8 +162,8 @@ form button:hover {
 		</c:when>
 		<c:otherwise>
 			<h1>${plan.name}</h1>
-			<img src="${plan.imageUrl}" alt="${plan.name}">
-			<p>${plan.notes}</p>
+			<img src="${plan.imageUrl}">
+			<p>Plan Notes: ${plan.notes}</p>
 
 			<h3>Plan Meals</h3>
 			<ul>
@@ -172,10 +176,8 @@ form button:hover {
 			</ul>
 
 			<div class="meal-list">
-				<h3>
-					Your Meals 
-					<a href="viewallmeals.do">View All Meals</a>
-				</h3>
+				<h3>Your Meals</h3> 
+				<h3> <a href="viewallmeals.do">View All Meals</a> </h3>
 				<ul>
 					<c:forEach var="meal" items="${loggedInUser.userMeals}">
 						<c:if test="${meal.enabled}">

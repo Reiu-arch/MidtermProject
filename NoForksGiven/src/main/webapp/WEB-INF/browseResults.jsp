@@ -130,9 +130,11 @@ footer a {
 }
 
 .recipe-item img {
-    width: 100%;
-    height: auto;
+    width: 250px;
+    height: 250px;
     border-radius: 8px;
+    object-fit: cover;
+    object-position: center;
 }
 
 .recipe-item h3 {
