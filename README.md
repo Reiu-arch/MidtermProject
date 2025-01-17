@@ -54,3 +54,14 @@ Our MidTerm Project, NoForksGiven, is a Java/Web based application that enables 
 - **Error Handling in Web Applications:** Learned to handle exceptions and provide user feedback in a web environment.
 - **User Interface Design:** Developed an understanding of creating intuitive and responsive web interfaces.
 - **Full-Stack Development:** Gained experience in full-stack development, understanding both front-end and back-end aspects of web development.
+
+## Stretch Goals
+
+- **Social Platform:** The vision of NoForksGiven is to be able to allow users to navigate and interact as if it is a social platform.
+
+	- **Users can:**
+		- Follow other users
+		- Like recipes/meals/plans
+		- Rate recipes
+		- Comment on recipes/meals/plans
+		- Invite followers
