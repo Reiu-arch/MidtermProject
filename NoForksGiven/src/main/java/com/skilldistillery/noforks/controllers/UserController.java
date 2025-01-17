@@ -123,7 +123,7 @@ public class UserController {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			model.addAttribute("errorMessage", "Error occured trying to create your account. Account name may already in use!");
+			model.addAttribute("errorMessage", "Error occured trying to create your account. Account name may already be in use!");
 			return "createaccount";
 		}
 
